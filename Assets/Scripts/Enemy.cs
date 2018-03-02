@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     Color originalVisionConeColor;
 
     bool spotted;
+    public bool isEnemyStill;
 
     void Start()
     {
@@ -110,15 +111,29 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetWaypoint, 
-                speed * Time.deltaTime);
-
-            if (transform.position == targetWaypoint)
+            // Added now.
+            if (isEnemyStill)
             {
+                waitTime = 6;
+
                 targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
                 targetWaypoint = waypoints[targetWaypointIndex];
                 yield return new WaitForSeconds(waitTime);
                 yield return StartCoroutine(TurnToFace(targetWaypoint));
+            }
+            else
+            {
+            //
+                transform.position = Vector3.MoveTowards(transform.position, targetWaypoint,
+                                speed * Time.deltaTime);
+
+                if (transform.position == targetWaypoint)
+                {
+                    targetWaypointIndex = (targetWaypointIndex + 1) % waypoints.Length;
+                    targetWaypoint = waypoints[targetWaypointIndex];
+                    yield return new WaitForSeconds(waitTime);
+                    yield return StartCoroutine(TurnToFace(targetWaypoint));
+                }
             }
             yield return null;
         }
