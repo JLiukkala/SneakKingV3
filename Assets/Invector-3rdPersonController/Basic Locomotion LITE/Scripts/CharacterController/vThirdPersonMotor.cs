@@ -243,8 +243,8 @@ namespace Invector.CharacterController
         /// </summary>
         private void BehindCoverMovement()
         {
-
             
+
 
             //FreeMovement();
             //speed = 0;
@@ -253,9 +253,16 @@ namespace Invector.CharacterController
         private void CrouchMovement()
         {
 
+            //WHY!?
+            GetXForCover = input.x;
             isSprinting = false;
             FreeMovement();
             //speed = 0;
+        }
+
+        public float GetXForCover
+        {
+            private set; get;
         }
 
         void StrafeMovement()

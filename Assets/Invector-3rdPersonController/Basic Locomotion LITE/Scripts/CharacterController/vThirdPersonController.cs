@@ -27,6 +27,7 @@ namespace Invector.CharacterController
 
         public virtual void Crouch()
         {
+           
             if (locomotionType == LocomotionType.OnlyStrafe) return;
             isCrouching = !isCrouching;
         }
