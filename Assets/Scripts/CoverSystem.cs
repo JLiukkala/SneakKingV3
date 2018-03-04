@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Invector.CharacterController
 {
-    public class CoverSystem : vThirdPersonController
+    public class CoverSystem : MonoBehaviour
     {
 
 
@@ -21,19 +21,27 @@ namespace Invector.CharacterController
         private bool _allowCover = false;
         private float _inputHorizontal;
         private bool PeekDir;
+        private vThirdPersonMotor _motor;
+        private void Awake()
+        {
+            _motor = GetComponent<vThirdPersonMotor>();
+        }
 
+        private void Update()
+        {
+            _inputHorizontal = _motor.GetXForCover;
+        }
 
         // Update is called once per frame
         void LateUpdate()
         {
-
-            //This wont work god damn it!!!
-            _inputHorizontal = GetXForCover;
+           
             offset = new Vector3(0, _rayHeight, 0);
             sideOffsetLeft = offset - Player.transform.right*_rayWidth;
             sideOffsetRight = offset + Player.transform.right * _rayWidth;
             
             GetCover();
+            
         }
 
 
@@ -46,8 +54,8 @@ namespace Invector.CharacterController
         private void GetCover()
         {
 
-            
-            Debug.Log(_inputHorizontal);
+            _inputHorizontal = _motor.GetXForCover;
+           ///* Debug.Log(_motor.GetXForCover)*/;
             Debug.DrawRay(Player.transform.position+offset, Player.transform.forward, Color.red);
 
             Debug.DrawRay(Player.transform.position+sideOffsetLeft, -Player.transform.forward, Color.green);
@@ -79,29 +87,30 @@ namespace Invector.CharacterController
 
         private void PeekFromCover()
         {
-            if (animator!=null) { 
+            if (_motor.animator!=null && _motor.isBehindCover) { 
             if (_leftRay && _inputHorizontal < 0.1f)
             {
-                //moveLeft while crouching, keep inputvertical at zero
-                
-            }
+                    //moveLeft while crouching, keep inputvertical at zero
+                    _motor.animator.SetFloat("InputHorizontal", _inputHorizontal);
+                    
+                }
             else if (_rightRay && _inputHorizontal > 0.1f)
             {
-
-                //moveRight while crouching, keep inputvertical at zero
-            }
+                    _motor.animator.SetFloat("InputHorizontal", _inputHorizontal);
+                    //moveRight while crouching, keep inputvertical at zero
+                }
             else
             {
                 if (!_leftRay && _inputHorizontal < 0.1f)
                 {
                     PeekDir = false;
-                    //Peek();
+                    
                 } else if (!_rightRay && _inputHorizontal > 0.1f)
                 {
                     PeekDir = true;
-                    
+                   
                 }
-                animator.SetBool("PeekDir", PeekDir);
+                _motor.animator.SetBool("PeekDir", PeekDir);
             }
             }
 

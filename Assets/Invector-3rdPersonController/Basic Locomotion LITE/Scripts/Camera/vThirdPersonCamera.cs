@@ -32,6 +32,9 @@ public class vThirdPersonCamera : MonoBehaviour
     [Tooltip("Debug purposes, lock the camera behind the character for better align the states")]
     public bool lockCamera;
 
+    [Tooltip("Lock camera in front of character")]
+    public bool coverCamera;
+
     //public float cameraAngle = 0f;
     public float rightOffset = 0f;
     public float defaultDistance = 2.5f;
@@ -74,7 +77,8 @@ public class vThirdPersonCamera : MonoBehaviour
     private float xMaxLimit = 360f;
     private float cullingHeight = 0.2f;
     private float cullingMinDist = 0.1f;
-
+    private bool cameraLock = false;
+    private float coverRot =0;
     #endregion
 
     void Start()
@@ -146,21 +150,40 @@ public class vThirdPersonCamera : MonoBehaviour
     /// <param name="y"></param>
     public void RotateCamera(float x, float y)
     {
+        
         // free rotation 
         mouseX += x * xMouseSensitivity;
         mouseY -= y * yMouseSensitivity;
-
+       
         movementSpeed.x = x;
         movementSpeed.y = -y;
-        if (!lockCamera)
+        if (coverCamera)
+        {
+            mouseY = 0;
+            // If in cover, the camera lerps infront of player
+            // Adjust right offset value when peeking!
+
+            if (!cameraLock)
+            {
+            
+            mouseX = currentTarget.eulerAngles.y + 180;
+            coverRot = mouseX;
+            cameraLock = true;
+            }
+            mouseX = coverRot;
+            
+
+        } else if (!lockCamera)
         {
             mouseY = vExtensions.ClampAngle(mouseY, yMinLimit, yMaxLimit);
             mouseX = vExtensions.ClampAngle(mouseX, xMinLimit, xMaxLimit);
+            cameraLock = false;
         }
         else
         {
             mouseY = currentTarget.root.localEulerAngles.x;
             mouseX = currentTarget.root.localEulerAngles.y;
+            cameraLock = false;
         }
     }
 

@@ -243,8 +243,33 @@ namespace Invector.CharacterController
         /// </summary>
         private void BehindCoverMovement()
         {
-            
 
+            vThirdPersonCamera.instance.coverCamera = true;
+
+
+
+            //Debug.Log(input.x);
+           
+
+            if (input != Vector2.zero && targetDirection.magnitude > 0.1f)
+            {
+                Vector3 lookDirection = targetDirection.normalized;
+                freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
+                var diferenceRotation = freeRotation.eulerAngles.y - transform.eulerAngles.y;
+                var eulerY = transform.eulerAngles.y;
+
+                // apply free directional rotation while not turning180 animations
+                if (isGrounded || (!isGrounded && jumpAirControl))
+                {
+                    if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = freeRotation.eulerAngles.y;
+
+                    
+                    var euler = new Vector3(transform.eulerAngles.x, eulerY, transform.eulerAngles.z);
+                    // Quaternion.Euler(euler)
+
+                    //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(euler), freeRotationSpeed * Time.deltaTime);
+                }
+            }
 
             //FreeMovement();
             //speed = 0;
@@ -252,9 +277,10 @@ namespace Invector.CharacterController
 
         private void CrouchMovement()
         {
-
+            vThirdPersonCamera.instance.coverCamera = false;
             //WHY!?
             GetXForCover = input.x;
+            //Debug.Log(GetXForCover);
             isSprinting = false;
             FreeMovement();
             //speed = 0;
