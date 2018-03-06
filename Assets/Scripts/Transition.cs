@@ -2,39 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
-    public Transform secondRoomSpawnPoint;
+    [SerializeField]
+    private string loadLevel;
 
-    //public RawImage fadeScreen;
-
-    //void Start()
-    //{
-    //    fadeScreen.canvasRenderer.SetAlpha(0.0f);
-    //}
+    public RawImage fadeScreen;
+    public Animator anim;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //FadeIn();
-            other.transform.position = secondRoomSpawnPoint.position;
+            StartCoroutine(Fading());
+
         }
     }
 
-    //void OnTriggerExit(Collider other)
-    //{
-    //    FadeOut();
-    //}
-
-    //public void FadeIn()
-    //{
-    //    fadeScreen.CrossFadeAlpha(1.0f, 3.0f, true);
-    //}
-
-    //public void FadeOut()
-    //{
-    //    fadeScreen.CrossFadeAlpha(0.0f, 3.0f, true);
-    //}
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => fadeScreen.color.a == 1);
+        SceneManager.LoadScene(loadLevel);
+    }
 }

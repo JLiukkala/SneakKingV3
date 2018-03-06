@@ -47,11 +47,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (CanSeePlayer())
+        if (CanSeePlayer() && playerVisibleTimer < timeToSpotPlayer)
         {
             playerVisibleTimer += Time.deltaTime;
         }
-        else
+        else if (!CanSeePlayer() && playerVisibleTimer > 0)
         {
             playerVisibleTimer -= Time.deltaTime;
         }
