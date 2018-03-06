@@ -245,34 +245,10 @@ namespace Invector.CharacterController
         {
 
             vThirdPersonCamera.instance.coverCamera = true;
-
-
-
             //Debug.Log(input.x);
-           
-
-            if (input != Vector2.zero && targetDirection.magnitude > 0.1f)
-            {
-                Vector3 lookDirection = targetDirection.normalized;
-                freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
-                var diferenceRotation = freeRotation.eulerAngles.y - transform.eulerAngles.y;
-                var eulerY = transform.eulerAngles.y;
-
-                // apply free directional rotation while not turning180 animations
-                if (isGrounded || (!isGrounded && jumpAirControl))
-                {
-                    if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = freeRotation.eulerAngles.y;
-
-                    
-                    var euler = new Vector3(transform.eulerAngles.x, eulerY, transform.eulerAngles.z);
-                    // Quaternion.Euler(euler)
-
-                    //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(euler), freeRotationSpeed * Time.deltaTime);
-                }
-            }
-
-            //FreeMovement();
-            //speed = 0;
+             
+            input.y = 0f;
+            
         }
 
         private void CrouchMovement()
@@ -283,7 +259,6 @@ namespace Invector.CharacterController
             //Debug.Log(GetXForCover);
             isSprinting = false;
             FreeMovement();
-            //speed = 0;
         }
 
         public float GetXForCover
@@ -339,9 +314,17 @@ namespace Invector.CharacterController
             else
             {
                 var velY = transform.forward * velocity * speed;
-                velY.y = _rigidbody.velocity.y;
                 var velX = transform.right * velocity * direction;
+                velY.y = _rigidbody.velocity.y;
+                
+                if (isCrouching && isBehindCover) {
+
+                    // heleveleten
+                    speed = 10f * input.x;
+                    velY = Vector3.zero;
+                }
                 velX.x = _rigidbody.velocity.x;
+               
 
                 if (isStrafing)
                 {
@@ -349,7 +332,15 @@ namespace Invector.CharacterController
                     v.y = _rigidbody.velocity.y;
                     _rigidbody.velocity = Vector3.Lerp(_rigidbody.velocity, v, 20f * Time.deltaTime);
                 }
-                
+
+                else if (isCrouching && isBehindCover)
+                {
+                    _rigidbody.AddForce(-transform.right * (velocity * speed) * Time.deltaTime, ForceMode.VelocityChange);
+                    _rigidbody.velocity = velY;
+
+                }
+
+
                 else
                 {
                     _rigidbody.velocity = velY;
