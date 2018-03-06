@@ -8,17 +8,17 @@ public class PauseGame : MonoBehaviour
 
 	void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (canvas.gameObject.activeInHierarchy == false)
             {
                 canvas.gameObject.SetActive(true);
                 Time.timeScale = 0;
 
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    Application.Quit();
-                }
+                //if (Input.GetKeyDown(KeyCode.Escape))
+                //{
+                //    Application.Quit();
+                //}
             }
             else
             {
