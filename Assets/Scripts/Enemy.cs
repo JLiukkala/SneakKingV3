@@ -111,7 +111,6 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            // Added now.
             if (isEnemyStill)
             {
                 waitTime = 6;
@@ -123,7 +122,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-            //
+            
                 transform.position = Vector3.MoveTowards(transform.position, targetWaypoint,
                                 speed * Time.deltaTime);
 

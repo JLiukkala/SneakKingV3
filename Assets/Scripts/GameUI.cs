@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
+    [SerializeField]
+    private string loadLevel;
+
     public GameObject gameLoseUI;
     bool gameIsOver;
 
@@ -18,7 +21,7 @@ public class GameUI : MonoBehaviour
         if (gameIsOver)
         {
             if (Input.GetKeyDown(KeyCode.Space)) {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(loadLevel);
             }
         }
     }
