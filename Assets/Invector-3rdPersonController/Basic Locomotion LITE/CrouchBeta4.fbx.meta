@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 20c144cbd9ceffe41bc4b3b774dd6d1c
-timeCreated: 1520358967
+timeCreated: 1520454825
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -219,12 +219,13 @@ ModelImporter:
     7400008: Armature|CrouchWalk
     7400010: Armature|CrouchWalk.002
     7400012: Armature|goHide
-    7400014: Armature|Hide
-    7400016: Armature|Peek
-    7400018: Armature|Peeking
-    7400020: Armature|Peeking.001
-    7400022: Armature|Pickup
-    7400024: Armature|WalkInCover
+    7400014: Armature|goHideZerRot
+    7400016: Armature|Hide
+    7400018: Armature|Peek
+    7400020: Armature|Peeking
+    7400022: Armature|Peeking.001
+    7400024: Armature|Pickup
+    7400026: Armature|WalkInCover
     9500000: //RootNode
     10800000: Lamp
     13700000: VBOT_:VBOT_LOD0
@@ -262,33 +263,7 @@ ModelImporter:
       discarded.\n\t'VBOT_:LeftHandPinky2' has translation animation that will be
       discarded.\n\t'VBOT_:LeftHandPinky3' has translation animation that will be
       discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Armature|Armature|Armature|Armature|Take
-      001|BaseLayer|Armature|Armature':\n\tRetargeting quality is good. No significant
-      differences with original animation were found.\n\nRetargeting quality report
-      for clip 'Armature|Crouch':\n\tLeftLowerArm average position error 1.1 mm and
-      maximum position error 7.9 mm at time 0: 0 (0.0%) Frame 0\n\tRightLowerArm average
-      position error 0.9 mm and maximum position error 7.5 mm at time 0: 0 (0.0%)
-      Frame 0\n\nRetargeting quality report for clip 'Armature|Crouching':\n\tRetargeting
-      quality is good. No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature|Crouching_2':\n\tRetargeting quality is good.
-      No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature|CrouchWalk':\n\tRetargeting quality is good.
-      No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature|CrouchWalk.002':\n\tRetargeting quality is
-      good. No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature|goHide':\n\tLeftFoot average orientation error
-      0.3 deg and maximum orientation error 1.1 deg at time 0:15 (50.0%) Frame 15\n\nRetargeting
-      quality report for clip 'Armature|Hide':\n\tRetargeting quality is good. No
-      significant differences with original animation were found.\n\nRetargeting quality
-      report for clip 'Armature|Peek':\n\tRetargeting quality is good. No significant
-      differences with original animation were found.\n\nRetargeting quality report
-      for clip 'Armature|Peeking':\n\tRetargeting quality is good. No significant
-      differences with original animation were found.\n\nRetargeting quality report
-      for clip 'Armature|Peeking.001':\n\tRetargeting quality is good. No significant
-      differences with original animation were found.\n\nRetargeting quality report
-      for clip 'Armature|Pickup':\n\tRetargeting quality is good. No significant differences
-      with original animation were found.\n\nRetargeting quality report for clip 'Armature|WalkInCover':\n\tRetargeting
-      quality is good. No significant differences with original animation were found.\n"
+    animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     animationCompression: 3
@@ -496,6 +471,34 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: Armature|goHideZerRot
+      takeName: Armature|goHideZerRot
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Armature|Hide
       takeName: Armature|Hide
       firstFrame: 0
@@ -646,7 +649,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1338,7 +1341,7 @@ ModelImporter:
       parentName: VBOT_:LeftHandPinky4
       position: {x: 7.45058e-10, y: 0.02287427, z: -0.000000058176663}
       rotation: {x: 0.747538, y: -0.31944296, z: 0.107637145, w: 0.57232636}
-      scale: {x: 1, y: 1.0000018, z: 1.0000026}
+      scale: {x: 1, y: 1.000002, z: 1.0000029}
     - name: VBOT_:LeftHandPinky4_end_end
       parentName: VBOT_:LeftHandPinky4_end
       position: {x: -0, y: 0.022874298, z: 0}
@@ -1512,8 +1515,8 @@ ModelImporter:
     - name: VBOT_:RightHandPinky4_end
       parentName: VBOT_:RightHandPinky4
       position: {x: -0.000000010058284, y: 0.025621427, z: -0.000000057127327}
-      rotation: {x: 0.49882278, y: 0.10945306, z: -0.002040882, w: 0.8597626}
-      scale: {x: 0.9999996, y: 1.0000023, z: 1.0000021}
+      rotation: {x: 0.4988228, y: 0.109453075, z: -0.0020408856, w: 0.8597626}
+      scale: {x: 0.9999996, y: 1.0000026, z: 1.0000025}
     - name: VBOT_:RightHandPinky4_end_end
       parentName: VBOT_:RightHandPinky4_end
       position: {x: -0, y: 0.025621492, z: 0}
