@@ -245,8 +245,13 @@ namespace Invector.CharacterController
         {
 
             vThirdPersonCamera.instance.coverCamera = true;
+            vThirdPersonCamera.instance.lockCamera = true;
+
             //Debug.Log(input.x);
              
+
+
+
             input.y = 0f;
             
         }
@@ -254,6 +259,7 @@ namespace Invector.CharacterController
         private void CrouchMovement()
         {
             vThirdPersonCamera.instance.coverCamera = false;
+            vThirdPersonCamera.instance.lockCamera = false;
             //WHY!?
             GetXForCover = input.x;
             //Debug.Log(GetXForCover);
@@ -303,7 +309,12 @@ namespace Invector.CharacterController
         }
         protected void ControlSpeed(float velocity)
         {
-            if (Time.deltaTime == 0) return;
+            if (isCrouching && isBehindCover)
+            { speed = 7f * input.x; }
+
+
+
+                if (Time.deltaTime == 0) return;
 
             if (useRootMotion)
             {
@@ -320,7 +331,7 @@ namespace Invector.CharacterController
                 if (isCrouching && isBehindCover) {
 
                     // heleveleten
-                    speed = 10f * input.x;
+                    //speed =7f * input.x;
                     velY = Vector3.zero;
                 }
                 velX.x = _rigidbody.velocity.x;

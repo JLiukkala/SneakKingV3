@@ -163,14 +163,14 @@ public class vThirdPersonCamera : MonoBehaviour
             // If in cover, the camera lerps infront of player
             // Adjust right offset value when peeking!
 
-            if (!cameraLock)
-            {
+            //if (!cameraLock)
+            //{
             
-            mouseX = currentTarget.eulerAngles.y + 180;
-            coverRot = mouseX;
-            cameraLock = true;
-            }
-            mouseX = coverRot;
+            //mouseX = currentTarget.eulerAngles.y ;
+            //coverRot = mouseX;
+            //cameraLock = true;
+            //}
+            //mouseX = coverRot;
             
 
         } else if (!lockCamera)

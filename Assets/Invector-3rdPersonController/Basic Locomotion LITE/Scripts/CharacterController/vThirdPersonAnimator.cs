@@ -66,7 +66,7 @@ namespace Invector.CharacterController
                 }
                 if (isCrouching && isBehindCover)
                 {
-                    animator.SetFloat("InputHorizontal",Mathf.Abs( input.x));
+                    animator.SetFloat("InputHorizontal",input.x);
                     animator.SetFloat("InputVertical", 0);
                     ControlSpeed(crouchSpeed);
                 }
