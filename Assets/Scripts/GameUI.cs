@@ -20,11 +20,15 @@ public class GameUI : MonoBehaviour
     {
         if (gameIsOver)
         {
+            Time.timeScale = 0.6f;
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(0);
 
                 gameIsOver = false;
+
+                Time.timeScale = 1;
 
                 DestroyAllGameObjects();
             }

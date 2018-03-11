@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class PageInteraction : MonoBehaviour
 {
+    // References needed to activate and deactivate objects.
     public GameObject pageInteraction;
+    public GameObject pagePickUpText;
+
+    // These methods are pretty clear.
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
-                pageInteraction.SetActive(true);
-            //}
+        pagePickUpText.SetActive(true);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        { 
+            pagePickUpText.SetActive(false);
+            pageInteraction.SetActive(true);
         }
     }
 
@@ -22,6 +29,7 @@ public class PageInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pageInteraction.SetActive(false);
+            pagePickUpText.SetActive(false);
         }
     }
 }

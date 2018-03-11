@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    public Transform canvas;
+    // The transform of the pause screen.
+    public Transform pauseBackground;
 
 	void Update()
     {
+        // If the Tab key is pressed, the pause screen is 
+        // set to active and the timescale is set to zero.
+        // When Tab is pressed again, the opposite happens.
 		if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (canvas.gameObject.activeInHierarchy == false)
+            if (pauseBackground.gameObject.activeInHierarchy == false)
             {
-                canvas.gameObject.SetActive(true);
+                pauseBackground.gameObject.SetActive(true);
                 Time.timeScale = 0;
-
-                //if (Input.GetKeyDown(KeyCode.Escape))
-                //{
-                //    Application.Quit();
-                //}
             }
             else
             {
-                canvas.gameObject.SetActive(false);
+                pauseBackground.gameObject.SetActive(false);
                 Time.timeScale = 1;
 
                 //Cursor.visible = false;
