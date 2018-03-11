@@ -200,6 +200,8 @@ public class vThirdPersonCamera : MonoBehaviour
         cullingDistance = Mathf.Lerp(cullingDistance, distance, Time.deltaTime);
         var camDir = (forward * targetLookAt.forward) + (rightOffset * targetLookAt.right);
 
+        
+
         camDir = camDir.normalized;
 
         var targetPos = new Vector3(currentTarget.position.x, currentTarget.position.y + offSetPlayerPivot, currentTarget.position.z);
