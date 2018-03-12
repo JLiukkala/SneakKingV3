@@ -32,7 +32,14 @@ public class Transition : MonoBehaviour
         // a message is displayed to the player about that. 
         if (isLocked)
         {
-            doorLockedText.SetActive(true);
+            if (keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
+            {
+                doorLockedText.SetActive(false);
+            }
+            else
+            {
+                doorLockedText.SetActive(true);
+            }
 
             // If the player is inside the collider and has a key, the transition occurs.
             if (other.CompareTag("Player") && keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
