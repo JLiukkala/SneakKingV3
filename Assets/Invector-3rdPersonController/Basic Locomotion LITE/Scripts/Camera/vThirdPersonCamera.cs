@@ -155,10 +155,26 @@ public class vThirdPersonCamera : MonoBehaviour
         mouseX += x * xMouseSensitivity;
         mouseY -= y * yMouseSensitivity;
        
+        if (!coverCamera)
+        {
+            lockCamera = true;
+            mouseX = 0;
+            mouseY = 0;
+            defaultDistance = 3;
+            height = 4;
+            mouseX = currentTarget.root.localEulerAngles.x;
+            mouseY = currentTarget.root.localEulerAngles.y;
+            // camera.transform.rotation = Quaternion.Euler(30, 0, 0);
+            _camera.transform.LookAt(currentTarget.transform.position);
+        }
+
         movementSpeed.x = x;
         movementSpeed.y = -y;
+
         if (coverCamera)
         {
+            lockCamera = false;
+            height = 1;
             mouseY = 0;
             // If in cover, the camera lerps infront of player
             // Adjust right offset value when peeking!
