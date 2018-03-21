@@ -348,6 +348,7 @@ namespace Invector.CharacterController
 
                 else if (isCrouching && isBehindCover)
                 {
+                    
                     _rigidbody.AddForce(-transform.right * (velocity * speed) * Time.deltaTime, ForceMode.VelocityChange);
                     _rigidbody.velocity = velY;
 
