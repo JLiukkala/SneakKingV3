@@ -157,11 +157,11 @@ public class vThirdPersonCamera : MonoBehaviour
        
         if (!coverCamera)
         {
-            lockCamera = true;
+            //lockCamera = true;
             mouseX = 0;
             mouseY = 0;
-            defaultDistance = 3;
-            height = 4;
+            //defaultDistance = 3;
+            //height = 4;
             mouseX = currentTarget.root.localEulerAngles.x;
             mouseY = currentTarget.root.localEulerAngles.y;
             // camera.transform.rotation = Quaternion.Euler(30, 0, 0);
