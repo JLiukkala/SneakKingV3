@@ -38,7 +38,7 @@ namespace Invector.CharacterController
         {
             _motor = GetComponent<vThirdPersonMotor>();
 
-            _helper.active = true;
+            _helper.SetActive(true);
         }
 
         private void Update()
@@ -189,7 +189,6 @@ namespace Invector.CharacterController
                 }
             }
 
-            //Debug.Log(PeekFloat);
             PeekFromCover();
         }
 

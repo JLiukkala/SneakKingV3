@@ -248,7 +248,6 @@ namespace Invector.CharacterController
             vThirdPersonCamera.instance.lockCamera = true;
             vThirdPersonCamera.instance.defaultDistance = 1.75f;
             GetXForCover = input.x;
-            //Debug.Log(input.x);
 
 
 
@@ -262,9 +261,7 @@ namespace Invector.CharacterController
             vThirdPersonCamera.instance.coverCamera = false;
             vThirdPersonCamera.instance.lockCamera = false;
             vThirdPersonCamera.instance.defaultDistance = 3f;
-            //WHY!?
             GetXForCover = input.x;
-            //Debug.Log(GetXForCover);
             isSprinting = false;
             FreeMovement();
         }
