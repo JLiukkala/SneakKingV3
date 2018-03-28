@@ -43,7 +43,9 @@ public class vThirdPersonCamera : MonoBehaviour
     public float xMouseSensitivity = 3f;
     public float yMouseSensitivity = 3f;
     public float yMinLimit = -40f;
-    public float yMaxLimit = 80f; 
+    public float yMaxLimit = 80f;
+
+    PointOfInterestCamera pOICam;
     #endregion
 
     #region hide properties    
@@ -84,6 +86,8 @@ public class vThirdPersonCamera : MonoBehaviour
     void Start()
     {
         Init();
+
+        pOICam = GetComponent<PointOfInterestCamera>();
     }
 
     public void Init()
@@ -157,15 +161,33 @@ public class vThirdPersonCamera : MonoBehaviour
        
         if (!coverCamera)
         {
-            //lockCamera = true;
+            lockCamera = true;
             mouseX = 0;
             mouseY = 0;
-            //defaultDistance = 3;
-            //height = 4;
-            mouseX = currentTarget.root.localEulerAngles.x;
-            mouseY = currentTarget.root.localEulerAngles.y;
-            // camera.transform.rotation = Quaternion.Euler(30, 0, 0);
-            _camera.transform.LookAt(currentTarget.transform.position);
+            defaultDistance = 3.5f;
+            height = 5;
+            //mouseX = currentTarget.root.localEulerAngles.x;
+            //mouseY = currentTarget.root.localEulerAngles.y;
+            //_camera.transform.rotation = Quaternion.Euler(30, 0, 0);
+
+            if (pOICam.hasPointOfInterest)
+            {
+                _camera.transform.LookAt(currentTarget.transform.position);
+
+                if (pOICam.hasReachedCameraSwitchPoint)
+                {
+                    _camera.transform.LookAt(pOICam._pointOfInterestPosition.transform.position);
+                }
+
+                if (pOICam.hasReachedEnd)
+                {
+                    _camera.transform.LookAt(currentTarget.transform.position);
+                }
+            }
+            else
+            {
+                _camera.transform.LookAt(currentTarget.transform.position);
+            }
         }
 
         movementSpeed.x = x;

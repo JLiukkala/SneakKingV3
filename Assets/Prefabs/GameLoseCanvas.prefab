@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224529925300158500}
   m_Layer: 5
   m_Name: GameLose
-  m_TagString: Untagged
+  m_TagString: GameLoseUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,10 +38,10 @@ GameObject:
   - component: {fileID: 114982471750736426}
   - component: {fileID: 114303810528941472}
   - component: {fileID: 114362086424001462}
-  - component: {fileID: 114960316750999688}
+  - component: {fileID: 114003433710562056}
   m_Layer: 5
   m_Name: GameLoseCanvas
-  m_TagString: Untagged
+  m_TagString: GameLoseUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +80,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114003433710562056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367416538692724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053aad896eff33e45a6d3a66725ef49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114303810528941472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,17 +180,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &114960316750999688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367416538692724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 053aad896eff33e45a6d3a66725ef49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114982471750736426
 MonoBehaviour:
   m_ObjectHideFlags: 1
