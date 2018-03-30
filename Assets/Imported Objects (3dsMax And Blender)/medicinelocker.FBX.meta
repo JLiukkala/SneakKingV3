@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 25c5b12395a694f4fa4b11af097fe4b4
+timeCreated: 1521706261
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box004
+    100002: Hylly1
+    100004: Hylly2
+    100006: Hylly3
+    100008: Hylly4
+    100010: jalat
+    100012: Kaappi
+    100014: //RootNode
+    100016: oikea kahva
+    100018: oikea lasi
+    100020: ovet
+    100022: saranat oikea
+    100024: saranat vasen
+    100026: vasen kahva
+    100028: vasen lasi
+    400000: Box004
+    400002: Hylly1
+    400004: Hylly2
+    400006: Hylly3
+    400008: Hylly4
+    400010: jalat
+    400012: Kaappi
+    400014: //RootNode
+    400016: oikea kahva
+    400018: oikea lasi
+    400020: ovet
+    400022: saranat oikea
+    400024: saranat vasen
+    400026: vasen kahva
+    400028: vasen lasi
+    2300000: Box004
+    2300002: Hylly1
+    2300004: Hylly2
+    2300006: Hylly3
+    2300008: Hylly4
+    2300010: jalat
+    2300012: Kaappi
+    2300014: oikea kahva
+    2300016: oikea lasi
+    2300018: ovet
+    2300020: saranat oikea
+    2300022: saranat vasen
+    2300024: vasen kahva
+    2300026: vasen lasi
+    3300000: Box004
+    3300002: Hylly1
+    3300004: Hylly2
+    3300006: Hylly3
+    3300008: Hylly4
+    3300010: jalat
+    3300012: Kaappi
+    3300014: oikea kahva
+    3300016: oikea lasi
+    3300018: ovet
+    3300020: saranat oikea
+    3300022: saranat vasen
+    3300024: vasen kahva
+    3300026: vasen lasi
+    4300000: Kaappi
+    4300002: Hylly1
+    4300004: Hylly2
+    4300006: Hylly3
+    4300008: Hylly4
+    4300010: ovet
+    4300012: vasen lasi
+    4300014: oikea lasi
+    4300016: jalat
+    4300018: saranat vasen
+    4300020: saranat oikea
+    4300022: vasen kahva
+    4300024: oikea kahva
+    4300026: Box004
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: f690c2589c654bc43a278fee5c87babd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: cf3051085f19e2640881789aad8d6a6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: dbbb2f9957099fa47b01057af880d16e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07 - Default
+    second: {fileID: 2100000, guid: 39433794ac3287445894ea093d15e3a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: e8045ca01a13a744eb22f630c40f0179, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
