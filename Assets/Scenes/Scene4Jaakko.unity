@@ -11116,7 +11116,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276729311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8, y: 0.95, z: -16.25}
+  m_LocalPosition: {x: -2.8, y: 1.1, z: -16.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55720,19 +55720,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b44febcebf56248b800ee3c32c901a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1512347793}
   _pointOfInterestPosition: {fileID: 276729313}
-  minimumX: -0.7499999
+  minimumX: -1.1
   maximumX: -2.8
-  minimumY: 4.59
-  maximumY: 0.95
-  minimumZ: -8.555656
+  minimumY: 1.1
+  maximumY: 1.1
+  minimumZ: -8.5
   maximumZ: -16.25
   duration: 5
   t: 0
   hasPointOfInterest: 1
   hasReachedEnd: 0
-  hasReachedCameraSwitchPoint: 0
 --- !u!1 &1514446586
 GameObject:
   m_ObjectHideFlags: 0

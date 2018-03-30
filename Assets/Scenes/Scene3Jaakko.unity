@@ -2931,19 +2931,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b44febcebf56248b800ee3c32c901a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 818821545}
   _pointOfInterestPosition: {fileID: 0}
-  minimumX: 16.83924
-  maximumX: 2.2
-  minimumY: 4.59
-  maximumY: 0.95
-  minimumZ: 29.05
-  maximumZ: 15.91
-  duration: 5
+  minimumX: 0
+  maximumX: 0
+  minimumY: 0
+  maximumY: 0
+  minimumZ: 0
+  maximumZ: 0
+  duration: 0
   t: 0
   hasPointOfInterest: 0
   hasReachedEnd: 0
-  hasReachedCameraSwitchPoint: 0
 --- !u!1 &827107038
 GameObject:
   m_ObjectHideFlags: 0

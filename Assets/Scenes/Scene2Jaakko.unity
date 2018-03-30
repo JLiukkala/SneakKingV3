@@ -1235,7 +1235,7 @@ GameObject:
   - component: {fileID: 144933423}
   - component: {fileID: 144933422}
   - component: {fileID: 144933421}
-  - component: {fileID: 144933426}
+  - component: {fileID: 144933427}
   m_Layer: 0
   m_Name: vThirdPersonCamera
   m_TagString: MainCamera
@@ -1338,7 +1338,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 79.583, y: -90.0001, z: 0}
---- !u!114 &144933426
+--- !u!114 &144933427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1349,19 +1349,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b44febcebf56248b800ee3c32c901a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 144933421}
   _pointOfInterestPosition: {fileID: 990892836}
-  minimumX: 16.83924
-  maximumX: 2.2
-  minimumY: 4.59
-  maximumY: 2.6
-  minimumZ: 29.05
-  maximumZ: 16.25
-  duration: 3.5
+  minimumX: 16.75
+  maximumX: 14.5
+  minimumY: 1.1
+  maximumY: 1.1
+  minimumZ: 29
+  maximumZ: 25.5
+  duration: 6
   t: 0
   hasPointOfInterest: 1
   hasReachedEnd: 0
-  hasReachedCameraSwitchPoint: 0
 --- !u!1 &146898033
 GameObject:
   m_ObjectHideFlags: 0
@@ -7071,13 +7069,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990892835}
-  m_LocalRotation: {x: 0, y: -0.9396926, z: 0, w: 0.34202018}
-  m_LocalPosition: {x: 2.6, y: 0.95, z: 15.91}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.5, y: 1.1, z: 24.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: -140, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &990892837
 BoxCollider:
   m_ObjectHideFlags: 0

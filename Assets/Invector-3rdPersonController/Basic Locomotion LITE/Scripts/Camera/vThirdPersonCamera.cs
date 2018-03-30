@@ -172,12 +172,7 @@ public class vThirdPersonCamera : MonoBehaviour
 
             if (pOICam.hasPointOfInterest)
             {
-                _camera.transform.LookAt(currentTarget.transform.position);
-
-                if (pOICam.hasReachedCameraSwitchPoint)
-                {
-                    _camera.transform.LookAt(pOICam._pointOfInterestPosition.transform.position);
-                }
+                _camera.transform.LookAt(pOICam._pointOfInterestPosition.transform.position);
 
                 if (pOICam.hasReachedEnd)
                 {

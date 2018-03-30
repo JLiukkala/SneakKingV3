@@ -5,19 +5,21 @@ using System;
 
 public class PointOfInterestCamera : MonoBehaviour
 {
-    public vThirdPersonCamera _camera;
+    vThirdPersonCamera _camera;
+
+    [HideInInspector]
     public Transform _pointOfInterestPosition;
 
-    public float minimumX = 16.83924f;
-    public float maximumX = 2.2f;
+    public float minimumX = 0;
+    public float maximumX = 0;
 
-    public float minimumY = 4.59f;
-    public float maximumY = 0.95f;
+    public float minimumY = 0;
+    public float maximumY = 0;
 
-    public float minimumZ = 29.05f;
-    public float maximumZ = 15.91f;
+    public float minimumZ = 0;
+    public float maximumZ = 0;
 
-    public float duration = 6f;
+    public float duration = 0;
 
     [HideInInspector]
     public float t = 0;
@@ -29,12 +31,14 @@ public class PointOfInterestCamera : MonoBehaviour
     [HideInInspector]
     public bool hasReachedEnd;
 
-    [HideInInspector]
-    public bool hasReachedCameraSwitchPoint;
+    //[HideInInspector]
+    //public bool hasReachedCameraSwitchPoint;
 
 	void Start ()
     {
         startTime = Time.time;
+        _camera = GetComponent<vThirdPersonCamera>();
+        _pointOfInterestPosition = GameObject.Find("PointOfInterestPosition").transform;
 	}
 	
 	void Update ()
@@ -44,16 +48,16 @@ public class PointOfInterestCamera : MonoBehaviour
             t = (Time.time - startTime) / duration;
             _camera.transform.position = new Vector3(Mathf.SmoothStep(minimumX, maximumX, t), Mathf.SmoothStep(minimumY, maximumY, t), Mathf.SmoothStep(minimumZ, maximumZ, t));
 
-            if (t > 0.5f)
-            {
-                hasReachedCameraSwitchPoint = true;
-            }
+            //if (t > 0.5f)
+            //{
+            //    hasReachedCameraSwitchPoint = true;
+            //}
 
             if (t > 0.75f)
             {
                 hasReachedEnd = true;
-                t = (Time.time - startTime) / duration;
-                _camera.transform.position = new Vector3(Mathf.SmoothStep(maximumX, minimumX, t), Mathf.SmoothStep(maximumY, minimumY, t), Mathf.SmoothStep(maximumZ, minimumZ, t));
+                //t = (Time.time - startTime) / duration;
+                //_camera.transform.position = new Vector3(Mathf.SmoothStep(maximumX, minimumX, t), Mathf.SmoothStep(maximumY, minimumY, t), Mathf.SmoothStep(maximumZ, minimumZ, t));
                 Destroy(this);
 
             }
