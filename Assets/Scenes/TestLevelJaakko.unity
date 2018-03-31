@@ -15710,7 +15710,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b497c7078b257e4a8fb09fc2c6323df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondRoomSpawnPoint: {fileID: 1601718646}
+  loadLevel: 
+  fadeScreen: {fileID: 0}
+  anim: {fileID: 0}
+  keyCollider: {fileID: 0}
+  doorLockedText: {fileID: 0}
+  isLocked: 0
 --- !u!1 &282907474
 GameObject:
   m_ObjectHideFlags: 0
@@ -45850,6 +45855,7 @@ MonoBehaviour:
   viewMask:
     serializedVersion: 2
     m_Bits: 256
+  hearDistance: 0
   pathHolder: {fileID: 1700767817}
   isEnemyStill: 1
 --- !u!23 &949216125
@@ -52151,7 +52157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3faabf1c82f1b74a8270fa2a7f6c4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 368025553}
+  pauseBackground: {fileID: 0}
 --- !u!1 &1078885186
 GameObject:
   m_ObjectHideFlags: 0
@@ -68711,6 +68717,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1391172427}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1391679238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1391679240}
+  - component: {fileID: 1391679239}
+  m_Layer: 0
+  m_Name: PointOfInterestPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1391679239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391679238}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1044269, y: 2.5025077, z: 1}
+  m_Center: {x: 0.5522124, y: 0.75125384, z: 0.000000009119923}
+--- !u!4 &1391679240
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391679238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.5, y: 1.1, z: 24.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393634074
 GameObject:
   m_ObjectHideFlags: 0
@@ -77249,6 +77296,7 @@ MonoBehaviour:
   viewMask:
     serializedVersion: 2
     m_Bits: 256
+  hearDistance: 0
   pathHolder: {fileID: 1606672956}
   isEnemyStill: 0
 --- !u!23 &1559209696
@@ -79481,6 +79529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageInteraction: {fileID: 1081589216}
+  pagePickUpText: {fileID: 0}
 --- !u!1 &1613592435
 GameObject:
   m_ObjectHideFlags: 0
@@ -88679,6 +88728,7 @@ MonoBehaviour:
   viewMask:
     serializedVersion: 2
     m_Bits: 256
+  hearDistance: 0
   pathHolder: {fileID: 2128566987}
   isEnemyStill: 0
 --- !u!23 &1793051769
@@ -91830,6 +91880,7 @@ GameObject:
   - component: {fileID: 1855136454}
   - component: {fileID: 1855136453}
   - component: {fileID: 1855136452}
+  - component: {fileID: 1855136457}
   m_Layer: 0
   m_Name: vThirdPersonCamera
   m_TagString: MainCamera
@@ -91932,6 +91983,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855136457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855136451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b44febcebf56248b800ee3c32c901a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointOfInterestPosition: {fileID: 0}
+  minimumX: 0
+  maximumX: 0
+  minimumY: 0
+  maximumY: 0
+  minimumZ: 0
+  maximumZ: 0
+  duration: 0
+  t: 0
+  hasPointOfInterest: 0
+  hasReachedEnd: 0
 --- !u!1 &1858945801
 GameObject:
   m_ObjectHideFlags: 0
