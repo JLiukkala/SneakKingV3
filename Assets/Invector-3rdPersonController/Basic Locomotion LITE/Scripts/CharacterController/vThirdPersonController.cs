@@ -8,6 +8,8 @@ namespace Invector.CharacterController
     {
         protected virtual void Start()
         {
+
+
 #if !UNITY_EDITOR
                 Cursor.visible = false;
 #endif
@@ -40,10 +42,10 @@ namespace Invector.CharacterController
             }
         }
 
-        public virtual void Hide()
+        public virtual void Hide(bool isCoverable)
         {
             if (locomotionType == LocomotionType.OnlyStrafe) return;
-            if (isCrouching) { 
+            if (isCrouching && isCoverable) { 
             isBehindCover = !isBehindCover;
             }
         }

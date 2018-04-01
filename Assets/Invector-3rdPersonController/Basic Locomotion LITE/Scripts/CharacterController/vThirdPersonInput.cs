@@ -53,7 +53,7 @@ namespace Invector.CharacterController
         public bool keepDirection;                          // keep the current direction in case you change the cameraState
 
         protected vThirdPersonController cc;                // access the ThirdPersonController component                
-
+        protected CoverSystem cs;
         #endregion
 
         
@@ -70,7 +70,10 @@ namespace Invector.CharacterController
             cc = GetComponent<vThirdPersonController>();
             if (cc != null)
                 cc.Init();
+
+            cs = GetComponent<CoverSystem>();
             
+
             tpCamera = FindObjectOfType<vThirdPersonCamera>();
             if (tpCamera) tpCamera.SetMainTarget(this.transform);
 
@@ -134,7 +137,7 @@ namespace Invector.CharacterController
         protected virtual void HideInput()
         {
             if (Input.GetKeyDown(hideInput))
-                cc.Hide();
+                cc.Hide(cs._coverPos);
         }
 
         protected virtual void PeekInput()

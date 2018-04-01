@@ -9,7 +9,6 @@ namespace Invector.CharacterController
     public class CoverSystem : MonoBehaviour
     {
 
-
         public Transform Player;
         public float _rayHeight = 0.5f;
         public float _rayWidth = 0.5f;
@@ -27,8 +26,10 @@ namespace Invector.CharacterController
         private Vector3 PosToMove;
         private Quaternion RotToMove;
 
+        public bool _coverPos = false;
 
-        private float PeekFloat;
+
+        private float _pMov;
 
         private bool movedToCrouch = false;
 
@@ -41,9 +42,9 @@ namespace Invector.CharacterController
             _helper.SetActive(true);
         }
 
+
         private void Update()
         {
-            _inputHorizontal = _motor.GetXForCover;
             
         }
 
@@ -55,6 +56,7 @@ namespace Invector.CharacterController
             sideOffsetLeft = offset - Player.transform.right*_rayWidth;
             sideOffsetRight = offset + Player.transform.right * _rayWidth;
             if ( !_motor.isBehindCover) { DetectCover(); }
+
 
             if (_motor.isBehindCover) { InCover(); }
 
@@ -73,7 +75,8 @@ namespace Invector.CharacterController
             movedToCrouch = false;
             float distOffset = 0.5f;
             Debug.DrawRay(origin, Player.transform.forward, Color.blue);
-            if (Physics.Raycast(origin,Player.transform.forward,out hit, 2f,layer) )
+            _coverPos = Physics.Raycast(origin, Player.transform.forward, out hit, 2f, layer);
+            if (_coverPos )
             {
                 
                 Vector3 _cubeOffset = -hit.normal * distOffset;
@@ -119,7 +122,7 @@ namespace Invector.CharacterController
         /// <returns></returns>
         Vector3 PosWithOffset(Vector3 origin, Vector3 target)
         {
-            float OffsetFromWall = 0.3f;
+            float OffsetFromWall = 0.4f;
             Vector3 direction = origin - target;
             direction.Normalize();
             Vector3 dirOffset = direction * OffsetFromWall;
@@ -132,7 +135,7 @@ namespace Invector.CharacterController
         {
             _motor.transform.position = Vector3.Lerp(_motor.transform.position, PosToMove, 4f * Time.deltaTime);
             _motor.transform.rotation = Quaternion.Slerp(_motor.transform.rotation, RotToMove, 4f * Time.deltaTime);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
             movedToCrouch = true;
         }
 
@@ -150,7 +153,6 @@ namespace Invector.CharacterController
             if (!movedToCrouch)
             {
                 StartCoroutine("MoveAndRotToCover");
-                
             }
             
 
@@ -168,7 +170,7 @@ namespace Invector.CharacterController
                 _leftRay = false;
                 if (_motor.input.x < 0)
                 {
-                    PeekFloat = _motor.input.x;
+                    _pMov = _motor.input.x;
                     _motor.input.x = 0;
                 }
             }
@@ -179,16 +181,14 @@ namespace Invector.CharacterController
                 
             }
             else
-
             {
                 _rightRay = false;
                 if (_motor.input.x > 0)
                 {
-                    PeekFloat = _motor.input.x;
+                    _pMov = _motor.input.x;
                     _motor.input.x = 0;
                 }
             }
-
             PeekFromCover();
         }
 
@@ -196,28 +196,25 @@ namespace Invector.CharacterController
         private void PeekFromCover()
         {
             if (_motor.animator!=null && _motor.isBehindCover) {
-            if (!_leftRay && PeekFloat < -0.25f)
+            if (!_leftRay && _pMov < -0.25f)
             {
                     _motor.isPeeking = true;
                     PeekDir = true;
                     vThirdPersonCamera.instance.rightOffset=Mathf.Lerp( vThirdPersonCamera.instance.rightOffset,  -0.75f,10*Time.deltaTime);
                   
-                }
-            else if (!_rightRay && PeekFloat > 0.25f)
+            }
+            else if (!_rightRay && _pMov > 0.25f)
             {
                     _motor.isPeeking = true;
                     PeekDir = false;
                     vThirdPersonCamera.instance.rightOffset=Mathf.Lerp(vThirdPersonCamera.instance.rightOffset, 0.75f, 10 * Time.deltaTime);
 
-                } else
+            } else
             {
                     _motor.isPeeking = false;
                     vThirdPersonCamera.instance.rightOffset=Mathf.Lerp(vThirdPersonCamera.instance.rightOffset, 0, 10 * Time.deltaTime);
-                }
-
+            }
             _motor.animator.SetBool("PeekDir", PeekDir);
-
-
             }
 
 

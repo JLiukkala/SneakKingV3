@@ -246,12 +246,8 @@ namespace Invector.CharacterController
 
             vThirdPersonCamera.instance.coverCamera = true;
             vThirdPersonCamera.instance.lockCamera = true;
-            vThirdPersonCamera.instance.defaultDistance = 1.75f;
+            vThirdPersonCamera.instance.defaultDistance = 3f;
             GetXForCover = input.x;
-
-
-
-
             input.y = 0f;
             
         }
@@ -309,9 +305,9 @@ namespace Invector.CharacterController
         protected void ControlSpeed(float velocity)
         {
             if (isCrouching && isBehindCover)
-            { speed = 7f * input.x; }
-
-
+            {
+                speed = 10f * input.x;
+            }
 
                 if (Time.deltaTime == 0) return;
 
@@ -329,8 +325,6 @@ namespace Invector.CharacterController
                 
                 if (isCrouching && isBehindCover) {
 
-                    // heleveleten
-                    //speed =7f * input.x;
                     velY = Vector3.zero;
                 }
                 velX.x = _rigidbody.velocity.x;
@@ -345,10 +339,11 @@ namespace Invector.CharacterController
 
                 else if (isCrouching && isBehindCover)
                 {
-                    
-                    _rigidbody.AddForce(-transform.right * (velocity * speed) * Time.deltaTime, ForceMode.VelocityChange);
+                    // here
                     _rigidbody.velocity = velY;
-
+                    Vector3 _Pforce = -transform.right * (1 * speed);
+                    _rigidbody.AddForce(_Pforce * Time.deltaTime, ForceMode.VelocityChange);
+                    //Debug.Log(_Pforce);
                 }
 
 
