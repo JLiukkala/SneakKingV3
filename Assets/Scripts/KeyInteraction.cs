@@ -14,12 +14,17 @@ public class KeyInteraction : MonoBehaviour
     [HideInInspector]
     public int numberOfKeys = 0;
 
-    // These methods are easy to understand.
-
+    // While staying inside the trigger collider,
+    // the pick-up text for the key is active.
     void OnTriggerStay(Collider other)
     {
         keyPickUpText.SetActive(true);
 
+        // If the player presses E while inside,
+        // the pick-up text disappears and the key
+        // appears in the top-left corner of the screen.
+        // The number of keys is then set to one plus the 
+        // key object and trigger collider are destroyed.
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             keyInteraction.SetActive(true);
@@ -32,6 +37,7 @@ public class KeyInteraction : MonoBehaviour
         }
     }
 
+    // If the player exits the trigger, the text is set inactive.
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
