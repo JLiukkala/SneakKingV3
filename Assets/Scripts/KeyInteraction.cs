@@ -14,11 +14,16 @@ public class KeyInteraction : MonoBehaviour
     [HideInInspector]
     public int numberOfKeys = 0;
 
+    void OnTriggerEnter(Collider other)
+    {
+        keyPickUpText.SetActive(true);
+    }
+
     // While staying inside the trigger collider,
     // the pick-up text for the key is active.
     void OnTriggerStay(Collider other)
     {
-        keyPickUpText.SetActive(true);
+        //keyPickUpText.SetActive(true);
 
         // If the player presses E while inside,
         // the pick-up text disappears and the key

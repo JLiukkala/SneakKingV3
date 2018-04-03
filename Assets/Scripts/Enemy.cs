@@ -57,6 +57,7 @@ namespace Invector.CharacterController
             // The method IsSpotted is subscribed to 
             // the OnEnemyHasSpottedPlayer event.
             OnEnemyHasSpottedPlayer += IsSpotted;
+            Debug.Log("Enemy Start");
         }
 
         void Update()
@@ -90,6 +91,7 @@ namespace Invector.CharacterController
                 if (OnEnemyHasSpottedPlayer != null)
                 {
                     OnEnemyHasSpottedPlayer();
+                    Debug.Log("OnEnemyHasSpottedPlayer");
                 }
             }
 
@@ -161,6 +163,7 @@ namespace Invector.CharacterController
                 {
                     if (!Physics.Linecast(transform.position, player.position, viewMask))
                     {
+                        Debug.Log("CanSeePlayer");
                         return true;
                     }
                 }
@@ -249,6 +252,7 @@ namespace Invector.CharacterController
         {
             // True when the player has been spotted.
             spotted = true;
+            Debug.Log("IsSpotted");
         }
 
         // Draws waypoints as spheres, lines between the waypoints and a

@@ -7,11 +7,11 @@ namespace Invector.CharacterController
 {
     public class GameUI : MonoBehaviour
     {
-        //[SerializeField]
-        //private string loadLevel;
+        [SerializeField]
+        private string loadLevel;
 
         // Reference to the UI object.
-        public GameObject gameLoseUI;
+        GameObject gameLoseUI;
 
         // A boolean for whether the game is over or not.
         bool gameIsOver;
@@ -20,6 +20,9 @@ namespace Invector.CharacterController
         // OnEnemyHasSpottedPlayer located in the Enemy script.
         void Start()
         {
+            gameLoseUI = GameObject.Find("GameLose");
+            Debug.Log("GameUI Start");
+            //this.gameObject.SetActive(true);
             Enemy.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
         }
 
@@ -35,13 +38,13 @@ namespace Invector.CharacterController
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(loadLevel);
 
                     gameIsOver = false;
 
                     Time.timeScale = 1;
 
-                    DestroyAllGameObjects();
+                    //DestroyAllGameObjects();
                 }
             }
         }
@@ -50,20 +53,28 @@ namespace Invector.CharacterController
         // and unsubscribes the method from OnEnemyHasSpottedPlayer.
         void ShowGameLoseUI()
         {
-            gameLoseUI.SetActive(true);
+            //gameLoseUI.SetActive(true);
+            //this.gameObject.SetActive(true);
+            Debug.Log("ShowGameLoseUI");
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            
             gameIsOver = true;
             Enemy.OnEnemyHasSpottedPlayer -= ShowGameLoseUI;
         }
 
         // A method that destroys all game objects in the scene.
-        public void DestroyAllGameObjects()
-        {
-            GameObject[] GameObjects = (FindObjectsOfType<GameObject>() as GameObject[]);
+        //public void DestroyAllGameObjects()
+        //{
+        //    GameObject[] GameObjects = (FindObjectsOfType<GameObject>() as GameObject[]);
 
-            for (int i = 0; i < GameObjects.Length; i++)
-            {
-                Destroy(GameObjects[i]);
-            }
-        }
+        //    for (int i = 0; i < GameObjects.Length; i++)
+        //    {
+        //        Destroy(GameObjects[i]);
+        //    }
+        //}
     }
 }
