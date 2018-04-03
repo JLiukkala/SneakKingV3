@@ -45,6 +45,7 @@ public class vThirdPersonCamera : MonoBehaviour
     public float yMinLimit = -40f;
     public float yMaxLimit = 80f;
 
+    // Reference to the point of interest camera script.
     PointOfInterestCamera pOICam;
     #endregion
 
@@ -87,6 +88,7 @@ public class vThirdPersonCamera : MonoBehaviour
     {
         Init();
 
+        // Setting the point of interest camera script.
         pOICam = GetComponent<PointOfInterestCamera>();
     }
 
@@ -170,15 +172,22 @@ public class vThirdPersonCamera : MonoBehaviour
             //mouseY = currentTarget.root.localEulerAngles.y;
             //_camera.transform.rotation = Quaternion.Euler(30, 0, 0);
 
+            // If the scene has a point of interest, the camera looks at the
+            // point of interest position at the start of the scene.
             if (pOICam.hasPointOfInterest)
             {
                 _camera.transform.LookAt(pOICam._pointOfInterestPosition.transform.position);
 
+                // When SmoothStep has reached its end in the 
+                // PointOfInterestCamera script, the camera 
+                // looks at the current target (the player).
                 if (pOICam.hasReachedEnd)
                 {
                     _camera.transform.LookAt(currentTarget.transform.position);
                 }
             }
+            // If the scene has no point of interest, the camera looks
+            // at the current target (the player) when the scene starts.
             else
             {
                 _camera.transform.LookAt(currentTarget.transform.position);
