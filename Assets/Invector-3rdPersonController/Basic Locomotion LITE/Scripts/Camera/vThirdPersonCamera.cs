@@ -163,8 +163,8 @@ public class vThirdPersonCamera : MonoBehaviour
        
         if (!coverCamera)
         {
-            lockCamera = true;
-            mouseX = 0;
+            //lockCamera = true;
+            //mouseX = 0;
             mouseY = 0;
             defaultDistance = 3.5f;
             height = 5;
