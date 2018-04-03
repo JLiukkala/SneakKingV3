@@ -187,9 +187,11 @@ namespace Invector.CharacterController
                 {
                     _pMov = _motor.input.x;
                     _motor.input.x = 0;
+                    
                 }
             }
             PeekFromCover();
+            
         }
 
 
@@ -216,7 +218,7 @@ namespace Invector.CharacterController
             }
             _motor.animator.SetBool("PeekDir", PeekDir);
             }
-
+           
 
         }
     }

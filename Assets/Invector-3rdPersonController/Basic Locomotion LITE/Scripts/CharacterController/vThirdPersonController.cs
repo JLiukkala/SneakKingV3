@@ -40,6 +40,7 @@ namespace Invector.CharacterController
             if (isBehindCover) { 
             isPeeking = !isPeeking;
             }
+            
         }
 
         public virtual void Hide(bool isCoverable)

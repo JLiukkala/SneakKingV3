@@ -340,9 +340,15 @@ namespace Invector.CharacterController
                 else if (isCrouching && isBehindCover)
                 {
                     // here
+
                     _rigidbody.velocity = velY;
                     Vector3 _Pforce = -transform.right * (1 * speed);
-                    _rigidbody.AddForce(_Pforce * Time.deltaTime, ForceMode.VelocityChange);
+                    
+                    if (!isPeeking)
+                    {
+                        _rigidbody.AddForce(_Pforce * Time.deltaTime, ForceMode.VelocityChange);
+                    }
+
                     //Debug.Log(_Pforce);
                 }
 
