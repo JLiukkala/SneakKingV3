@@ -173,6 +173,10 @@ namespace Invector.CharacterController
                     _pMov = _motor.input.x;
                     _motor.input.x = 0;
                 }
+                else
+                {
+                    _pMov = 0;
+                }
             }
 
             if (Physics.Raycast(Player.transform.position + sideOffsetLeft, -Player.transform.forward,1f))
@@ -188,6 +192,9 @@ namespace Invector.CharacterController
                     _pMov = _motor.input.x;
                     _motor.input.x = 0;
                     
+                } else
+                {
+                    _pMov = 0;
                 }
             }
             PeekFromCover();
@@ -198,14 +205,14 @@ namespace Invector.CharacterController
         private void PeekFromCover()
         {
             if (_motor.animator!=null && _motor.isBehindCover) {
-            if (!_leftRay && _pMov < -0.25f)
+            if (!_leftRay && _pMov < -0.5f)
             {
                     _motor.isPeeking = true;
                     PeekDir = true;
                     vThirdPersonCamera.instance.rightOffset=Mathf.Lerp( vThirdPersonCamera.instance.rightOffset,  -0.75f,10*Time.deltaTime);
                   
             }
-            else if (!_rightRay && _pMov > 0.25f)
+            else if (!_rightRay && _pMov > 0.5f)
             {
                     _motor.isPeeking = true;
                     PeekDir = false;

@@ -218,6 +218,9 @@ namespace Invector.CharacterController
 
         void ControlLocomotion()
         {
+
+
+
             if (freeLocomotionConditions)
                 FreeMovement();     // free directional movement
             else if (isCrouching && isBehindCover)
@@ -225,14 +228,17 @@ namespace Invector.CharacterController
 
                 BehindCoverMovement();
             }
-            else if (isCrouching== true) { 
+            else if (isCrouching == true)
+            {
 
                 CrouchMovement();
             }
+
             // move forward, backwards, strafe left and right
-            else {
+            else
+            {
                 StrafeMovement();
-                
+
             }
         }
 
