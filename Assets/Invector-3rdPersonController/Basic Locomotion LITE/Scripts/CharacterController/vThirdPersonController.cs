@@ -32,6 +32,13 @@ namespace Invector.CharacterController
            
             if (locomotionType == LocomotionType.OnlyStrafe) return;
             isCrouching = !isCrouching;
+            if (!isCrouching) { 
+            isBehindCover = false;
+            isPeeking = false;
+            vThirdPersonCamera.instance.coverCamera = false;
+            vThirdPersonCamera.instance.lockCamera = false;
+            vThirdPersonCamera.instance.defaultDistance = 3f;
+            }
         }
 
         public virtual void Peek()
