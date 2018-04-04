@@ -7,7 +7,7 @@ namespace Invector.CharacterController
     public class Enemy : MonoBehaviour
     {
         // The necessary variables and references.
-        public static event System.Action OnEnemyHasSpottedPlayer;
+        //public static event System.Action OnEnemyHasSpottedPlayer;
 
         public float speed = 0.15f;
         public float waitTime = 0.3f;
@@ -31,7 +31,9 @@ namespace Invector.CharacterController
         Transform player;
         Color originalVisionConeColor;
 
-        bool spotted;
+        [HideInInspector]
+        public bool spotted;
+
         bool almostSpotted;
         public bool isEnemyStill;
 
@@ -56,7 +58,7 @@ namespace Invector.CharacterController
 
             // The method IsSpotted is subscribed to 
             // the OnEnemyHasSpottedPlayer event.
-            OnEnemyHasSpottedPlayer += IsSpotted;
+            //OnEnemyHasSpottedPlayer += IsSpotted;
             Debug.Log("Enemy Start");
         }
 
@@ -88,11 +90,11 @@ namespace Invector.CharacterController
             // variable, the event OnEnemyHasSpottedPlayer is called.
             if (playerVisibleTimer >= timeToSpotPlayer)
             {
-                if (OnEnemyHasSpottedPlayer != null)
-                {
-                    OnEnemyHasSpottedPlayer();
-                    Debug.Log("OnEnemyHasSpottedPlayer");
-                }
+                //if (OnEnemyHasSpottedPlayer != null)
+                //{
+                    IsSpotted();
+                    Debug.Log("SpottedPlayer");
+                //}
             }
 
             // If the enemy sees the player for only a very short 
@@ -276,9 +278,9 @@ namespace Invector.CharacterController
 
         // When the objects are destroyed, IsSpotted 
         // is unsubscribed from OnEnemyHasSpottedPlayer.
-        void OnDestroy()
-        {
-            OnEnemyHasSpottedPlayer -= IsSpotted;
-        }
+        //void OnDestroy()
+        //{
+        //    OnEnemyHasSpottedPlayer -= IsSpotted;
+        //}
     }
 }

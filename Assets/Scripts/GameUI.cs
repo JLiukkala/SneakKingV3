@@ -16,18 +16,77 @@ namespace Invector.CharacterController
         // A boolean for whether the game is over or not.
         bool gameIsOver;
 
+        GameObject movingEnemy;
+
+        GameObject notMovingEnemy;
+
+        int enemyCount;
+
         // Subscribing the ShowGameLoseUI method to the event 
         // OnEnemyHasSpottedPlayer located in the Enemy script.
         void Start()
         {
             gameLoseUI = GameObject.Find("GameLose");
             Debug.Log("GameUI Start");
+            enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            Debug.Log(enemyCount);
+            if (GameObject.Find("EnemyMoving"))
+            {
+                movingEnemy = GameObject.Find("EnemyMoving");
+            }
+            if (GameObject.Find("EnemyNotMoving"))
+            {
+                notMovingEnemy = GameObject.Find("EnemyNotMoving");
+            }
+
             //this.gameObject.SetActive(true);
-            Enemy.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
+            //Enemy.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
         }
 
         void Update()
         {
+            if (enemyCount == 1 && movingEnemy)
+            {
+                if (movingEnemy.GetComponent<Enemy>().spotted == true)
+                {
+                    ShowGameLoseUI();
+                }
+            }
+            else if (enemyCount == 1 && notMovingEnemy)
+            {
+                if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
+                {
+                    ShowGameLoseUI();
+                }
+            }
+
+            //if (enemyCount == 2 && movingEnemy)
+            //{
+            //    if (movingEnemy.GetComponent<Enemy>().spotted == true)
+            //    {
+            //        ShowGameLoseUI();
+            //    }
+            //}
+            //else if (enemyCount == 2 && notMovingEnemy)
+            //{ 
+            //    if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
+            //    {
+            //        ShowGameLoseUI();
+            //    }
+            //}
+            if (enemyCount == 2)
+            {
+                if (movingEnemy.GetComponent<Enemy>().spotted == true)
+                {
+                    ShowGameLoseUI();
+                }
+
+                if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
+                {
+                    ShowGameLoseUI();
+                }
+            }
+
             // If the game is over, the player must press 
             // Spacebar to start again. The boolean variable
             // gameIsOver is set to false and timescale is brought
@@ -63,7 +122,7 @@ namespace Invector.CharacterController
             }
             
             gameIsOver = true;
-            Enemy.OnEnemyHasSpottedPlayer -= ShowGameLoseUI;
+            //Enemy.OnEnemyHasSpottedPlayer -= ShowGameLoseUI;
         }
 
         // A method that destroys all game objects in the scene.

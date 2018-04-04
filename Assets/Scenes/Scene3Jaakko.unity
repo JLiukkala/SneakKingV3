@@ -4910,7 +4910,12 @@ Prefab:
       propertyPath: hearDistance
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1557327919354494, guid: 57c45c9b32760404bb9efbdd4dbe8f84, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 54676756454317972, guid: 57c45c9b32760404bb9efbdd4dbe8f84, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 57c45c9b32760404bb9efbdd4dbe8f84, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1275286025
@@ -6014,6 +6019,10 @@ Prefab:
         type: 2}
       propertyPath: hearDistance
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178335832373308, guid: bb287476c0ecdc24c966f74369d58217, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb287476c0ecdc24c966f74369d58217, type: 2}
