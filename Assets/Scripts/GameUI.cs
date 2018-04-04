@@ -28,6 +28,7 @@ namespace Invector.CharacterController
         // OnEnemyHasSpottedPlayer located in the Enemy script.
         void Start()
         {
+            _losingStatement = false;
             gameLoseUI = GameObject.Find("GameLose");
             Debug.Log("GameUI Start");
             enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
@@ -80,8 +81,9 @@ namespace Invector.CharacterController
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    _losingStatement = false;
                     SceneManager.LoadScene(loadLevel);
-
+                    
                     gameIsOver = false;
 
                     Time.timeScale = 1;
