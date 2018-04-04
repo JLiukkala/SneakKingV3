@@ -10,6 +10,8 @@ namespace Invector.CharacterController
         [SerializeField]
         private string loadLevel;
 
+        public static bool _losingStatement = false;
+
         // Reference to the UI object.
         GameObject gameLoseUI;
 
@@ -45,20 +47,7 @@ namespace Invector.CharacterController
 
         void Update()
         {
-            if (enemyCount == 1 && movingEnemy)
-            {
-                if (movingEnemy.GetComponent<Enemy>().spotted == true)
-                {
-                    ShowGameLoseUI();
-                }
-            }
-            else if (enemyCount == 1 && notMovingEnemy)
-            {
-                if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
-                {
-                    ShowGameLoseUI();
-                }
-            }
+
 
             //if (enemyCount == 2 && movingEnemy)
             //{
@@ -75,20 +64,10 @@ namespace Invector.CharacterController
             //    }
             //}
 
-            if (enemyCount == 2 && movingEnemy)
-            {
-                if (enemyCount == 2 && notMovingEnemy)
-                {
-                    if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
-                    {
-                        ShowGameLoseUI();
-                    }
-                }
 
-                if (movingEnemy.GetComponent<Enemy>().spotted == true)
-                {
-                    ShowGameLoseUI();
-                }
+            if (_losingStatement)
+            {
+                ShowGameLoseUI();
             }
 
             // If the game is over, the player must press 
