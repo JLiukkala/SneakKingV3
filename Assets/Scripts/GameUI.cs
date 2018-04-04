@@ -74,14 +74,18 @@ namespace Invector.CharacterController
             //        ShowGameLoseUI();
             //    }
             //}
-            if (enemyCount == 2)
+
+            if (enemyCount == 2 && movingEnemy)
             {
-                if (movingEnemy.GetComponent<Enemy>().spotted == true)
+                if (enemyCount == 2 && notMovingEnemy)
                 {
-                    ShowGameLoseUI();
+                    if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
+                    {
+                        ShowGameLoseUI();
+                    }
                 }
 
-                if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
+                if (movingEnemy.GetComponent<Enemy>().spotted == true)
                 {
                     ShowGameLoseUI();
                 }
