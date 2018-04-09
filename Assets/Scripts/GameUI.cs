@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Invector.CharacterController
+namespace Invector
 {
     public class GameUI : MonoBehaviour
     {
@@ -22,17 +22,11 @@ namespace Invector.CharacterController
 
         GameObject notMovingEnemy;
 
-        int enemyCount;
-
-        // Subscribing the ShowGameLoseUI method to the event 
-        // OnEnemyHasSpottedPlayer located in the Enemy script.
         void Start()
         {
             _losingStatement = false;
             gameLoseUI = GameObject.Find("GameLose");
-            Debug.Log("GameUI Start");
-            enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            Debug.Log(enemyCount);
+
             if (GameObject.Find("EnemyMoving"))
             {
                 movingEnemy = GameObject.Find("EnemyMoving");
@@ -41,31 +35,10 @@ namespace Invector.CharacterController
             {
                 notMovingEnemy = GameObject.Find("EnemyNotMoving");
             }
-
-            //this.gameObject.SetActive(true);
-            //Enemy.OnEnemyHasSpottedPlayer += ShowGameLoseUI;
         }
 
         void Update()
         {
-
-
-            //if (enemyCount == 2 && movingEnemy)
-            //{
-            //    if (movingEnemy.GetComponent<Enemy>().spotted == true)
-            //    {
-            //        ShowGameLoseUI();
-            //    }
-            //}
-            //else if (enemyCount == 2 && notMovingEnemy)
-            //{ 
-            //    if (notMovingEnemy.GetComponent<Enemy>().spotted == true)
-            //    {
-            //        ShowGameLoseUI();
-            //    }
-            //}
-
-
             if (_losingStatement)
             {
                 ShowGameLoseUI();
@@ -77,7 +50,7 @@ namespace Invector.CharacterController
             // back up to 1. All the game objects are destroyed.
             if (gameIsOver)
             {
-                Time.timeScale = 0.8f;
+                Time.timeScale = 0f;
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -87,38 +60,18 @@ namespace Invector.CharacterController
                     gameIsOver = false;
 
                     Time.timeScale = 1;
-
-                    //DestroyAllGameObjects();
                 }
             }
         }
 
-        // Shows the GameLoseUI, sets the game to be over
-        // and unsubscribes the method from OnEnemyHasSpottedPlayer.
         void ShowGameLoseUI()
         {
-            //gameLoseUI.SetActive(true);
-            //this.gameObject.SetActive(true);
-            Debug.Log("ShowGameLoseUI");
-
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
             
             gameIsOver = true;
-            //Enemy.OnEnemyHasSpottedPlayer -= ShowGameLoseUI;
         }
-
-        // A method that destroys all game objects in the scene.
-        //public void DestroyAllGameObjects()
-        //{
-        //    GameObject[] GameObjects = (FindObjectsOfType<GameObject>() as GameObject[]);
-
-        //    for (int i = 0; i < GameObjects.Length; i++)
-        //    {
-        //        Destroy(GameObjects[i]);
-        //    }
-        //}
     }
 }
