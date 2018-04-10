@@ -31,7 +31,7 @@ namespace Invector.CharacterController
 
 
         }
-        
+
         public void OnAnimatorMove()
         {
             // we implement this function to override the default root motion.

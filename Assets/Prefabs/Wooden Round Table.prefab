@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4809837017348828}
   - component: {fileID: 33092378178803548}
   - component: {fileID: 23310341108390094}
-  - component: {fileID: 65637793368952090}
-  m_Layer: 8
+  - component: {fileID: 64689237749456304}
+  m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 4804113647990480}
   - component: {fileID: 33743852410593244}
   - component: {fileID: 23826814022241520}
-  - component: {fileID: 65460874388353504}
-  m_Layer: 8
+  - component: {fileID: 64495148485266346}
+  m_Layer: 0
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4110389843234442}
   - component: {fileID: 95163509277693424}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wooden Round Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,15 +69,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896654502988496}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 23.45, y: -0.56, z: 31.16}
-  m_LocalScale: {x: 1.3000004, y: 1.3, z: 1.3000004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.445, y: -0.54, z: 18.172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4809837017348828}
   - {fileID: 4804113647990480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4804113647990480
 Transform:
   m_ObjectHideFlags: 1
@@ -186,8 +186,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687166970569142}
   m_Mesh: {fileID: 4300000, guid: 5d497d6ec4367984ea1fe5d16f5b6da3, type: 3}
---- !u!65 &65460874388353504
-BoxCollider:
+--- !u!64 &64495148485266346
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -195,11 +195,13 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5908008, y: 2.5514414, z: 0.1238289}
-  m_Center: {x: -4.1412392e-23, y: -0.00000005960467, z: 0.024445567}
---- !u!65 &65637793368952090
-BoxCollider:
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 5d497d6ec4367984ea1fe5d16f5b6da3, type: 3}
+--- !u!64 &64689237749456304
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -207,9 +209,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.55019146, y: 0.72542435, z: 1.3169903}
-  m_Center: {x: 0.008345218, y: -1.8750367e-14, z: -0.44259503}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 5d497d6ec4367984ea1fe5d16f5b6da3, type: 3}
 --- !u!95 &95163509277693424
 Animator:
   serializedVersion: 3

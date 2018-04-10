@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4183178729990934}
   - component: {fileID: 33075004034526064}
   - component: {fileID: 23678466183011512}
-  m_Layer: 8
+  - component: {fileID: 64462649537641160}
+  m_Layer: 0
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281300303561238}
   - component: {fileID: 95684998665028476}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Curtain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,8 +55,8 @@ GameObject:
   - component: {fileID: 4853841712103098}
   - component: {fileID: 33896805029837170}
   - component: {fileID: 23034588102157792}
-  - component: {fileID: 65518567462165696}
-  m_Layer: 8
+  - component: {fileID: 64043788430824362}
+  m_Layer: 0
   m_Name: Plane002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1240499663859634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.994556, y: 1.3566958, z: 27.444166}
+  m_LocalPosition: {x: -6.935831, y: 1.3566958, z: -3.4115875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4183178729990934}
@@ -185,8 +186,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989253302525164}
   m_Mesh: {fileID: 4300000, guid: e97f8fcb7a8c3f949a2ecb415e0a3ba4, type: 3}
---- !u!65 &65518567462165696
-BoxCollider:
+--- !u!64 &64043788430824362
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -194,9 +195,25 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.715714, y: 7.3610334, z: 0.4233792}
-  m_Center: {x: -0.80531883, y: -0.06506967, z: -0.052247986}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: e97f8fcb7a8c3f949a2ecb415e0a3ba4, type: 3}
+--- !u!64 &64462649537641160
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138669470788914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: e97f8fcb7a8c3f949a2ecb415e0a3ba4, type: 3}
 --- !u!95 &95684998665028476
 Animator:
   serializedVersion: 3

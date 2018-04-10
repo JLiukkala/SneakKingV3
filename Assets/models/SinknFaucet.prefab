@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4220599439951628}
   - component: {fileID: 33488039332510472}
   - component: {fileID: 23162042392836010}
-  - component: {fileID: 65410401369636308}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,8 +38,7 @@ GameObject:
   - component: {fileID: 4398256601122776}
   - component: {fileID: 33109603427891148}
   - component: {fileID: 23761502030007242}
-  - component: {fileID: 65533945418277444}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,8 +55,7 @@ GameObject:
   - component: {fileID: 4027314989517104}
   - component: {fileID: 33125322794876934}
   - component: {fileID: 23884351905290148}
-  - component: {fileID: 65332705718712274}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Object002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +72,7 @@ GameObject:
   - component: {fileID: 4878410945189028}
   - component: {fileID: 33525703296219378}
   - component: {fileID: 23592911000599970}
-  - component: {fileID: 65714211746281222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,8 +89,7 @@ GameObject:
   - component: {fileID: 4081102079095544}
   - component: {fileID: 33236557213137896}
   - component: {fileID: 23673546261701124}
-  - component: {fileID: 65371349586897514}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +104,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4570673642444088}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SinknFaucet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,8 +170,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1881020934227586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69, y: -0.393, z: -10.87}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1.05}
+  m_LocalPosition: {x: 0.71926785, y: -0.4, z: -5.8274956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4081102079095544}
   - {fileID: 4878410945189028}
@@ -404,63 +399,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739933179575936}
   m_Mesh: {fileID: 4300000, guid: 401c5e8e0c828f042a162127ea283080, type: 3}
---- !u!65 &65332705718712274
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688943676406252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1422571, y: 0.10266455, z: 0.13644056}
-  m_Center: {x: -0.20487113, y: -0.0005692336, z: 0.06822016}
---- !u!65 &65371349586897514
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1818970473455422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8750519, y: 0.75015795, z: 0.21577619}
-  m_Center: {x: 0.000000029802322, y: 0.04332454, z: 0.06990221}
---- !u!65 &65410401369636308
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546653566415598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.10309234, y: 0.21726899, z: 0.20345001}
-  m_Center: {x: 0.000000059604645, y: -0.057870463, z: 0.101724885}
---- !u!65 &65533945418277444
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1595159462520194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1422571, y: 0.10266458, z: 0.1364406}
-  m_Center: {x: -0.20487018, y: -0.0005682503, z: 0.06822018}
---- !u!65 &65714211746281222
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739933179575936}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.30382136, y: 0.29920572, z: 1.4096465}
-  m_Center: {x: 0, y: 0, z: 0.70482326}

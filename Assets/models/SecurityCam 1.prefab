@@ -201,8 +201,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880068378317636}
-  m_LocalRotation: {x: -0, y: 0.7057505, z: -0, w: 0.70846057}
-  m_LocalPosition: {x: -7.16, y: 3.137, z: -1.3}
+  m_LocalRotation: {x: -0, y: 0.28433108, z: -0, w: 0.95872617}
+  m_LocalPosition: {x: -5.19, y: 2.017, z: 1.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315590247770986}
@@ -211,7 +211,7 @@ Transform:
   - {fileID: 4209181094058886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 89.78001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 33.038002, z: 0}
 --- !u!4 &4833215517873544
 Transform:
   m_ObjectHideFlags: 1
@@ -440,13 +440,7 @@ MonoBehaviour:
   _cameraStand: {fileID: 4833215517873544}
   _cameraLens: {fileID: 4267391146041866}
   _rotationAngle: 30
-  _rotationSpeed: 10
-  timeToSpotPlayer: 0.5
-  visionCone: {fileID: 108738030373897636}
-  viewDistance: 15
-  viewMask:
-    serializedVersion: 2
-    m_Bits: 256
+  _rotationSpeed: 30
 --- !u!198 &198704518473674874
 ParticleSystem:
   m_ObjectHideFlags: 1

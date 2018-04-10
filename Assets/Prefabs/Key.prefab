@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4299536181761306}
   - component: {fileID: 33294741322174694}
   - component: {fileID: 23416926977331334}
-  - component: {fileID: 65776012855155884}
+  - component: {fileID: 64547202093047634}
   m_Layer: 0
   m_Name: Box002
   m_TagString: Untagged
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4442711680645498}
   - component: {fileID: 33485625419300268}
   - component: {fileID: 23998975976257636}
-  - component: {fileID: 65514806882963416}
+  - component: {fileID: 64589370766688238}
   m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234603677466154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.973706, y: -0.40781286, z: 27.547588}
+  m_LocalPosition: {x: 1.677, y: 1.07, z: 27.073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4442711680645498}
@@ -186,20 +186,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938847038591344}
   m_Mesh: {fileID: 4300000, guid: 796c42e9766d2ea4482cde67350525ee, type: 3}
---- !u!65 &65514806882963416
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938847038591344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1143, y: 0.114300035, z: 0.022860005}
-  m_Center: {x: 0, y: 0, z: 0.011430062}
---- !u!65 &65776012855155884
-BoxCollider:
+--- !u!64 &64547202093047634
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -207,9 +195,25 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18288, y: 0.04572001, z: 0.0049377605}
-  m_Center: {x: 0, y: -0.017145002, z: 0.0024688803}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 796c42e9766d2ea4482cde67350525ee, type: 3}
+--- !u!64 &64589370766688238
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938847038591344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 796c42e9766d2ea4482cde67350525ee, type: 3}
 --- !u!95 &95835696794835112
 Animator:
   serializedVersion: 3

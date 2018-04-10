@@ -218,9 +218,6 @@ namespace Invector.CharacterController
 
         void ControlLocomotion()
         {
-
-
-
             if (freeLocomotionConditions)
                 FreeMovement();     // free directional movement
             else if (isCrouching && isBehindCover)
@@ -228,17 +225,14 @@ namespace Invector.CharacterController
 
                 BehindCoverMovement();
             }
-            else if (isCrouching == true)
-            {
+            else if (isCrouching== true) { 
 
                 CrouchMovement();
             }
-
             // move forward, backwards, strafe left and right
-            else
-            {
+            else {
                 StrafeMovement();
-
+                
             }
         }
 
@@ -252,8 +246,12 @@ namespace Invector.CharacterController
 
             vThirdPersonCamera.instance.coverCamera = true;
             vThirdPersonCamera.instance.lockCamera = true;
-            vThirdPersonCamera.instance.defaultDistance = 3f;
+            vThirdPersonCamera.instance.defaultDistance = 1.75f;
             GetXForCover = input.x;
+
+
+
+
             input.y = 0f;
             
         }
@@ -311,9 +309,9 @@ namespace Invector.CharacterController
         protected void ControlSpeed(float velocity)
         {
             if (isCrouching && isBehindCover)
-            {
-                speed = 10f * input.x;
-            }
+            { speed = 7f * input.x; }
+
+
 
                 if (Time.deltaTime == 0) return;
 
@@ -331,6 +329,8 @@ namespace Invector.CharacterController
                 
                 if (isCrouching && isBehindCover) {
 
+                    // heleveleten
+                    //speed =7f * input.x;
                     velY = Vector3.zero;
                 }
                 velX.x = _rigidbody.velocity.x;
@@ -345,17 +345,10 @@ namespace Invector.CharacterController
 
                 else if (isCrouching && isBehindCover)
                 {
-                    // here
-
-                    _rigidbody.velocity = velY;
-                    Vector3 _Pforce = -transform.right * (1 * speed);
                     
-                    if (!isPeeking)
-                    {
-                        _rigidbody.AddForce(_Pforce * Time.deltaTime, ForceMode.VelocityChange);
-                    }
+                    _rigidbody.AddForce(-transform.right * (velocity * speed) * Time.deltaTime, ForceMode.VelocityChange);
+                    _rigidbody.velocity = velY;
 
-                    //Debug.Log(_Pforce);
                 }
 
 

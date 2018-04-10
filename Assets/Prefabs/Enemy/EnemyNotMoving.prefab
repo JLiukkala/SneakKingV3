@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114710812140336922}
   m_Layer: 0
   m_Name: EnemyNotMoving
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,14 +175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.15
   waitTime: 0.3
-  turnSpeed: 120
+  turnSpeed: 90
   timeToSpotPlayer: 0.5
   visionCone: {fileID: 108053693767900040}
   viewDistance: 10
   viewMask:
     serializedVersion: 2
     m_Bits: 256
-  hearDistance: 0
   pathHolder: {fileID: 0}
-  spotted: 0
   isEnemyStill: 1

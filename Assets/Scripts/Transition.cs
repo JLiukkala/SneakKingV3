@@ -41,25 +41,6 @@ public class Transition : MonoBehaviour
                 doorLockedText.SetActive(true);
             }
 
-            //// If the player is inside the collider and has a key, the transition occurs.
-            //if (other.CompareTag("Player") && keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
-            //{
-            //    StartCoroutine(Fading());
-            //    keyCollider.GetComponent<KeyInteraction>().numberOfKeys = 0;
-            //    doorLockedText.SetActive(false);
-            //}
-        }
-        // This is for when isLocked is set to false (the door is not locked).
-        else if (other.CompareTag("Player"))
-        {
-            StartCoroutine(Fading());
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (isLocked)
-        {
             // If the player is inside the collider and has a key, the transition occurs.
             if (other.CompareTag("Player") && keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
             {
@@ -67,6 +48,11 @@ public class Transition : MonoBehaviour
                 keyCollider.GetComponent<KeyInteraction>().numberOfKeys = 0;
                 doorLockedText.SetActive(false);
             }
+        }
+        // This is for when isLocked is set to false (the door is not locked).
+        else if (other.CompareTag("Player"))
+        {
+            StartCoroutine(Fading());
         }
     }
 

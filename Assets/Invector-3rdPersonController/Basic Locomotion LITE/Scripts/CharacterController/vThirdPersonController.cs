@@ -8,8 +8,6 @@ namespace Invector.CharacterController
     {
         protected virtual void Start()
         {
-
-
 #if !UNITY_EDITOR
                 Cursor.visible = false;
 #endif
@@ -32,13 +30,6 @@ namespace Invector.CharacterController
            
             if (locomotionType == LocomotionType.OnlyStrafe) return;
             isCrouching = !isCrouching;
-            if (!isCrouching) { 
-            isBehindCover = false;
-            isPeeking = false;
-            vThirdPersonCamera.instance.coverCamera = false;
-            vThirdPersonCamera.instance.lockCamera = false;
-            vThirdPersonCamera.instance.defaultDistance = 3f;
-            }
         }
 
         public virtual void Peek()
@@ -47,13 +38,12 @@ namespace Invector.CharacterController
             if (isBehindCover) { 
             isPeeking = !isPeeking;
             }
-            
         }
 
-        public virtual void Hide(bool isCoverable)
+        public virtual void Hide()
         {
             if (locomotionType == LocomotionType.OnlyStrafe) return;
-            if (isCrouching && isCoverable) { 
+            if (isCrouching) { 
             isBehindCover = !isBehindCover;
             }
         }

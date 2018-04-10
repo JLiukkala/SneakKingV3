@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4196168008493220}
   - component: {fileID: 95919284605099620}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Round Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,8 +37,8 @@ GameObject:
   - component: {fileID: 4211875993592602}
   - component: {fileID: 33502491165242102}
   - component: {fileID: 23246803360197212}
-  - component: {fileID: 65334412534159204}
-  m_Layer: 8
+  - component: {fileID: 64785957870756248}
+  m_Layer: 0
   m_Name: Cylinder002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 4668261397640132}
   - component: {fileID: 33109843057901344}
   - component: {fileID: 23207332825982616}
-  - component: {fileID: 65235486375317954}
-  m_Layer: 8
+  - component: {fileID: 64027087335879264}
+  m_Layer: 0
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183052040860110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.883015, y: -0.39092973, z: 27.313908}
+  m_LocalPosition: {x: 6.325, y: -0.39808106, z: 18.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4668261397640132}
@@ -186,8 +186,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265744383729560}
   m_Mesh: {fileID: 4300002, guid: 9386dc921bef14d42912b2cb7ef15e01, type: 3}
---- !u!65 &65235486375317954
-BoxCollider:
+--- !u!64 &64027087335879264
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -195,11 +195,13 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4384, y: 2.4013557, z: 0.08128002}
-  m_Center: {x: 0, y: -0.00000005960466, z: 0.04064007}
---- !u!65 &65334412534159204
-BoxCollider:
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 9386dc921bef14d42912b2cb7ef15e01, type: 3}
+--- !u!64 &64785957870756248
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -207,9 +209,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2032468, y: 1.184967, z: 1.3849444}
-  m_Center: {x: 0, y: -0.00000002980233, z: 0.5267281}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 9386dc921bef14d42912b2cb7ef15e01, type: 3}
 --- !u!95 &95919284605099620
 Animator:
   serializedVersion: 3

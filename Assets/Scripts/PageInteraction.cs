@@ -8,15 +8,13 @@ public class PageInteraction : MonoBehaviour
     public GameObject pageInteraction;
     public GameObject pagePickUpText;
 
-    // Upon entering the trigger collider, the text
-    // for reading the page pops up.
+    // These methods are pretty clear.
+
     void OnTriggerEnter(Collider other)
     {
         pagePickUpText.SetActive(true);
     }
 
-    // If the player stays in the trigger and presses E,
-    // the pick-up text goes away and the page shows itself. 
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
@@ -26,7 +24,6 @@ public class PageInteraction : MonoBehaviour
         }
     }
 
-    // When the player exits the trigger, both texts are set inactive.
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
