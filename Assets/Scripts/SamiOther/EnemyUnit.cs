@@ -40,7 +40,7 @@ namespace Invector
 
         Color originalVisionConeColor;
 
-        bool almostSpotted;
+        //bool almostSpotted;
 
         [HideInInspector]
         public bool hasBeenNoticed;
