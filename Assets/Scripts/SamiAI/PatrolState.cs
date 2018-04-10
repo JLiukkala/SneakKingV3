@@ -14,6 +14,8 @@ namespace Invector.AI
 
 		public Waypoint CurrentWaypoint { get; private set; }
 
+        Vector3 currentWaypointWithoutY;
+
 		public PatrolState( GameObject owner, Path path,
 			Direction direction, float arriveDistance )
 			: base()
@@ -33,6 +35,11 @@ namespace Invector.AI
 			_direction = direction;
 			_arriveDistance = arriveDistance;
 		}
+
+        //void Start()
+        //{
+            //currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, 0, CurrentWaypoint.Position.z);
+        //}
 
 		public override void StateActivated()
 		{
@@ -56,9 +63,10 @@ namespace Invector.AI
                 enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
                         CurrentWaypoint.Position, enemy.speed * Time.deltaTime);
                 enemy.agent.SetDestination(CurrentWaypoint.Position);
+                currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
                 // 4. Rotate towards the current waypoint
-                enemy.StartCoroutine(TurnToFace(CurrentWaypoint.Position));
-                //enemy.transform.LookAt(CurrentWaypoint.Position);
+                //enemy.StartCoroutine(TurnToFace(CurrentWaypoint.Position));
+                enemy.transform.LookAt(currentWaypointWithoutY);
             }
 		}
 

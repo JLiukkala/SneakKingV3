@@ -33,7 +33,7 @@ namespace Invector.AI
 			if ( !ChangeState() )
 			{
                 Vector3 tempPlayerPosition = new Vector3(enemy.Target.position.x, 
-                    0, enemy.Target.position.z);
+                    enemy.transform.position.y, enemy.Target.position.z);
 
                 if (enemy.hasBeenNoticed) 
                 {

@@ -81,14 +81,14 @@ namespace Invector
             // the view distance that has been set, the angle between them is
             // less than the view angle divided by 2 and the player's collider
             // is recognized by the enemy, the enemy is able to see the player.
-            if (Vector3.Distance(transform.position, Target.position) < viewDistance)
+            if (Vector3.Distance(visionCone.transform.position, Target.position) < viewDistance)
             {
-                Vector3 dirToPlayer = (Target.position - transform.position).normalized;
-                float angleBetweenEnemyAndPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+                Vector3 dirToPlayer = (Target.position - visionCone.transform.position).normalized;
+                float angleBetweenEnemyAndPlayer = Vector3.Angle(visionCone.transform.forward, dirToPlayer);
 
                 if (angleBetweenEnemyAndPlayer < viewAngle / 2)
                 {
-                    if (!Physics.Linecast(transform.position, Target.position, viewMask))
+                    if (!Physics.Linecast(visionCone.transform.position, Target.position, viewMask))
                     {
                         //Debug.Log("CanSeePlayer");
                         return true;
