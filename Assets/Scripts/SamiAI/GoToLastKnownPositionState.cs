@@ -17,7 +17,9 @@ namespace Invector.AI
 
         public bool moveAgain;
 
-        public float waitTime = 3;
+        //public bool hasWaited;
+
+        public float waitTime = 4f;
 
         //public Invector.CharacterController.EnemyUnit enemyUnit;
 
@@ -51,12 +53,13 @@ namespace Invector.AI
 			{
                 //Owner.Mover.Move( Owner.transform.forward );
                 //Owner.Mover.Turn( Owner.Target.transform.position );
-                Vector3 tempPlayerPosition = new Vector3(Owner.GetComponent<EnemyUnit>().lastPositionOfPlayer.x, 
+                Vector3 tempLastPlayerPosition = new Vector3(Owner.GetComponent<EnemyUnit>().lastPositionOfPlayer.x, 
                     0, Owner.GetComponent<EnemyUnit>().lastPositionOfPlayer.z);
 
-                Owner.GetComponent<EnemyUnit>().transform.position = Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position,
-                    tempPlayerPosition, 
-                        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                //Owner.GetComponent<EnemyUnit>().transform.position = Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position,
+                //    tempLastPlayerPosition, 
+                //        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                Owner.GetComponent<EnemyUnit>().agent.SetDestination(tempLastPlayerPosition);
                 //Owner.GetComponent<EnemyUnit>().transform.position = new Vector3(Owner.GetComponent<EnemyUnit>().transform.position.x,
                 //     1.1f, Owner.GetComponent<EnemyUnit>().transform.position.z);
                 //Owner.GetComponent<EnemyUnit>().transform.LookAt(Owner.GetComponent<EnemyUnit>().lastPositionOfPlayer);
@@ -107,6 +110,7 @@ namespace Invector.AI
         IEnumerator Wait()
         {
             yield return new WaitForSeconds(waitTime);
+            //hasWaited = true;
             yield return Owner.GetComponent<EnemyUnit>().StartCoroutine(MoveAgain());
         }
 
@@ -114,6 +118,7 @@ namespace Invector.AI
         {
             Debug.Log("Going Back To Patrolling");
             moveAgain = true;
+            //hasWaited = false;
             yield return null;
         }
     }

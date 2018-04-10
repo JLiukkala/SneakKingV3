@@ -52,19 +52,20 @@ namespace Invector.AI
 
 			if ( !ChangeState() )
 			{
-				// 2. Are we close enough the current waypoint?
-				//   2.1 If yes, get the next waypoint
-				CurrentWaypoint = GetWaypoint();
+                // 2. Are we close enough the current waypoint?
+                //   2.1 If yes, get the next waypoint
+                CurrentWaypoint = GetWaypoint();
                 // 3. Move towards the current waypoint
-                //Owner.Mover.Move( Owner.transform.forward );
+                Owner.GetComponent<EnemyUnit>().agent.speed = 0.2f;
+                Owner.GetComponent<EnemyUnit>().agent.angularSpeed = 10;
                 Owner.GetComponent<EnemyUnit>().transform.position = 
                     Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position, 
                         CurrentWaypoint.Position,
-                        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                            Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                Owner.GetComponent<EnemyUnit>().agent.SetDestination(CurrentWaypoint.Position);
                 // 4. Rotate towards the current waypoint
                 Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(CurrentWaypoint.Position));
                 //Owner.GetComponent<EnemyUnit>().transform.LookAt(CurrentWaypoint.Position);
-                //Owner.Mover.Turn( CurrentWaypoint.Position );
             }
 		}
 

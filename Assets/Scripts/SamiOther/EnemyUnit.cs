@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using Invector.AI;
 using Invector.WaypointSystem;
 
@@ -43,6 +44,8 @@ namespace Invector
 
         [HideInInspector]
         public bool hasBeenNoticed;
+
+        public NavMeshAgent agent;
 
         private IList<AIStateBase> _states = new List< AIStateBase >();
 

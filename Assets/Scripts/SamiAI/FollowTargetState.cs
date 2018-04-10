@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 namespace Invector.AI
@@ -56,17 +57,22 @@ namespace Invector.AI
 
                 if (moveTowardsPlayer)
                 {
-                    Owner.GetComponent<EnemyUnit>().turnSpeed = 60;
+                    //Owner.GetComponent<EnemyUnit>().turnSpeed = 60;
+                    //Owner.GetComponent<EnemyUnit>().speed = 1.5f;
                     Owner.GetComponent<EnemyUnit>().transform.LookAt(tempPlayerPosition);
                     //Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
-                    Owner.GetComponent<EnemyUnit>().transform.position = Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position,
-                    tempPlayerPosition,
-                        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                    //Owner.GetComponent<EnemyUnit>().transform.position = Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position,
+                    //    tempPlayerPosition,
+                    //        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
+                    Owner.GetComponent<EnemyUnit>().agent.speed = 1.5f;
+                    Owner.GetComponent<EnemyUnit>().agent.angularSpeed = 60;
+                    Owner.GetComponent<EnemyUnit>().agent.SetDestination(tempPlayerPosition);
 
                     if (Vector3.Distance(Owner.transform.position, Owner.GetComponent<EnemyUnit>().Target.position)
                         > Owner.GetComponent<EnemyUnit>().viewDistance)
                     {
                         gotAway = true;
+                        //Owner.GetComponent<EnemyUnit>().speed = 1.5f;
                         moveTowardsPlayer = false;
                     }
                 }
@@ -92,7 +98,7 @@ namespace Invector.AI
 			//}
             if (gotAway)
             {
-                Owner.GetComponent<EnemyUnit>().StopAllCoroutines();
+                //Owner.GetComponent<EnemyUnit>().StopAllCoroutines();
                 Owner.GetComponent<EnemyUnit>().SetLastKnownPosition();
                 gotAway = false;
                 return Owner.GetComponent<EnemyUnit>().PerformTransition(AIStateType.GoToLastKnownPosition);
