@@ -133,7 +133,6 @@ namespace Invector
             {
                 _docAnimator.SetFloat("Speed", speed);
             }
-
             // If the enemy sees the player while the player
             // visible timer is less than the time to spot the player,
             // playerVisibleTimer is increased by Time.deltaTime.
