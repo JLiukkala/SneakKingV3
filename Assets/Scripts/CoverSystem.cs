@@ -9,6 +9,7 @@ namespace Invector.CharacterController
     public class CoverSystem : MonoBehaviour
     {
 
+        public float _peekOffset = 0.55f;
         public Transform Player;
         public float _rayHeight = 0.5f;
         public float _rayWidth = 0.5f;
@@ -129,7 +130,7 @@ namespace Invector.CharacterController
         {
             _motor.transform.position = Vector3.Lerp(_motor.transform.position, PosToMove, 4f * Time.deltaTime);
             _motor.transform.rotation = Quaternion.Slerp(_motor.transform.rotation, RotToMove, 4f * Time.deltaTime);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.25f);
             movedToCrouch = true;
         }
 
@@ -203,14 +204,14 @@ namespace Invector.CharacterController
             {
                     _motor.isPeeking = true;
                     PeekDir = true;
-                    vThirdPersonCamera.instance.rightOffset=Mathf.Lerp( vThirdPersonCamera.instance.rightOffset,  -0.75f,10*Time.deltaTime);
+                    vThirdPersonCamera.instance.rightOffset=Mathf.Lerp( vThirdPersonCamera.instance.rightOffset,  -_peekOffset,10*Time.deltaTime);
                   
             }
             else if (!_rightRay && _pMov > 0.5f)
             {
                     _motor.isPeeking = true;
                     PeekDir = false;
-                    vThirdPersonCamera.instance.rightOffset=Mathf.Lerp(vThirdPersonCamera.instance.rightOffset, 0.75f, 10 * Time.deltaTime);
+                    vThirdPersonCamera.instance.rightOffset=Mathf.Lerp(vThirdPersonCamera.instance.rightOffset, _peekOffset, 10 * Time.deltaTime);
 
             } else
             {

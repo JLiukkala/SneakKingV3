@@ -32,6 +32,12 @@ namespace Invector.CharacterController
         public KeyCode peekInput = KeyCode.Q;
         public KeyCode pickupInput = KeyCode.E;
 
+        [Header("Joystick Inputs")]
+        public string sprint = "Jump";
+        public string crouch = "Fire1";
+        public string hide = "Fire2";
+        public string pickup = "Fire3";
+
 
         [Header("Camera Settings")]
         public string rotateCameraXInput ="Mouse X";
@@ -130,13 +136,13 @@ namespace Invector.CharacterController
 
         protected virtual void CrouchInput()
         {
-            if (Input.GetKeyDown(crouchInput))
+            if (Input.GetKeyDown(crouchInput) || Input.GetButtonDown("Fire1"))
                 cc.Crouch();
         }
 
         protected virtual void HideInput()
         {
-            if (Input.GetKeyDown(hideInput))
+            if (Input.GetKeyDown(hideInput) || Input.GetButtonDown("Fire2"))
                 cc.Hide(cs._coverPos);
         }
 
@@ -148,7 +154,7 @@ namespace Invector.CharacterController
 
         protected virtual void PickupInput()
         {
-            if (Input.GetKeyDown(pickupInput))
+            if (Input.GetKeyDown(pickupInput) || Input.GetButtonDown("Fire3"))
                 cc.PickUp();
         }
 
@@ -160,15 +166,15 @@ namespace Invector.CharacterController
 
         protected virtual void SprintInput()
         {
-            if (Input.GetKeyDown(sprintInput))
+            if (Input.GetKeyDown(sprintInput) || Input.GetButtonDown("Jump"))
                 cc.Sprint(true);
-            else if(Input.GetKeyUp(sprintInput))
+            else if(Input.GetKeyUp(sprintInput) || Input.GetButtonUp("Jump"))
                 cc.Sprint(false);
         }
 
         protected virtual void JumpInput()
         {
-            if (Input.GetKeyDown(jumpInput))
+            if (Input.GetKeyDown(jumpInput) )
                 cc.Jump();
         }
 
