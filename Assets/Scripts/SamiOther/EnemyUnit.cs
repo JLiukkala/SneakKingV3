@@ -52,6 +52,8 @@ namespace Invector
 		public AIStateBase CurrentState { get; private set; }
 		// The player unit this enemy is trying to shoot at.
 		public Transform Target { get; set; }
+
+        private Animator _docAnimator;
 		
 		public Vector3? ToTargetVector
 		{
@@ -67,7 +69,13 @@ namespace Invector
 
 		public void Start()
 		{
+            if ( _docAnimator == null)
+            {
+                _docAnimator = GetComponent<Animator>();
+            }
+            
             Target = GameObject.FindGameObjectWithTag("Player").transform;
+
             viewAngle = visionCone.spotAngle;
             originalVisionConeColor = visionCone.color;
 
@@ -121,7 +129,11 @@ namespace Invector
 		protected void Update()
 		{
 			gameObject.GetComponent<EnemyUnit>().CurrentState.Update();
-            
+            if (_docAnimator!=null)
+            {
+                _docAnimator.SetFloat("Speed", speed);
+            }
+
             // If the enemy sees the player while the player
             // visible timer is less than the time to spot the player,
             // playerVisibleTimer is increased by Time.deltaTime.

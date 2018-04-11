@@ -74,7 +74,7 @@ namespace Invector.CharacterController
             Vector3 origin = Player.transform.position + offset;
             movedToCrouch = false;
             float distOffset = 0.5f;
-            Debug.DrawRay(origin, Player.transform.forward, Color.blue);
+            //Debug.DrawRay(origin, Player.transform.forward, Color.blue);
             _coverPos = Physics.Raycast(origin, Player.transform.forward, out hit, 2f, layer);
             if (_coverPos )
             {
@@ -106,12 +106,6 @@ namespace Invector.CharacterController
         }
 
 
-        public static void FixNormal(Vector3 position, ref RaycastHit hit, int layermask)
-        {
-            RaycastHit rayHit;
-            Physics.Raycast(position, hit.point - position, out rayHit, 2 * hit.distance, layermask);
-            hit.normal = rayHit.normal;
-        }
 
 
         /// <summary>
