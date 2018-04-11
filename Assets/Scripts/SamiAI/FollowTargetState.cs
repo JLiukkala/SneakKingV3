@@ -12,67 +12,56 @@ namespace Invector.AI
 
         public float waitTime = 0.5f;
 
+        EnemyUnit enemy;
+
 		public FollowTargetState( GameObject owner )
 			: base( owner, AIStateType.FollowTarget )
 		{
 			AddTransition( AIStateType.Patrol );
             AddTransition( AIStateType.GoToLastKnownPosition );
-        }
 
-        void Start()
-        {
-            //Owner = GameObject.Find("Enemy");
-            //if (GameObject.Find("EnemyMoving"))
-            //{
-            //    Owner = GameObject.Find("EnemyMoving");
-            //}
-            //if (GameObject.Find("EnemyNotMoving"))
-            //{
-            //    Owner = GameObject.Find("EnemyNotMoving");
-            //}
             if (Owner == null)
             {
                 Owner = GameObject.FindGameObjectWithTag("Enemy");
             }
+
+            enemy = Owner.GetComponent<EnemyUnit>();
         }
 
         public override void Update()
 		{
 			if ( !ChangeState() )
 			{
-                Vector3 tempPlayerPosition = new Vector3(Owner.GetComponent<EnemyUnit>().Target.position.x, 
-                    0, Owner.GetComponent<EnemyUnit>().Target.position.z);
+                Vector3 tempPlayerPosition = new Vector3(enemy.Target.position.x, 
+                    enemy.transform.position.y, enemy.Target.position.z);
 
-                if (Owner.GetComponent<EnemyUnit>().hasBeenNoticed) 
+                if (enemy.hasBeenNoticed) 
                 {
-                    Owner.GetComponent<EnemyUnit>().turnSpeed = 240;
-                    Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
-                    //Owner.GetComponent<EnemyUnit>().transform.LookAt(tempPlayerPosition);
-                    Owner.GetComponent<EnemyUnit>().StartCoroutine(WaitShort());
+                    enemy.turnSpeed = 240;
+                    enemy.StartCoroutine(TurnToFace(enemy.Target.position));
+                    //enemy.transform.LookAt(tempPlayerPosition);
+                    enemy.StartCoroutine(WaitShort());
                 }
 
-                //Owner.GetComponent<EnemyUnit>().transform.LookAt(tempPlayerPosition);
-                //Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
-                //Owner.GetComponent<EnemyUnit>().StartCoroutine(WaitShort());
+                //enemy.transform.LookAt(tempPlayerPosition);
+                //enemy.StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
+                //enemy.StartCoroutine(WaitShort());
 
                 if (moveTowardsPlayer)
                 {
-                    //Owner.GetComponent<EnemyUnit>().turnSpeed = 60;
-                    //Owner.GetComponent<EnemyUnit>().speed = 1.5f;
-                    Owner.GetComponent<EnemyUnit>().transform.LookAt(tempPlayerPosition);
-                    //Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
-                    //Owner.GetComponent<EnemyUnit>().transform.position = Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position,
-                    //    tempPlayerPosition,
-                    //        Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
-                    Owner.GetComponent<EnemyUnit>().agent.speed = 1.5f;
-                    Owner.GetComponent<EnemyUnit>().agent.angularSpeed = 60;
-                    Owner.GetComponent<EnemyUnit>().agent.SetDestination(tempPlayerPosition);
+                    enemy.transform.LookAt(tempPlayerPosition);
+                    //enemy.StartCoroutine(TurnToFace(enemy.Target.position));
+                    //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
+                    //    tempPlayerPosition, enemy.speed * Time.deltaTime);
+                    //enemy.turnSpeed = 60;
+                    enemy.agent.speed = 1.5f;
+                    enemy.agent.angularSpeed = 60;
+                    enemy.agent.SetDestination(tempPlayerPosition);
 
-                    if (Vector3.Distance(Owner.transform.position, Owner.GetComponent<EnemyUnit>().Target.position)
-                        > Owner.GetComponent<EnemyUnit>().viewDistance)
+                    if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
+                        > enemy.viewDistance)
                     {
                         gotAway = true;
-                        //Owner.GetComponent<EnemyUnit>().speed = 1.5f;
                         moveTowardsPlayer = false;
                     }
                 }
@@ -81,27 +70,14 @@ namespace Invector.AI
 
         private bool ChangeState()
 		{
-			// 1. Are we at the shooting range?
-			// If yes, go to shoot state.
-			//Vector3 toPlayerVector =
-			//	Owner.transform.position - Owner.Target.transform.position;
-			//float sqrDistanceToPlayer = toPlayerVector.sqrMagnitude;
-
 			// 2. Did the player get away?
 			// If yes, go to patrol state.
-			//if ( moveAgain )
-			//{
-			//	//Owner.GetComponent<EnemyUnit>().Target = null;
-   //             Owner.GetComponent<EnemyUnit>().StopAllCoroutines();
-
-   //             return Owner.GetComponent<EnemyUnit>().PerformTransition( AIStateType.Patrol );
-			//}
             if (gotAway)
             {
-                //Owner.GetComponent<EnemyUnit>().StopAllCoroutines();
-                Owner.GetComponent<EnemyUnit>().SetLastKnownPosition();
+                enemy.StopAllCoroutines();
+                enemy.SetLastKnownPosition();
                 gotAway = false;
-                return Owner.GetComponent<EnemyUnit>().PerformTransition(AIStateType.GoToLastKnownPosition);
+                return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
 			// Otherwise return false.
@@ -110,25 +86,25 @@ namespace Invector.AI
 
         IEnumerator TurnToFace(Vector3 lookTarget)
         {
-            Vector3 directionToLookTarget = (lookTarget - Owner.GetComponent<EnemyUnit>().transform.position).normalized;
+            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
             float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
                 directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(Owner.GetComponent<EnemyUnit>().transform.eulerAngles.y, targetAngle)) > 0.05f)
+            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
             {
-                float angle = Mathf.MoveTowardsAngle(Owner.GetComponent<EnemyUnit>().transform.eulerAngles.y, targetAngle,
-                    Owner.GetComponent<EnemyUnit>().turnSpeed * Time.deltaTime);
+                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+                    enemy.turnSpeed * Time.deltaTime);
 
-                Owner.GetComponent<EnemyUnit>().transform.eulerAngles = Vector3.up * angle;
+                enemy.transform.eulerAngles = Vector3.up * angle;
                 yield return null;
             }
         }
 
         IEnumerator WaitShort()
         {
-            Owner.GetComponent<EnemyUnit>().hasBeenNoticed = false;
+            enemy.hasBeenNoticed = false;
             yield return new WaitForSeconds(waitTime);
-            yield return Owner.GetComponent<EnemyUnit>().StartCoroutine(MoveTowardsPlayer());
+            yield return enemy.StartCoroutine(MoveTowardsPlayer());
         }
 
         IEnumerator MoveTowardsPlayer()

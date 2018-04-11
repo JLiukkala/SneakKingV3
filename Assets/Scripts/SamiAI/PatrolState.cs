@@ -10,7 +10,11 @@ namespace Invector.AI
 		private Direction _direction;
 		private float _arriveDistance;
 
+        EnemyUnit enemy;
+
 		public Waypoint CurrentWaypoint { get; private set; }
+
+        Vector3 currentWaypointWithoutY;
 
 		public PatrolState( GameObject owner, Path path,
 			Direction direction, float arriveDistance )
@@ -18,19 +22,12 @@ namespace Invector.AI
 		{
 			State = AIStateType.Patrol;
 
-            //Owner = GameObject.Find("EnemyMoving");
-            //if (GameObject.Find("EnemyMoving"))
-            //{
-            //    Owner = GameObject.Find("EnemyMoving");
-            //}
-            //if (GameObject.Find("EnemyNotMoving"))
-            //{
-            //    Owner = GameObject.Find("EnemyNotMoving");
-            //}
             if (Owner == null)
             {
                 Owner = GameObject.FindGameObjectWithTag("Enemy");
             }
+
+            enemy = Owner.GetComponent<EnemyUnit>();
 
             AddTransition( AIStateType.FollowTarget );
             AddTransition( AIStateType.GoToLastKnownPosition );
@@ -38,6 +35,11 @@ namespace Invector.AI
 			_direction = direction;
 			_arriveDistance = arriveDistance;
 		}
+
+        //void Start()
+        //{
+            //currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, 0, CurrentWaypoint.Position.z);
+        //}
 
 		public override void StateActivated()
 		{
@@ -56,16 +58,15 @@ namespace Invector.AI
                 //   2.1 If yes, get the next waypoint
                 CurrentWaypoint = GetWaypoint();
                 // 3. Move towards the current waypoint
-                Owner.GetComponent<EnemyUnit>().agent.speed = 0.2f;
-                Owner.GetComponent<EnemyUnit>().agent.angularSpeed = 10;
-                Owner.GetComponent<EnemyUnit>().transform.position = 
-                    Vector3.MoveTowards(Owner.GetComponent<EnemyUnit>().transform.position, 
-                        CurrentWaypoint.Position,
-                            Owner.GetComponent<EnemyUnit>().speed * Time.deltaTime);
-                Owner.GetComponent<EnemyUnit>().agent.SetDestination(CurrentWaypoint.Position);
+                enemy.agent.speed = 0.2f;
+                enemy.agent.angularSpeed = 10;
+                enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
+                        CurrentWaypoint.Position, enemy.speed * Time.deltaTime);
+                enemy.agent.SetDestination(CurrentWaypoint.Position);
+                currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
                 // 4. Rotate towards the current waypoint
-                Owner.GetComponent<EnemyUnit>().StartCoroutine(TurnToFace(CurrentWaypoint.Position));
-                //Owner.GetComponent<EnemyUnit>().transform.LookAt(CurrentWaypoint.Position);
+                //enemy.StartCoroutine(TurnToFace(CurrentWaypoint.Position));
+                enemy.transform.LookAt(currentWaypointWithoutY);
             }
 		}
 
@@ -85,15 +86,15 @@ namespace Invector.AI
 
 		private bool ChangeState()
 		{
-            if(Owner.GetComponent<EnemyUnit>().playerVisibleTimer >= 0.5f && 
-                Owner.GetComponent<EnemyUnit>().playerVisibleTimer <= 0.99f ||
-                    !Owner.GetComponent<EnemyUnit>().Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, Owner.GetComponent<EnemyUnit>().Target.position) < Owner.GetComponent<EnemyUnit>().hearDistance)
+            if(enemy.playerVisibleTimer >= 0.5f && 
+                enemy.playerVisibleTimer <= 0.99f ||
+                    !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
+                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
             {
-                Owner.GetComponent<EnemyUnit>().SetLastKnownPosition();
-                Owner.GetComponent<EnemyUnit>().StopAllCoroutines();
-                Owner.GetComponent<EnemyUnit>().hasBeenNoticed = true;
-                return Owner.GetComponent<EnemyUnit>().PerformTransition(AIStateType.FollowTarget);
+                //enemy.SetLastKnownPosition();
+                enemy.StopAllCoroutines();
+                enemy.hasBeenNoticed = true;
+                return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
             return false;
@@ -101,16 +102,16 @@ namespace Invector.AI
 
         IEnumerator TurnToFace(Vector3 lookTarget)
         {
-            Vector3 directionToLookTarget = (lookTarget - Owner.GetComponent<EnemyUnit>().transform.position).normalized;
+            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
             float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
                 directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(Owner.GetComponent<EnemyUnit>().transform.eulerAngles.y, targetAngle)) > 0.05f)
+            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
             {
-                float angle = Mathf.MoveTowardsAngle(Owner.GetComponent<EnemyUnit>().transform.eulerAngles.y, targetAngle,
-                    Owner.GetComponent<EnemyUnit>().turnSpeed * Time.deltaTime);
+                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+                    enemy.turnSpeed * Time.deltaTime);
 
-                Owner.GetComponent<EnemyUnit>().transform.eulerAngles = Vector3.up * angle;
+                enemy.transform.eulerAngles = Vector3.up * angle;
                 yield return null;
             }
         }
