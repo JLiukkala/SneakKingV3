@@ -55,7 +55,7 @@ namespace Invector.AI
 			{
                 enemy.StopAllCoroutines();
                 moveAgain = false;
-                enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                //enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 return enemy.PerformTransition( AIStateType.Patrol );
 			}
 			// Otherwise return false.
