@@ -52,7 +52,10 @@ public class PointOfInterestCamera : MonoBehaviour
         startTime = Time.time;
 
         _camera = GetComponent<vThirdPersonCamera>();
-        _pointOfInterestPosition = GameObject.Find("PointOfInterestPosition").transform;
+        if (hasPointOfInterest)
+        {
+            _pointOfInterestPosition = GameObject.Find("PointOfInterestPosition").transform;
+        }
 	}
 	
 	void Update ()
