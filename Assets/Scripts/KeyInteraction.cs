@@ -16,7 +16,10 @@ public class KeyInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        keyPickUpText.SetActive(true);
+        if (other.CompareTag("Player"))
+        {
+            keyPickUpText.SetActive(true);
+        }
     }
 
     // While staying inside the trigger collider,
@@ -30,7 +33,7 @@ public class KeyInteraction : MonoBehaviour
         // appears in the top-left corner of the screen.
         // The number of keys is then set to one plus the 
         // key object and trigger collider are destroyed.
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire3"))
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) || other.CompareTag("Player") && Input.GetButtonDown("Fire3"))
         {
             keyInteraction.SetActive(true);
             keyPickUpText.SetActive(false);

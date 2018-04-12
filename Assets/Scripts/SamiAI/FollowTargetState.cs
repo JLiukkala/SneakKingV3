@@ -54,7 +54,7 @@ namespace Invector.AI
                     //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
                     //    tempPlayerPosition, enemy.speed * Time.deltaTime);
                     //enemy.turnSpeed = 60;
-                    enemy.agent.speed = 0.8f;
+                    enemy.agent.speed = 0.15f;
                     enemy.agent.angularSpeed = 60;
                     enemy.agent.SetDestination(tempPlayerPosition);
 
