@@ -45,6 +45,9 @@ namespace Invector
         [HideInInspector]
         public bool hasBeenNoticed;
 
+        [HideInInspector]
+        public bool goToAlertMode = false; 
+
         public NavMeshAgent agent;
 
         private IList<AIStateBase> _states = new List< AIStateBase >();

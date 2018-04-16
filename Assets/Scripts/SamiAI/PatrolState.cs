@@ -58,6 +58,18 @@ namespace Invector.AI
                 //   2.1 If yes, get the next waypoint
                 CurrentWaypoint = GetWaypoint();
                 // 3. Move towards the current waypoint
+
+                if (enemy.goToAlertMode)
+                {
+                    enemy.hearDistance = 8;
+                    enemy.viewDistance = 11;
+                } 
+                else
+                {
+                    enemy.hearDistance = 6;
+                    enemy.viewDistance = 8;
+                }
+
                 enemy.agent.speed = 0.2f;
                 enemy.agent.angularSpeed = 10;
                 enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
