@@ -19,6 +19,7 @@ namespace Invector.AI
 		{
 			AddTransition( AIStateType.Patrol );
             AddTransition( AIStateType.GoToLastKnownPosition );
+            AddTransition( AIStateType.GoToNoiseArea );
 
             if (Owner == null)
             {

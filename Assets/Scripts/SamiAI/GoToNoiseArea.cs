@@ -1,24 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 namespace Invector.AI
 {
-	public class GoToLastKnownPositionState : AIStateBase
-	{
+    public class GoToNoiseArea : AIStateBase
+    {
         public bool moveAgain;
-
-        //public bool hasWaited;
-
-        public float waitTime = 5f;
-
+        public float waitTime = 8f;
         EnemyUnit enemy;
 
-		public GoToLastKnownPositionState( GameObject owner )
-			: base( owner, AIStateType.GoToLastKnownPosition )
-		{
-            AddTransition( AIStateType.FollowTarget );
-            AddTransition( AIStateType.Patrol );
-            AddTransition( AIStateType.GoToNoiseArea );
+        public GoToNoiseArea(GameObject owner)
+            : base(owner, AIStateType.GoToNoiseArea)
+        {
+            AddTransition(AIStateType.FollowTarget);
+            AddTransition(AIStateType.Patrol);
+            AddTransition(AIStateType.GoToLastKnownPosition);
 
             if (Owner == null)
             {
@@ -29,40 +26,41 @@ namespace Invector.AI
         }
 
         public override void Update()
-		{
-			if ( !ChangeState() )
-			{
-                Vector3 tempLastPlayerPosition = new Vector3(enemy.lastPositionOfPlayer.x, 
-                    enemy.transform.position.y, enemy.lastPositionOfPlayer.z);
+        {
+            if (!ChangeState())
+            {
+                Vector3 tempNoiseAreaPosition = new Vector3(enemy.noiseArea.position.x,
+                    enemy.transform.position.y, enemy.noiseArea.position.z);
 
                 //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
                 //    tempLastPlayerPosition, 
                 //        enemy.speed * Time.deltaTime);
-                enemy.agent.SetDestination(tempLastPlayerPosition);
+                enemy.agent.SetDestination(tempNoiseAreaPosition);
                 //enemy.transform.position = new Vector3(enemy.transform.position.x,
                 //     1.1f, enemy.transform.position.z);
                 //enemy.transform.LookAt(enemy.lastPositionOfPlayer);
 
-                enemy.StartCoroutine(TurnToFace(enemy.lastPositionOfPlayer));
+                enemy.StartCoroutine(TurnToFace(enemy.noiseArea.position));
                 enemy.StartCoroutine(Wait());
             }
-		}
+        }
 
         private bool ChangeState()
-		{
-			// 2. Did the player get away?
-			// If yes, go to patrol state.
-			if ( moveAgain )
-			{
+        {
+            // 2. Did the player get away?
+            // If yes, go to patrol state.
+            if (moveAgain)
+            {
                 enemy.StopAllCoroutines();
                 moveAgain = false;
                 enemy.goToAlertMode = true;
+                enemy.heardNoise = false;
                 //enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                return enemy.PerformTransition( AIStateType.Patrol );
-			}
-			// Otherwise return false.
-			return false;
-		}
+                return enemy.PerformTransition(AIStateType.Patrol);
+            }
+            // Otherwise return false.
+            return false;
+        }
 
         IEnumerator TurnToFace(Vector3 lookTarget)
         {

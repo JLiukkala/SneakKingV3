@@ -46,7 +46,23 @@ namespace Invector
         public bool hasBeenNoticed;
 
         [HideInInspector]
-        public bool goToAlertMode = false; 
+        public bool goToAlertMode = false;
+
+        [HideInInspector]
+        public bool heardNoise = false;
+
+        public bool isStandingStill;
+
+        public bool hasNoiseArea;
+
+        [HideInInspector]
+        public Transform noiseArea;
+        
+        [HideInInspector]
+        public float time;
+
+        [HideInInspector]
+        public float waitTime = 6;
 
         public NavMeshAgent agent;
 
@@ -81,6 +97,11 @@ namespace Invector
 
             viewAngle = visionCone.spotAngle;
             originalVisionConeColor = visionCone.color;
+
+            if (hasNoiseArea)
+            {
+                noiseArea = GameObject.Find("NoiseArea").transform;
+            }
 
             // Initializes the state system.
             InitStates();
@@ -124,6 +145,9 @@ namespace Invector
 
             GoToLastKnownPositionState goToLastKnownPosition = new GoToLastKnownPositionState(GameObject.FindGameObjectWithTag("Enemy"));
             _states.Add(goToLastKnownPosition);
+
+            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(GameObject.FindGameObjectWithTag("Enemy"));
+            _states.Add(goToNoiseArea);
 
             CurrentState = patrol;
 			CurrentState.StateActivated();

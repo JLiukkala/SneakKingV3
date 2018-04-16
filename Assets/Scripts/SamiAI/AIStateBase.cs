@@ -9,7 +9,8 @@ namespace Invector.AI
 		Error = 0,
 		Patrol = 1,
 		FollowTarget = 2,
-        GoToLastKnownPosition = 3
+        GoToLastKnownPosition = 3,
+        GoToNoiseArea = 4
 	}
 
 	public abstract class AIStateBase

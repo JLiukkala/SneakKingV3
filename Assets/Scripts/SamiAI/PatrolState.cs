@@ -31,6 +31,7 @@ namespace Invector.AI
 
             AddTransition( AIStateType.FollowTarget );
             AddTransition( AIStateType.GoToLastKnownPosition );
+            AddTransition( AIStateType.GoToNoiseArea );
             _path = path;
 			_direction = direction;
 			_arriveDistance = arriveDistance;
@@ -54,6 +55,11 @@ namespace Invector.AI
 
 			if ( !ChangeState() )
 			{
+                if (enemy.isStandingStill)
+                {
+                    enemy.time += Time.deltaTime;
+                }
+
                 // 2. Are we close enough the current waypoint?
                 //   2.1 If yes, get the next waypoint
                 CurrentWaypoint = GetWaypoint();
@@ -90,7 +96,18 @@ namespace Invector.AI
 			float sqrArriveDistance = _arriveDistance * _arriveDistance;
 			if ( toWaypointSqr <= sqrArriveDistance )
 			{
-				result = _path.GetNextWaypoint( CurrentWaypoint, ref _direction );
+                if (enemy.isStandingStill)
+                {
+                    if (enemy.time >= enemy.waitTime)
+                    {
+                        result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
+                        enemy.time = 0;
+                    }
+                }
+                else
+                {
+                    result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
+                }
 			}
 
 			return result;
@@ -106,7 +123,15 @@ namespace Invector.AI
                 //enemy.SetLastKnownPosition();
                 enemy.StopAllCoroutines();
                 enemy.hasBeenNoticed = true;
+                enemy.time = 0;
                 return enemy.PerformTransition(AIStateType.FollowTarget);
+            }
+
+            if (enemy.heardNoise)
+            {
+                enemy.StopAllCoroutines();
+                enemy.time = 0;
+                return enemy.PerformTransition(AIStateType.GoToNoiseArea);
             }
 
             return false;
