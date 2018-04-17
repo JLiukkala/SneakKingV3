@@ -34,12 +34,9 @@ namespace Invector
         {
             if (enemy.hasNoiseArea)
             {
-                if (other.CompareTag("Player"))
-                {
-                    enemy.heardNoise = true;
-                    audio.Play();
-                    audio.Play(44100);
-                }
+                enemy.heardNoise = true;
+                audio.Play();
+                audio.Play(44100);
             }
         }
     }

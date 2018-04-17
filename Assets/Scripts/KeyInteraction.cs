@@ -6,7 +6,10 @@ public class KeyInteraction : MonoBehaviour
 {
     // References that are needed.
     public GameObject keyInteraction;
+
+    [HideInInspector]
     public GameObject keyObject;
+
     public GameObject keyPickUpText;
 
     // The number of keys that the player has.
@@ -14,12 +17,14 @@ public class KeyInteraction : MonoBehaviour
     [HideInInspector]
     public int numberOfKeys = 0;
 
+    void Start()
+    {
+        keyObject = GameObject.Find("Key");
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            keyPickUpText.SetActive(true);
-        }
+        keyPickUpText.SetActive(true);
     }
 
     // While staying inside the trigger collider,
@@ -33,7 +38,7 @@ public class KeyInteraction : MonoBehaviour
         // appears in the top-left corner of the screen.
         // The number of keys is then set to one plus the 
         // key object and trigger collider are destroyed.
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) || other.CompareTag("Player") && Input.GetButtonDown("Fire3"))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire3"))
         {
             keyInteraction.SetActive(true);
             keyPickUpText.SetActive(false);
@@ -48,9 +53,6 @@ public class KeyInteraction : MonoBehaviour
     // If the player exits the trigger, the text is set inactive.
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            keyPickUpText.SetActive(false);
-        }
+        keyPickUpText.SetActive(false);
     }
 }

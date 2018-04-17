@@ -8,17 +8,11 @@ public class Scene5Tutorial : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            crouchAndHideTutorial.SetActive(true);
-        }
+        crouchAndHideTutorial.SetActive(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            crouchAndHideTutorial.SetActive(false);
-        }
+        crouchAndHideTutorial.SetActive(false);
     }
 }

@@ -16,7 +16,10 @@ public class Transition : MonoBehaviour
     public Animator anim;
 
     // The collider for a key (if the scene has one).
+    [HideInInspector]
     public GameObject keyCollider;
+
+    KeyInteraction keyInteraction;
 
     // The text that appears when the player 
     // steps in front of a locked door. 
@@ -26,32 +29,41 @@ public class Transition : MonoBehaviour
     // a key is needed to open the door.
     public bool isLocked = false;
 
+    bool transition;
+
+    void Start()
+    {
+        if (isLocked)
+        {
+            keyCollider = GameObject.Find("KeyCollider");
+            keyInteraction = keyCollider.GetComponent<KeyInteraction>();
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         // If the door is locked and needs a key to open it, 
         // a message is displayed to the player about that. 
         if (isLocked)
         {
-            if (keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
+            if (keyInteraction.numberOfKeys == 1)
             {
                 doorLockedText.SetActive(false);
             }
             else
             {
-                doorLockedText.SetActive(true);
+                if (transition)
+                {
+                    doorLockedText.SetActive(false);
+                } else
+                {
+                    doorLockedText.SetActive(true);
+                }
             }
-
-            //// If the player is inside the collider and has a key, the transition occurs.
-            //if (other.CompareTag("Player") && keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
-            //{
-            //    StartCoroutine(Fading());
-            //    keyCollider.GetComponent<KeyInteraction>().numberOfKeys = 0;
-            //    doorLockedText.SetActive(false);
-            //}
         }
-        // This is for when isLocked is set to false (the door is not locked).
-        else if (other.CompareTag("Player"))
+        else
         {
+            // This is for when isLocked is set to false (the door is not locked).
             StartCoroutine(Fading());
         }
     }
@@ -61,10 +73,11 @@ public class Transition : MonoBehaviour
         if (isLocked)
         {
             // If the player is inside the collider and has a key, the transition occurs.
-            if (other.CompareTag("Player") && keyCollider.GetComponent<KeyInteraction>().numberOfKeys == 1)
+            if (keyInteraction.numberOfKeys == 1)
             {
+                transition = true;
                 StartCoroutine(Fading());
-                keyCollider.GetComponent<KeyInteraction>().numberOfKeys = 0;
+                keyInteraction.numberOfKeys = 0;
                 doorLockedText.SetActive(false);
             }
         }
@@ -74,10 +87,7 @@ public class Transition : MonoBehaviour
     {
         // When the player leaves the collider, the text 
         // related to the door being locked is set as inactive.
-        if (other.CompareTag("Player"))
-        {
-            doorLockedText.SetActive(false);
-        }
+        doorLockedText.SetActive(false);
     }
 
     // This is the method that does the fadein and loads the next scene.

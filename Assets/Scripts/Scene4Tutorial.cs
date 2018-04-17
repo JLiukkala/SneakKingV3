@@ -8,17 +8,11 @@ public class Scene4Tutorial : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            sprintTutorial.SetActive(true);
-        }
+        sprintTutorial.SetActive(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            sprintTutorial.SetActive(false);
-        }
+        sprintTutorial.SetActive(false);
     }
 }

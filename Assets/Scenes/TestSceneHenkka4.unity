@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 202222057}
   - component: {fileID: 202222058}
   - component: {fileID: 202222059}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SprintTutorialCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6485,6 +6485,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1715457714861806, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
   m_IsPrefabParent: 0
@@ -7250,7 +7254,7 @@ GameObject:
   - component: {fileID: 1263624165}
   - component: {fileID: 1263624164}
   - component: {fileID: 1263624163}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Page Collider
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -9125,7 +9129,7 @@ GameObject:
   - component: {fileID: 1538334766}
   - component: {fileID: 1538334765}
   - component: {fileID: 1538334767}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: KeyCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10018,7 +10022,7 @@ GameObject:
   - component: {fileID: 1690715844}
   - component: {fileID: 1690715843}
   - component: {fileID: 1690715842}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Room Transition
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
