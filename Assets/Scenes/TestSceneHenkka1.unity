@@ -1159,7 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557593949}
   - component: {fileID: 557593948}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: KeyCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4415,7 +4415,7 @@ GameObject:
   - component: {fileID: 1572321388}
   - component: {fileID: 1572321387}
   - component: {fileID: 1572321390}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Locked Door Collider
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -5066,6 +5066,10 @@ Prefab:
       propertyPath: jumpInput
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1715457714861806, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
   m_IsPrefabParent: 0
@@ -5167,7 +5171,7 @@ GameObject:
   - component: {fileID: 1984933108}
   - component: {fileID: 1984933107}
   - component: {fileID: 1984933106}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Room Transition
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}

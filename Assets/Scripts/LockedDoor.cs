@@ -13,10 +13,7 @@ public class LockedDoor : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            audio.Play();
-            audio.Play(44100);
-        }
+        audio.Play();
+        audio.Play(44100);
     }
 }
