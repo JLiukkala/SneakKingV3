@@ -1260,7 +1260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715457714861806}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -19.12, y: 0.023, z: -23.22}
+  m_LocalPosition: {x: 3, y: 0.023, z: 18.69}
   m_LocalScale: {x: 0.14570926, y: 0.14570928, z: 0.14570928}
   m_Children:
   - {fileID: 4743893145659146}
@@ -1381,12 +1381,12 @@ MonoBehaviour:
   jumpHeight: 4
   useRootMotion: 0
   freeWalkSpeed: 2
-  freeRunningSpeed: 2.5
-  freeSprintSpeed: 3
+  freeRunningSpeed: 3.4
+  freeSprintSpeed: 4.1
   strafeWalkSpeed: 2
   strafeRunningSpeed: 2.5
   strafeSprintSpeed: 3
-  crouchSpeed: 1
+  crouchSpeed: 1.5
   stepOffsetEnd: 0.45
   stepOffsetStart: 0.05
   stepSmooth: 4
