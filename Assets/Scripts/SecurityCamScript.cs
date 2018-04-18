@@ -11,6 +11,7 @@ namespace Invector.CharacterController
         public Transform _cameraStand;
         public Transform _cameraLens;
 
+
         [Tooltip("Camera rotates based on positive and negative versions of this value.")]
         public float _rotationAngle = 30;
 
@@ -31,6 +32,8 @@ namespace Invector.CharacterController
         private float viewAngle;
         private float playerVisibleTimer;
 
+        
+
 
         Quaternion _targetRotation;
 
@@ -46,6 +49,7 @@ namespace Invector.CharacterController
             player = GameObject.FindGameObjectWithTag("Player").transform;
             viewAngle = visionCone.spotAngle;
             originalVisionConeColor = visionCone.color;
+            
         }
 
       
@@ -86,6 +90,7 @@ namespace Invector.CharacterController
 
                 GameUI._losingStatement = true;
                 Debug.Log("SpottedPlayer");
+
                 //}
             }
 
