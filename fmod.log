@@ -4,11 +4,11 @@
 [LOG] SystemI::init                            : Initialize version=11004 (93853), maxchannels=1024, flags=0x00030000
 [LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
 [LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
+[LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 10.67ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000000045E5C828 isAsync 1 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000000640135F8 isAsync 1 updatePeriod 0.02
 [LOG] Thread::initThread                       : Init FMOD Studio update thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
@@ -23,112 +23,246 @@
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] SystemI::createSound                     : filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 00000000550DB028 : node = 0000000045B22290
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000045E988F8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000000550DB028
+[LOG] SystemI::createSound                     : setdata soundi = 0000000012DDAB18 : node = 000000000F8646A0
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDAB18
 [LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2675136
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23168
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000045B223A8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F8647B8
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
 [LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     :     setdata soundi = 00000000550DB1D8 : node = 0000000045B223E0
-[LOG] SystemI::createSound                     :     add node to async list : head = 0000000045E988F8.  list count = 0
+[LOG] SystemI::createSound                     :     setdata soundi = 0000000012DDB1D8 : node = 000000000F865660
+[LOG] SystemI::createSound                     :     add node to async list : head = 0000000042514B68.  list count = 0
 [LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
 [LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     :     setdata soundi = 00000000550DAE78 : node = 0000000045B21420
-[LOG] SystemI::createSound                     :     add node to async list : head = 0000000045E988F8.  list count = 1
-[LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
-[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     :     setdata soundi = 00000000550DB388 : node = 0000000045B20700
-[LOG] SystemI::createSound                     :     add node to async list : head = 0000000045E988F8.  list count = 2
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000000550DB028
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000000550DB1D8
+[LOG] SystemI::createSound                     :     setdata soundi = 0000000012DDE478 : node = 000000000F864400
+[LOG] SystemI::createSound                     :     add node to async list : head = 0000000042514B68.  list count = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Espionage done right', format=2, channels=2, frequency=48000, lengthbytes=749792, lengthpcm=3024352, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.678253.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDAB18
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB1D8
 [LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2675136
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23168
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000045B224F8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F865778
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000000550DB1D8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000000550DAE78
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB1D8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDE478
 [LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2675136
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23168
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000045B21538
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864518
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000000550DAE78
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000000550DB388
-[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2675136
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23168
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000045B20818
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000000550DB388
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDE478
+[LOG] SoundI::getSubSound                      : sound 0000000012DDAB18.  Subsound index 0 / 1
+[LOG] SoundI::getSubSound                      : sound 0000000012DDB1D8.  Subsound index 0 / 1
+[LOG] SoundI::getSubSound                      : sound 0000000012DDE478.  Subsound index 0 / 1
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000068FDF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FECF09E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FECF09E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FECF09E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FECF09E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000006370BBD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='wood01', format=2, channels=2, frequency=48000, lengthbytes=3072, lengthpcm=11738, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.090729.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000068FDF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FECF09E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FECF09E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FECF09E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FECF09E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000006370BBD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='wood02', format=2, channels=2, frequency=48000, lengthbytes=3072, lengthpcm=11738, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.051178.
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB538
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB538
 [LOG] SystemI::createSound                     : filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000000055C5BD68 : node = 0000000045B216C0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000000045E988F8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000055C5BD68
-[LOG] SoundI::getSubSound                      : sound 00000000550DB028.  Subsound index 0 / 1
+[LOG] SystemI::createSound                     : setdata soundi = 0000000012DDB898 : node = 000000000F8647F0
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB898
 [LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 2675136
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 23168
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SoundI::getSubSound                      :     sound 00000000550DB1D8.  Subsound index 0 / 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000000045B217D8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864908
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SoundI::getSubSound                      :     sound 00000000550DAE78.  Subsound index 0 / 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 8500
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='siren', format=2, channels=2, frequency=48000, lengthbytes=447200, lengthpcm=1983634, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.477142.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB898
+[LOG] SoundI::getSubSound                      : sound 0000000012DDB898.  Subsound index 0 / 1
+[LOG] SystemI::createSound                     : filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 0000000012DDE628 : node = 000000000F864550
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDE628
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSound                     :     setdata soundi = 0000000012DDBBF8 : node = 000000000F864BE0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864668
+[LOG] SystemI::createSound                     :     add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SoundI::getSubSound                      :     sound 00000000550DB388.  Subsound index 0 / 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Wind,Ext,Breeze,Grass,Tall,Rustle,Buffeting', format=2, channels=2, frequency=48000, lengthbytes=1474528, lengthpcm=5319412, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.211108.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000055C5BD68
-[LOG] SoundI::getSubSound                      : sound 0000000055C5BD68.  Subsound index 0 / 1
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000055155C48
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000055155C48
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000000005558F1A8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000000005558F1A8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000055155A98
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000055155A98
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000055155DF8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000055155DF8
-[LOG] SoundI::release                          : Wind,Ext,Breeze,Grass,Tall,Rustle,Buffeting (0000000055C5BD68)
-[LOG] SoundI::release                          :     Wind,Ext,Breeze,Grass,Tall,Rustle,Buffeting (0000000045E97DE8)
-[LOG] SoundI::release                          :     Wind,Ext,Breeze,Grass,Tall,Rustle,Buffeting (000000005558EC98)
-[LOG] SoundI::release                          : electric_hum_buzz_01 (00000000550DB388)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000045E975C8)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (000000005558F1A8)
-[LOG] SoundI::release                          : electric_hum_buzz_01 (00000000550DAE78)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000045E997E8)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000055155DF8)
-[LOG] SoundI::release                          : electric_hum_buzz_01 (00000000550DB1D8)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000045E99168)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000055155C48)
-[LOG] SoundI::release                          : electric_hum_buzz_01 (00000000550DB028)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000045E98468)
-[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000055155A98)
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDE628
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDBBF8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864CF8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDBBF8
+[LOG] SoundI::getSubSound                      : sound 0000000012DDE628.  Subsound index 0 / 1
+[LOG] SoundI::getSubSound                      : sound 0000000012DDBBF8.  Subsound index 0 / 1
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDE478)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000042514398)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDA968)
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDB1D8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000042514538)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDB538)
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDAE78
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDAE78
+[LOG] SoundI::release                          : siren (0000000012DDB898)
+[LOG] SoundI::release                          :     siren (000000005F3AF6C8)
+[LOG] SoundI::release                          :     siren (0000000012DDDDB8)
+[LOG] SystemI::createSound                     : filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 0000000012DDB898 : node = 000000000F8647F0
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB898
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864908
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 8500
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='siren', format=2, channels=2, frequency=48000, lengthbytes=447200, lengthpcm=1983634, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.477142.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB898
+[LOG] SoundI::getSubSound                      : sound 0000000012DDB898.  Subsound index 0 / 1
+[LOG] SystemI::createSound                     : filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 0000000012DDB1D8 : node = 000000000F865660
+[LOG] SystemI::createSound                     : add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB1D8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F865778
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     :     setdata soundi = 0000000012DDB538 : node = 000000000F864400
+[LOG] SystemI::createSound                     :     add node to async list : head = 0000000042514B68.  list count = 0
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
+[LOG] SystemI::createSound                     :     filename = Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     :     setdata soundi = 0000000012DDA968 : node = 000000000F864D30
+[LOG] SystemI::createSound                     :     add node to async list : head = 0000000042514B68.  list count = 1
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB1D8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDB538
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864518
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Espionage done right', format=2, channels=2, frequency=48000, lengthbytes=749792, lengthpcm=3024352, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.678253.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDB538
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000000012DDA968
+[LOG] SystemI::createSoundInternal             :     Create name='Assets\fmod_project\Asylum\Build\Desktop/Master Bank.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3873056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26080
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000000000F864E48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='electric_hum_buzz_01', format=2, channels=2, frequency=48000, lengthbytes=219616, lengthpcm=561946, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.080505.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000000012DDA968
+[LOG] SoundI::getSubSound                      : sound 0000000012DDB538.  Subsound index 0 / 1
+[LOG] SoundI::getSubSound                      : sound 0000000012DDB1D8.  Subsound index 0 / 1
+[LOG] SoundI::getSubSound                      : sound 0000000012DDA968.  Subsound index 0 / 1
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDBBF8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (000000005F3AF1E8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDB388)
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDE628)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (000000005F3AF388)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDAE78)
+[LOG] SoundI::release                          : Espionage done right (0000000012DDAB18)
+[LOG] SoundI::release                          :     Espionage done right (0000000059AA7888)
+[LOG] SoundI::release                          :     Espionage done right (0000000012DDBF58)
+[LOG] SoundI::release                          : siren (0000000012DDB898)
+[LOG] SoundI::release                          :     siren (000000005F3AFA08)
+[LOG] SoundI::release                          :     siren (0000000012DDDDB8)
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDB1D8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (000000005F3AFBA8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDE478)
+[LOG] SoundI::release                          : electric_hum_buzz_01 (0000000012DDA968)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (000000005F3AFEE8)
+[LOG] SoundI::release                          :     electric_hum_buzz_01 (0000000012DDC618)
+[LOG] SoundI::release                          : Espionage done right (0000000012DDB538)
+[LOG] SoundI::release                          :     Espionage done right (000000005F3AFD48)
+[LOG] SoundI::release                          :     Espionage done right (0000000012DDC468)
+[LOG] SoundI::release                          :  (0000000012DEF208)
+[LOG] SoundI::release                          :     wood01 (0000000041B10128)
+[LOG] SoundI::release                          :  (0000000012DEF4E8)
+[LOG] SoundI::release                          :     wood02 (0000000058FC7148)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients

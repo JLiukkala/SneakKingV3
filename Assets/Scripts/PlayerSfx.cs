@@ -32,7 +32,6 @@ public class PlayerSfx : MonoBehaviour {
 
         if (FootstepEvent != null)
         {
-            Debug.Log("here");
             
             _stepEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
             
