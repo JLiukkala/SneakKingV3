@@ -12085,6 +12085,7 @@ GameObject:
   - component: {fileID: 1544865188}
   - component: {fileID: 1544865187}
   - component: {fileID: 1544865193}
+  - component: {fileID: 1544865194}
   m_Layer: 0
   m_Name: vThirdPersonCamera
   m_TagString: MainCamera
@@ -12152,7 +12153,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1544865186}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1544865190
 Behaviour:
   m_ObjectHideFlags: 0
@@ -12221,6 +12222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 82535f3f2bbdda64cb58211ffadefa7a, type: 2}
+--- !u!114 &1544865194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1544865186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1001 &1550178573
 Prefab:
   m_ObjectHideFlags: 0

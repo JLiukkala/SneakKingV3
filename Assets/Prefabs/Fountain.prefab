@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4239598291553584}
-  - component: {fileID: 136765294559230842}
   m_Layer: 8
   m_Name: Fountain
   m_TagString: Untagged
@@ -55,7 +54,6 @@ GameObject:
   - component: {fileID: 4827581728429804}
   - component: {fileID: 33556610707801202}
   - component: {fileID: 23564469522436356}
-  - component: {fileID: 65516384983413102}
   m_Layer: 8
   m_Name: WaterPlane
   m_TagString: Untagged
@@ -107,7 +105,6 @@ GameObject:
   - component: {fileID: 4646598726066510}
   - component: {fileID: 33514952726206290}
   - component: {fileID: 23230253562693764}
-  - component: {fileID: 65305773166736050}
   m_Layer: 8
   m_Name: Cylinder002
   m_TagString: Untagged
@@ -122,8 +119,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295510935381872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.912794, y: -0.393, z: -15.396885}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -33.9, y: 0, z: -16.38}
+  m_LocalScale: {x: 2.7921538, y: 2.7921524, z: 2.7921524}
   m_Children:
   - {fileID: 4401860624592532}
   - {fileID: 4646598726066510}
@@ -403,30 +400,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016109895127850}
   m_Mesh: {fileID: 4300000, guid: f7258a59b9d12b843a8e22999a1e3b15, type: 3}
---- !u!65 &65305773166736050
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1816605028633222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.74955225, y: 0.7494646, z: 1.7792011}
-  m_Center: {x: -0.000000044703484, y: 0.000000014901165, z: 0.9598046}
---- !u!65 &65516384983413102
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356993826314476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2.224231, y: 2.2126207, z: 0}
-  m_Center: {x: -0.00269115, y: -0.003381015, z: 0}
 --- !u!65 &65605150617534052
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -439,16 +412,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.462308, y: 2.4620197, z: 0.2937647}
   m_Center: {x: 0, y: 0.00000011920932, z: 0.14688236}
---- !u!136 &136765294559230842
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1295510935381872}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.06
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}

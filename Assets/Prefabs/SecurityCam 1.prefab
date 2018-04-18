@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4499324643339898}
   - component: {fileID: 114567956051789834}
+  - component: {fileID: 114344187378300056}
   m_Layer: 0
   m_Name: SecurityCam 1
   m_TagString: Untagged
@@ -201,8 +202,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880068378317636}
-  m_LocalRotation: {x: -0, y: -0.060727026, z: -0, w: 0.9981544}
-  m_LocalPosition: {x: -26.82, y: 4.74, z: -28.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315590247770986}
@@ -425,6 +426,28 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114344187378300056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880068378317636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Objects/SecurityCam
+  PlayEvent: 1
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &114567956051789834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,7 +462,7 @@ MonoBehaviour:
   _cameraBody: {fileID: 4315590247770986}
   _cameraStand: {fileID: 4833215517873544}
   _cameraLens: {fileID: 4267391146041866}
-  _rotationAngle: 30
+  _rotationAngle: 20
   _rotationSpeed: 10
   timeToSpotPlayer: 0.5
   visionCone: {fileID: 108738030373897636}
