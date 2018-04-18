@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114434477610067796}
   - component: {fileID: 114096887080329764}
   - component: {fileID: 114256130148014434}
+  - component: {fileID: 114711915803582404}
   m_Layer: 0
   m_Name: vThirdPersonCamera
   m_TagString: MainCamera
@@ -38,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182293542004606}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -18.76, y: 6.84, z: -22.81}
+  m_LocalRotation: {x: -0.02233389, y: -0.9766285, z: 0.12666188, w: -0.17220585}
+  m_LocalPosition: {x: -44.7, y: 16, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.779, y: -200, z: 0}
 --- !u!20 &20775054533528106
 Camera:
   m_ObjectHideFlags: 1
@@ -53,8 +54,8 @@ Camera:
   m_GameObject: {fileID: 1182293542004606}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -108,7 +109,7 @@ MonoBehaviour:
   maximumZ: -30
   duration: 3
   t: 0
-  hasPointOfInterest: 1
+  hasPointOfInterest: 0
   hasReachedEnd: 0
 --- !u!114 &114256130148014434
 MonoBehaviour:
@@ -121,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 82535f3f2bbdda64cb58211ffadefa7a, type: 2}
+  profile: {fileID: 11400000, guid: 83ba6dd90f00c8e409767d3929941b39, type: 2}
 --- !u!114 &114434477610067796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +142,7 @@ MonoBehaviour:
   lockCamera: 0
   coverCamera: 0
   rightOffset: 0
-  defaultDistance: 3
+  defaultDistance: 8
   height: 1
   smoothFollow: 10
   xMouseSensitivity: 3
@@ -154,6 +155,18 @@ MonoBehaviour:
   currentStateName: 
   currentTarget: {fileID: 0}
   movementSpeed: {x: 0, y: 0}
+--- !u!114 &114711915803582404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182293542004606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a84d183f1b03cc4281308e7dd8145f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!124 &124578144133888012
 Behaviour:
   m_ObjectHideFlags: 1
