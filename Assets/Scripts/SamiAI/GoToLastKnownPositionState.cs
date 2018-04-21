@@ -9,7 +9,7 @@ namespace Invector.AI
 
         //public bool hasWaited;
 
-        public float waitTime = 5f;
+        public float waitTime = 3f;
 
         EnemyUnit enemy;
 
@@ -32,6 +32,7 @@ namespace Invector.AI
 		{
 			if ( !ChangeState() )
 			{
+                enemy.agent.speed = 2;
                 Vector3 tempLastPlayerPosition = new Vector3(enemy.lastPositionOfPlayer.x, 
                     enemy.transform.position.y, enemy.lastPositionOfPlayer.z);
 
@@ -57,6 +58,8 @@ namespace Invector.AI
                 enemy.StopAllCoroutines();
                 moveAgain = false;
                 enemy.goToAlertMode = true;
+                enemy.agent.speed = 0.2f;
+                enemy.transform.rotation = Quaternion.identity;
                 //enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 return enemy.PerformTransition( AIStateType.Patrol );
 			}

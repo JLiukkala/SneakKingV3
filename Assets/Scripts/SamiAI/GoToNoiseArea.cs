@@ -55,6 +55,7 @@ namespace Invector.AI
                 moveAgain = false;
                 enemy.goToAlertMode = true;
                 enemy.heardNoise = false;
+                enemy.agent.speed = 2f;
                 //enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 return enemy.PerformTransition(AIStateType.Patrol);
             }

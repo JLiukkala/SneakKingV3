@@ -50,12 +50,13 @@ namespace Invector.AI
 
                 if (moveTowardsPlayer)
                 {
+                    enemy.speed = 0.15f;
                     enemy.transform.LookAt(tempPlayerPosition);
                     //enemy.StartCoroutine(TurnToFace(enemy.Target.position));
                     //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
                     //    tempPlayerPosition, enemy.speed * Time.deltaTime);
                     //enemy.turnSpeed = 60;
-                    enemy.agent.speed = 0.15f;
+                    enemy.agent.speed = 0.01f;
                     enemy.agent.angularSpeed = 60;
                     enemy.agent.SetDestination(tempPlayerPosition);
 
@@ -78,6 +79,7 @@ namespace Invector.AI
                 enemy.StopAllCoroutines();
                 enemy.SetLastKnownPosition();
                 gotAway = false;
+                enemy.speed = 0.14f;
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 

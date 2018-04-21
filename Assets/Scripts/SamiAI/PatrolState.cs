@@ -45,6 +45,7 @@ namespace Invector.AI
 		public override void StateActivated()
 		{
 			base.StateActivated();
+            enemy.transform.rotation = Quaternion.identity;
 			CurrentWaypoint = _path.GetClosestWaypoint( Owner.transform.position );
 		}
 
@@ -106,6 +107,7 @@ namespace Invector.AI
                 }
                 else
                 {
+                    enemy.transform.rotation = Quaternion.identity;
                     result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
                 }
 			}
