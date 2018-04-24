@@ -166,7 +166,7 @@ public class vThirdPersonCamera : MonoBehaviour
             //lockCamera = true;
             //mouseX = 0;
             mouseY = 0;
-            defaultDistance = 8f;
+            defaultDistance = 5f;
             height = 5;
             //mouseX = currentTarget.root.localEulerAngles.x;
             //mouseY = currentTarget.root.localEulerAngles.y;

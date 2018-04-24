@@ -26,9 +26,12 @@ MonoBehaviour:
   - {fileID: 114015564456210274}
   - {fileID: 114830908362703322}
   - {fileID: 114409037469410534}
+  - {fileID: 114552326068399704}
+  - {fileID: 114337676142449762}
+  - {fileID: 114186299108792350}
   MasterBankRef: {fileID: 114581898615117268}
   StringsBankRef: {fileID: 114049505062887976}
-  stringsBankWriteTime: 636597635776671326
+  stringsBankWriteTime: 636601894978403730
   cacheVersion: 2
 --- !u!114 &114007152836086324
 MonoBehaviour:
@@ -123,12 +126,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\fmod_project\Asylum\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636597635776671326
+  lastModified: 636601894978403730
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1212
+    Value: 1352
   Exists: 1
+--- !u!114 &114067830889785642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114131552660521460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +169,28 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 11400
+--- !u!114 &114186299108792350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Environment/SilencedHill
+  guid: 8f63bcd55cf5cb47943c6b0f28208873
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 868989
 --- !u!114 &114202753982173886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +273,43 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114333403307888270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114337676142449762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Heartbeat2D
+  guid: 520599896419b046af960db19eec1241
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1800
 --- !u!114 &114367059840822616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +399,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114504134673536862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114516764565620234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,10 +455,32 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114475623403625630}
+  - {fileID: 114504134673536862}
   MinDistance: 0
   MaxDistance: 0
   Length: 244
+--- !u!114 &114552326068399704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Heartbeat
+  guid: 0fdec1e7ca375d478013aead93664f01
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &114581898615117268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,12 +494,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:\Unity\Projects\SneakKingV3\Assets\fmod_project\Asylum\Build\Desktop\Master
     Bank.bank
-  lastModified: 636597635776661325
+  lastModified: 636601894978393730
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 4076352
+    Value: 13674080
   Exists: 1
+--- !u!114 &114796886281944416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114807504807656650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114830908362703322
 MonoBehaviour:
   m_ObjectHideFlags: 0
