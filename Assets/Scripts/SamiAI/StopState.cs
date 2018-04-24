@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace Invector.AI
 {
-    public class GoToNoiseArea : AIStateBase
+    public class StopState : AIStateBase
     {
         private float time = 0;
-        public float waitTime = 4f;
+        public float waitTime = 1f;
 
         EnemyUnit enemy;
 
-        public GoToNoiseArea(GameObject owner)
-            : base(owner, AIStateType.GoToNoiseArea)
+        public StopState(GameObject owner)
+            : base(owner, AIStateType.Stop)
         {
-            State = AIStateType.GoToNoiseArea;
+            State = AIStateType.Stop;
 
+            AddTransition( AIStateType.Patrol );
             AddTransition( AIStateType.FollowTarget );
-            AddTransition( AIStateType.Stop );
 
             if (Owner == null)
             {
@@ -31,13 +31,9 @@ namespace Invector.AI
         {
             if (!ChangeState())
             {
-                enemy.speed = 0.14f;
-
                 if (time < waitTime)
                 {
-                    enemy.heardNoise = false;
                     time += Time.deltaTime;
-                    enemy.agent.SetDestination(enemy.noiseArea.position);
                 }
             }
         }
@@ -45,13 +41,15 @@ namespace Invector.AI
         private bool ChangeState()
         {
             // 2. Did the player get away?
-            // If yes, go to stop state.
+            // If yes, go to patrol state.
             if (time >= waitTime)
             {
-                enemy.goToAlertMode = true;
                 time = 0;
-                Debug.Log("Do we stay here?");
-                return enemy.PerformTransition(AIStateType.Stop);
+                enemy.agent.speed = 0;
+                enemy.speed = 0;
+                enemy.transform.rotation = Quaternion.identity;
+                Debug.Log("Going back to patrolling!");
+                return enemy.PerformTransition(AIStateType.Patrol);
             }
 
             if (enemy.playerVisibleTimer >= 0.5f &&

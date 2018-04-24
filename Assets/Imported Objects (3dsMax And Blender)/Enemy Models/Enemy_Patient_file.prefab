@@ -966,7 +966,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1011017475875820}
   m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
-  m_LocalPosition: {x: 2.9, y: 10.6, z: 0}
+  m_LocalPosition: {x: 2.54, y: 10.47, z: -4.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4985481897638262}
@@ -1255,8 +1255,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157902779859868}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 33.17, y: -0.0122799575, z: -25.57}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 86.86, y: 0.03437285, z: -40.46}
   m_LocalScale: {x: 0.18, y: 0.17, z: 0.17}
   m_Children:
   - {fileID: 4334676669430490}
@@ -1264,7 +1264,7 @@ Transform:
   - {fileID: 4445453061175348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &54395238257418090
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1278,7 +1278,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65301256910802278
 BoxCollider:
@@ -1318,7 +1318,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0.9584179, g: 1, b: 0.6985294, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.979, a: 1}
   m_Intensity: 2.67
   m_Range: 10
   m_SpotAngle: 75
@@ -1357,21 +1357,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: {fileID: 0}
-  _waypointArriveDistance: 0.35
+  _waypointArriveDistance: 1
   _direction: 0
   speed: 0.14
   turnSpeed: 60
   timeToSpotPlayer: 2
   visionCone: {fileID: 108218489447749166}
-  viewDistance: 8
+  viewDistance: 10
   viewMask:
     serializedVersion: 2
     m_Bits: 256
-  hearDistance: 6
+  hearDistance: 8
   playerVisibleTimer: 0
   lastPositionOfPlayer: {x: 0, y: 0, z: 0}
+  lastPositionOfEnemy: {x: 0, y: 0, z: 0}
   hasBeenNoticed: 0
   goToAlertMode: 0
+  heardNoise: 0
+  isStandingStill: 0
+  hasNoiseArea: 0
+  noiseArea: {fileID: 0}
+  time: 0
+  waitTime: 6
   agent: {fileID: 195804497844293064}
 --- !u!136 &136774382155238528
 CapsuleCollider:
@@ -1468,16 +1475,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1157902779859868}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 4
-  avoidancePriority: 50
-  m_AngularSpeed: 180
+  m_Radius: 1
+  m_Speed: 0.5
+  m_Acceleration: 20
+  avoidancePriority: 75
+  m_AngularSpeed: 5000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.999999
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

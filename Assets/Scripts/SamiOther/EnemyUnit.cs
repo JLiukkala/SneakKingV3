@@ -20,7 +20,7 @@ namespace Invector
 		[SerializeField]
 		private Direction _direction;
 
-        public float speed = 0.15f;
+        public float speed = 0.14f;
 
         public float turnSpeed = 90;
 
@@ -35,8 +35,12 @@ namespace Invector
         private float viewAngle;
         [HideInInspector]
         public float playerVisibleTimer;
+
         [HideInInspector]
         public Vector3 lastPositionOfPlayer;
+
+        [HideInInspector]
+        public Vector3 lastPositionOfEnemy;
 
         Color originalVisionConeColor;
 
@@ -135,6 +139,11 @@ namespace Invector
             lastPositionOfPlayer = Target.position;
         }
 
+        public void SetOwnLastKnownPosition()
+        {
+            lastPositionOfEnemy = transform.position;
+        }
+
         private void InitStates()
 		{
             PatrolState patrol = new PatrolState(GameObject.FindGameObjectWithTag("Enemy"), _path, _direction, _waypointArriveDistance);
@@ -148,6 +157,10 @@ namespace Invector
 
             GoToNoiseArea goToNoiseArea = new GoToNoiseArea(GameObject.FindGameObjectWithTag("Enemy"));
             _states.Add(goToNoiseArea);
+
+            StopState stopState = new StopState(GameObject.FindGameObjectWithTag("Enemy"));
+            _states.Add(stopState);
+
 
             CurrentState = patrol;
 			CurrentState.StateActivated();

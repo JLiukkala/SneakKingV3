@@ -37,16 +37,10 @@ namespace Invector.AI
 			_arriveDistance = arriveDistance;
 		}
 
-        //void Start()
-        //{
-            //currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, 0, CurrentWaypoint.Position.z);
-        //}
-
 		public override void StateActivated()
 		{
 			base.StateActivated();
-            enemy.transform.rotation = Quaternion.identity;
-			CurrentWaypoint = _path.GetClosestWaypoint( Owner.transform.position );
+            CurrentWaypoint = _path.GetClosestWaypoint( Owner.transform.position );
 		}
 
 		public override void Update()
@@ -68,24 +62,20 @@ namespace Invector.AI
 
                 if (enemy.goToAlertMode)
                 {
-                    enemy.hearDistance = 8;
-                    enemy.viewDistance = 11;
+                    enemy.hearDistance = 10;
+                    enemy.viewDistance = 12;
                 } 
                 else
                 {
-                    enemy.hearDistance = 6;
-                    enemy.viewDistance = 8;
+                    enemy.hearDistance = 8;
+                    enemy.viewDistance = 10;
                 }
 
-                enemy.agent.speed = 0.2f;
-                enemy.agent.angularSpeed = 10;
-                enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
-                        CurrentWaypoint.Position, enemy.speed * Time.deltaTime);
+                enemy.speed = 0.14f;
+                enemy.agent.speed = 0.5f;
+
+                // 3. Move and rotate towards the current waypoint
                 enemy.agent.SetDestination(CurrentWaypoint.Position);
-                currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
-                // 4. Rotate towards the current waypoint
-                //enemy.StartCoroutine(TurnToFace(CurrentWaypoint.Position));
-                enemy.transform.LookAt(currentWaypointWithoutY);
             }
 		}
 
@@ -107,7 +97,6 @@ namespace Invector.AI
                 }
                 else
                 {
-                    enemy.transform.rotation = Quaternion.identity;
                     result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
                 }
 			}
@@ -122,37 +111,37 @@ namespace Invector.AI
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
                         Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
             {
-                //enemy.SetLastKnownPosition();
-                enemy.StopAllCoroutines();
+                enemy.SetOwnLastKnownPosition();
                 enemy.hasBeenNoticed = true;
                 enemy.time = 0;
+                Debug.Log("Noticed player!");
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
             if (enemy.heardNoise)
             {
-                enemy.StopAllCoroutines();
                 enemy.time = 0;
+                Debug.Log("Heard something!");
                 return enemy.PerformTransition(AIStateType.GoToNoiseArea);
             }
 
             return false;
 		}
 
-        IEnumerator TurnToFace(Vector3 lookTarget)
-        {
-            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-            float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-                directionToLookTarget.x) * Mathf.Rad2Deg;
+        //IEnumerator TurnToFace(Vector3 lookTarget)
+        //{
+        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
+        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
+        //        directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-            {
-                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-                    enemy.turnSpeed * Time.deltaTime);
+        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
+        //    {
+        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+        //            enemy.turnSpeed * Time.deltaTime);
 
-                enemy.transform.eulerAngles = Vector3.up * angle;
-                yield return null;
-            }
-        }
+        //        enemy.transform.eulerAngles = Vector3.up * angle;
+        //        yield return null;
+        //    }
+        //}
     }
 }

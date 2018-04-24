@@ -5,20 +5,18 @@ namespace Invector.AI
 {
 	public class GoToLastKnownPositionState : AIStateBase
 	{
-        public bool moveAgain;
-
-        //public bool hasWaited;
-
-        public float waitTime = 3f;
+        private float time = 0;
+        public float waitTime = 2f;
 
         EnemyUnit enemy;
 
 		public GoToLastKnownPositionState( GameObject owner )
 			: base( owner, AIStateType.GoToLastKnownPosition )
 		{
+            State = AIStateType.GoToLastKnownPosition;
+
+            AddTransition( AIStateType.Stop );
             AddTransition( AIStateType.FollowTarget );
-            AddTransition( AIStateType.Patrol );
-            AddTransition( AIStateType.GoToNoiseArea );
 
             if (Owner == null)
             {
@@ -32,70 +30,57 @@ namespace Invector.AI
 		{
 			if ( !ChangeState() )
 			{
-                enemy.agent.speed = 2;
-                Vector3 tempLastPlayerPosition = new Vector3(enemy.lastPositionOfPlayer.x, 
-                    enemy.transform.position.y, enemy.lastPositionOfPlayer.z);
+                enemy.speed = 0.14f;
 
-                //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
-                //    tempLastPlayerPosition, 
-                //        enemy.speed * Time.deltaTime);
-                enemy.agent.SetDestination(tempLastPlayerPosition);
-                //enemy.transform.position = new Vector3(enemy.transform.position.x,
-                //     1.1f, enemy.transform.position.z);
-                //enemy.transform.LookAt(enemy.lastPositionOfPlayer);
-
-                enemy.StartCoroutine(TurnToFace(enemy.lastPositionOfPlayer));
-                enemy.StartCoroutine(Wait());
+                if (time < waitTime)
+                {
+                    time += Time.deltaTime;
+                    enemy.agent.SetDestination(enemy.lastPositionOfPlayer);
+                }
             }
 		}
 
         private bool ChangeState()
 		{
-			// 2. Did the player get away?
-			// If yes, go to patrol state.
-			if ( moveAgain )
-			{
-                enemy.StopAllCoroutines();
-                moveAgain = false;
+            // 2. Did the player get away?
+            // If yes, go to stop state.
+            if (time >= waitTime)
+            {
                 enemy.goToAlertMode = true;
-                enemy.agent.speed = 0.2f;
-                enemy.transform.rotation = Quaternion.identity;
-                //enemy.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                return enemy.PerformTransition( AIStateType.Patrol );
-			}
-			// Otherwise return false.
-			return false;
+                time = 0;
+                return enemy.PerformTransition(AIStateType.Stop);
+            }
+
+            if (enemy.playerVisibleTimer >= 0.5f &&
+                enemy.playerVisibleTimer <= 0.99f ||
+                    !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
+                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
+            {
+                enemy.SetOwnLastKnownPosition();
+                enemy.hasBeenNoticed = true;
+                enemy.time = 0;
+                Debug.Log("Noticed player!");
+                return enemy.PerformTransition(AIStateType.FollowTarget);
+            }
+
+            // Otherwise return false.
+            return false;
 		}
 
-        IEnumerator TurnToFace(Vector3 lookTarget)
-        {
-            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-            float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-                directionToLookTarget.x) * Mathf.Rad2Deg;
+        //IEnumerator TurnToFace(Vector3 lookTarget)
+        //{
+        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
+        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
+        //        directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-            {
-                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-                    enemy.turnSpeed * Time.deltaTime);
+        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
+        //    {
+        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+        //            enemy.turnSpeed * Time.deltaTime);
 
-                enemy.transform.eulerAngles = Vector3.up * angle;
-                yield return null;
-            }
-        }
-
-        IEnumerator Wait()
-        {
-            yield return new WaitForSeconds(waitTime);
-            //hasWaited = true;
-            yield return enemy.StartCoroutine(MoveAgain());
-        }
-
-        IEnumerator MoveAgain()
-        {
-            Debug.Log("Going Back To Patrolling");
-            moveAgain = true;
-            //hasWaited = false;
-            yield return null;
-        }
+        //        enemy.transform.eulerAngles = Vector3.up * angle;
+        //        yield return null;
+        //    }
+        //}
     }
 }

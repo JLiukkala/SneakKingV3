@@ -10,7 +10,8 @@ namespace Invector.AI
 		Patrol = 1,
 		FollowTarget = 2,
         GoToLastKnownPosition = 3,
-        GoToNoiseArea = 4
+        GoToNoiseArea = 4,
+        Stop = 5
 	}
 
 	public abstract class AIStateBase

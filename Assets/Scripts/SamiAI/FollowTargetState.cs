@@ -6,18 +6,17 @@ namespace Invector.AI
 {
 	public class FollowTargetState : AIStateBase
 	{
-        public bool moveTowardsPlayer;
-
-        public bool gotAway;
-
-        public float waitTime = 0.5f;
+        private float time = 0;
+        public float waitTime = 0.3f;
 
         EnemyUnit enemy;
 
 		public FollowTargetState( GameObject owner )
 			: base( owner, AIStateType.FollowTarget )
 		{
-			AddTransition( AIStateType.Patrol );
+            State = AIStateType.FollowTarget;
+
+            AddTransition( AIStateType.Patrol );
             AddTransition( AIStateType.GoToLastKnownPosition );
             AddTransition( AIStateType.GoToNoiseArea );
 
@@ -33,39 +32,31 @@ namespace Invector.AI
 		{
 			if ( !ChangeState() )
 			{
-                Vector3 tempPlayerPosition = new Vector3(enemy.Target.position.x, 
-                    enemy.transform.position.y, enemy.Target.position.z);
-
-                if (enemy.hasBeenNoticed) 
+                if (time < waitTime) 
                 {
-                    enemy.turnSpeed = 240;
-                    enemy.StartCoroutine(TurnToFace(enemy.Target.position));
-                    //enemy.transform.LookAt(tempPlayerPosition);
-                    enemy.StartCoroutine(WaitShort());
+                    time += Time.deltaTime;
                 }
 
-                //enemy.transform.LookAt(tempPlayerPosition);
-                //enemy.StartCoroutine(TurnToFace(Owner.GetComponent<EnemyUnit>().Target.position));
-                //enemy.StartCoroutine(WaitShort());
-
-                if (moveTowardsPlayer)
+                if (time >= waitTime)
                 {
+                    time = 0;
+                    enemy.hasBeenNoticed = false;
                     enemy.speed = 0.15f;
-                    enemy.transform.LookAt(tempPlayerPosition);
-                    //enemy.StartCoroutine(TurnToFace(enemy.Target.position));
-                    //enemy.transform.position = Vector3.MoveTowards(enemy.transform.position,
-                    //    tempPlayerPosition, enemy.speed * Time.deltaTime);
-                    //enemy.turnSpeed = 60;
-                    enemy.agent.speed = 0.01f;
-                    enemy.agent.angularSpeed = 60;
-                    enemy.agent.SetDestination(tempPlayerPosition);
 
-                    if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
-                        > enemy.viewDistance)
-                    {
-                        gotAway = true;
-                        moveTowardsPlayer = false;
-                    }
+                    enemy.agent.SetDestination(enemy.Target.position);
+
+                    //if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
+                    //    > enemy.viewDistance / 8)
+                    //{
+                    //    enemy.speed = 0;
+                    //    enemy.agent.speed = 0;
+                    //}
+                    //else
+                    //{
+                    //    enemy.speed = 0.15f;
+                    //    enemy.agent.speed = 0.5f;
+                    //    enemy.agent.SetDestination(enemy.Target.position);
+                    //}
                 }
             }
 		}
@@ -73,48 +64,33 @@ namespace Invector.AI
         private bool ChangeState()
 		{
 			// 2. Did the player get away?
-			// If yes, go to patrol state.
-            if (gotAway)
+			// If yes, go to last known position state.
+            if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
+                        > enemy.viewDistance)
             {
-                enemy.StopAllCoroutines();
                 enemy.SetLastKnownPosition();
-                gotAway = false;
-                enemy.speed = 0.14f;
+                Debug.Log("Going to last known position!");
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
-			// Otherwise return false.
-			return false;
+            // Otherwise return false.
+            return false;
 		}
 
-        IEnumerator TurnToFace(Vector3 lookTarget)
-        {
-            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-            float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-                directionToLookTarget.x) * Mathf.Rad2Deg;
+        //IEnumerator TurnToFace(Vector3 lookTarget)
+        //{
+        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
+        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
+        //        directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-            {
-                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-                    enemy.turnSpeed * Time.deltaTime);
+        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
+        //    {
+        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+        //            enemy.turnSpeed * Time.deltaTime);
 
-                enemy.transform.eulerAngles = Vector3.up * angle;
-                yield return null;
-            }
-        }
-
-        IEnumerator WaitShort()
-        {
-            enemy.hasBeenNoticed = false;
-            yield return new WaitForSeconds(waitTime);
-            yield return enemy.StartCoroutine(MoveTowardsPlayer());
-        }
-
-        IEnumerator MoveTowardsPlayer()
-        {
-            Debug.Log("Moving Towards Player After Realization");
-            moveTowardsPlayer = true;
-            yield return null;
-        }
+        //        enemy.transform.eulerAngles = Vector3.up * angle;
+        //        yield return null;
+        //    }
+        //}
     }
 }
