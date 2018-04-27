@@ -6,12 +6,12 @@ namespace Invector.AI
 	public class GoToLastKnownPositionState : AIStateBase
 	{
         private float time = 0;
-        public float waitTime = 2f;
+        public float waitTime = 5f;
 
         EnemyUnit enemy;
 
 		public GoToLastKnownPositionState( GameObject owner )
-			: base( owner, AIStateType.GoToLastKnownPosition )
+			: base() //owner, AIStateType.GoToLastKnownPosition )
 		{
             State = AIStateType.GoToLastKnownPosition;
 
@@ -20,7 +20,7 @@ namespace Invector.AI
 
             if (Owner == null)
             {
-                Owner = GameObject.FindGameObjectWithTag("Enemy");
+                Owner = owner;
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
@@ -37,6 +37,9 @@ namespace Invector.AI
                     time += Time.deltaTime;
                     enemy.agent.SetDestination(enemy.lastPositionOfPlayer);
                 }
+                enemy.ShowQuestionMark();
+
+                enemy.inCameraView = false;
             }
 		}
 
@@ -44,7 +47,7 @@ namespace Invector.AI
 		{
             // 2. Did the player get away?
             // If yes, go to stop state.
-            if (time >= waitTime)
+            if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.lastPositionOfPlayer) < enemy.stopDistance)
             {
                 enemy.goToAlertMode = true;
                 time = 0;
@@ -56,10 +59,11 @@ namespace Invector.AI
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
                         Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
             {
-                enemy.SetOwnLastKnownPosition();
+                //enemy.SetOwnLastKnownPosition();
                 enemy.hasBeenNoticed = true;
                 enemy.time = 0;
                 Debug.Log("Noticed player!");
+                enemy.HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 

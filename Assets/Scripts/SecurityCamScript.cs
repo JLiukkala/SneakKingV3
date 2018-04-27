@@ -88,7 +88,7 @@ namespace Invector.CharacterController
                 //{
                 //IsSpotted();
 
-                GameUI._losingStatement = true;
+                //GameUI._losingStatement = true;
                 Debug.Log("SpottedPlayer");
 
                 //}

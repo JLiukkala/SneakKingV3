@@ -64,25 +64,35 @@ public class PointOfInterestCamera : MonoBehaviour
         // the SmoothStep will happen.
         if (hasPointOfInterest)
         {
-            t = (Time.time - startTime) / duration;
-            _camera.transform.position = new Vector3(Mathf.SmoothStep(minimumX, maximumX, t), Mathf.SmoothStep(minimumY, maximumY, t), Mathf.SmoothStep(minimumZ, maximumZ, t));
+            MoveCamera();
 
-            //if (t > 0.5f)
-            //{
-            //    hasReachedCameraSwitchPoint = true;
-            //}
-
-            // If t is greater than this value, the end 
-            // position has been reached and this script 
-            // is destroyed from the camera in the scene.
-            if (t > 0.75f)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 hasReachedEnd = true;
-                //t = (Time.time - startTime) / duration;
-                //_camera.transform.position = new Vector3(Mathf.SmoothStep(maximumX, minimumX, t), Mathf.SmoothStep(maximumY, minimumY, t), Mathf.SmoothStep(maximumZ, minimumZ, t));
                 Destroy(this);
-
             }
+        }
+    }
+
+    public void MoveCamera ()
+    {
+        t = (Time.time - startTime) / duration;
+        _camera.transform.position = new Vector3(Mathf.SmoothStep(minimumX, maximumX, t), Mathf.SmoothStep(minimumY, maximumY, t), Mathf.SmoothStep(minimumZ, maximumZ, t));
+
+        //if (t > 0.5f)
+        //{
+        //    hasReachedCameraSwitchPoint = true;
+        //}
+
+        // If t is greater than this value, the end 
+        // position has been reached and this script 
+        // is destroyed from the camera in the scene.
+        if (t > 0.75f)
+        {
+            hasReachedEnd = true;
+            //t = (Time.time - startTime) / duration;
+            //_camera.transform.position = new Vector3(Mathf.SmoothStep(maximumX, minimumX, t), Mathf.SmoothStep(maximumY, minimumY, t), Mathf.SmoothStep(maximumZ, minimumZ, t));
+            Destroy(this);
         }
     }
 }

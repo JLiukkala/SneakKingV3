@@ -7,12 +7,12 @@ namespace Invector.AI
     public class StopState : AIStateBase
     {
         private float time = 0;
-        public float waitTime = 1f;
+        public float waitTime = 2f;
 
         EnemyUnit enemy;
 
         public StopState(GameObject owner)
-            : base(owner, AIStateType.Stop)
+            : base() //owner, AIStateType.Stop)
         {
             State = AIStateType.Stop;
 
@@ -21,7 +21,7 @@ namespace Invector.AI
 
             if (Owner == null)
             {
-                Owner = GameObject.FindGameObjectWithTag("Enemy");
+                Owner = owner;
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
@@ -49,6 +49,7 @@ namespace Invector.AI
                 enemy.speed = 0;
                 enemy.transform.rotation = Quaternion.identity;
                 Debug.Log("Going back to patrolling!");
+                enemy.HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.Patrol);
             }
 
@@ -57,10 +58,11 @@ namespace Invector.AI
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
                         Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
             {
-                enemy.SetOwnLastKnownPosition();
+                //enemy.SetOwnLastKnownPosition();
                 enemy.hasBeenNoticed = true;
                 enemy.time = 0;
                 Debug.Log("Noticed player!");
+                enemy.HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 

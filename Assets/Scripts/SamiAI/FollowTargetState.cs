@@ -12,7 +12,7 @@ namespace Invector.AI
         EnemyUnit enemy;
 
 		public FollowTargetState( GameObject owner )
-			: base( owner, AIStateType.FollowTarget )
+			: base() //owner, AIStateType.FollowTarget )
 		{
             State = AIStateType.FollowTarget;
 
@@ -22,7 +22,7 @@ namespace Invector.AI
 
             if (Owner == null)
             {
-                Owner = GameObject.FindGameObjectWithTag("Enemy");
+                Owner = owner;
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
@@ -37,26 +37,31 @@ namespace Invector.AI
                     time += Time.deltaTime;
                 }
 
+                enemy.ShowExclamationMark();
+
                 if (time >= waitTime)
                 {
                     time = 0;
                     enemy.hasBeenNoticed = false;
                     enemy.speed = 0.15f;
 
+                    Vector3 playerPosWithoutY = new Vector3(enemy.Target.position.x, enemy.transform.position.y, enemy.Target.position.z);
+
                     enemy.agent.SetDestination(enemy.Target.position);
 
-                    //if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
-                    //    > enemy.viewDistance / 8)
-                    //{
-                    //    enemy.speed = 0;
-                    //    enemy.agent.speed = 0;
-                    //}
-                    //else
-                    //{
-                    //    enemy.speed = 0.15f;
-                    //    enemy.agent.speed = 0.5f;
-                    //    enemy.agent.SetDestination(enemy.Target.position);
-                    //}
+                    if (Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance)
+                    {
+                        //enemy.agent.ResetPath();
+                        enemy.transform.LookAt(playerPosWithoutY);
+                        enemy.speed = 0.01f;
+                        enemy.agent.speed = 0.001f;
+                    }
+                    else if (Vector3.Distance(Owner.transform.position, enemy.Target.position) > enemy.stopDistance)
+                    {
+                        enemy.speed = 0.15f;
+                        enemy.agent.speed = 0.5f;
+                        enemy.agent.SetDestination(enemy.Target.position);
+                    }
                 }
             }
 		}
@@ -70,6 +75,7 @@ namespace Invector.AI
             {
                 enemy.SetLastKnownPosition();
                 Debug.Log("Going to last known position!");
+                enemy.HideExclamationMark();
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 

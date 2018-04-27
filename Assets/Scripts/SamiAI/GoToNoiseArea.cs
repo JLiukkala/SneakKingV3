@@ -7,12 +7,12 @@ namespace Invector.AI
     public class GoToNoiseArea : AIStateBase
     {
         private float time = 0;
-        public float waitTime = 4f;
+        public float waitTime = 5f;
 
         EnemyUnit enemy;
 
         public GoToNoiseArea(GameObject owner)
-            : base(owner, AIStateType.GoToNoiseArea)
+            : base() //owner, AIStateType.GoToNoiseArea)
         {
             State = AIStateType.GoToNoiseArea;
 
@@ -21,7 +21,7 @@ namespace Invector.AI
 
             if (Owner == null)
             {
-                Owner = GameObject.FindGameObjectWithTag("Enemy");
+                Owner = owner;
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
@@ -32,6 +32,7 @@ namespace Invector.AI
             if (!ChangeState())
             {
                 enemy.speed = 0.14f;
+                enemy.ShowQuestionMark();
 
                 if (time < waitTime)
                 {
@@ -46,11 +47,11 @@ namespace Invector.AI
         {
             // 2. Did the player get away?
             // If yes, go to stop state.
-            if (time >= waitTime)
+            if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.noiseArea.position) < enemy.stopDistance)
             {
                 enemy.goToAlertMode = true;
                 time = 0;
-                Debug.Log("Do we stay here?");
+                //Debug.Log("Do we stay here?");
                 return enemy.PerformTransition(AIStateType.Stop);
             }
 
@@ -63,6 +64,7 @@ namespace Invector.AI
                 enemy.hasBeenNoticed = true;
                 enemy.time = 0;
                 Debug.Log("Noticed player!");
+                enemy.HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 

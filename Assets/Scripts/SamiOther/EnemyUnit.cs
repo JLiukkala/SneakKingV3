@@ -30,6 +30,9 @@ namespace Invector
         public float viewDistance;
         public LayerMask viewMask;
 
+        [HideInInspector]
+        public float stopDistance;
+
         public float hearDistance;
 
         private float viewAngle;
@@ -44,8 +47,6 @@ namespace Invector
 
         Color originalVisionConeColor;
 
-        //bool almostSpotted;
-
         [HideInInspector]
         public bool hasBeenNoticed;
 
@@ -55,25 +56,36 @@ namespace Invector
         [HideInInspector]
         public bool heardNoise = false;
 
+        [HideInInspector]
         public bool isStandingStill;
 
         public bool hasNoiseArea;
 
         [HideInInspector]
+        public bool inCameraView;
+
+        [HideInInspector]
         public Transform noiseArea;
         
         [HideInInspector]
-        public float time;
+        public float time = 0;
 
         [HideInInspector]
-        public float waitTime = 6;
+        public float waitTime = 3;
 
         public NavMeshAgent agent;
+
+        [HideInInspector]
+        public GameObject exclamationMark;
+        [HideInInspector]
+        public GameObject questionMark;
+
+        private EnemyUnit enemyScript;
 
         private IList<AIStateBase> _states = new List< AIStateBase >();
 
 		public AIStateBase CurrentState { get; private set; }
-		// The player unit this enemy is trying to shoot at.
+
 		public Transform Target { get; set; }
 
         private Animator _docAnimator;
@@ -102,10 +114,17 @@ namespace Invector
             viewAngle = visionCone.spotAngle;
             originalVisionConeColor = visionCone.color;
 
+            exclamationMark = GameObject.Find("ExclamationMark");
+            questionMark = GameObject.Find("QuestionMark");
+
             if (hasNoiseArea)
             {
                 noiseArea = GameObject.Find("NoiseArea").transform;
             }
+
+            stopDistance = viewDistance / 3.2f;
+
+            enemyScript = GetComponent<EnemyUnit>();
 
             // Initializes the state system.
             InitStates();
@@ -146,29 +165,39 @@ namespace Invector
 
         private void InitStates()
 		{
-            PatrolState patrol = new PatrolState(GameObject.FindGameObjectWithTag("Enemy"), _path, _direction, _waypointArriveDistance);
+            PatrolState patrol = new PatrolState(this.gameObject, _path, _direction, _waypointArriveDistance);
             _states.Add(patrol);
 
-            FollowTargetState followTarget = new FollowTargetState(GameObject.FindGameObjectWithTag("Enemy"));
+            FollowTargetState followTarget = new FollowTargetState(this.gameObject);
             _states.Add(followTarget);
 
-            GoToLastKnownPositionState goToLastKnownPosition = new GoToLastKnownPositionState(GameObject.FindGameObjectWithTag("Enemy"));
+            GoToLastKnownPositionState goToLastKnownPosition = new GoToLastKnownPositionState(this.gameObject);
             _states.Add(goToLastKnownPosition);
 
-            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(GameObject.FindGameObjectWithTag("Enemy"));
+            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(this.gameObject);
             _states.Add(goToNoiseArea);
 
-            StopState stopState = new StopState(GameObject.FindGameObjectWithTag("Enemy"));
+            StopState stopState = new StopState(this.gameObject);
             _states.Add(stopState);
 
+            StandingStillState standingStill = new StandingStillState(this.gameObject, _path, _direction, _waypointArriveDistance);
+            _states.Add(standingStill);
 
+            //if (isStandingStill)
+            //{
+            //    CurrentState = standingStill;
+            //}
+            //else
+            //{
             CurrentState = patrol;
-			CurrentState.StateActivated();
+            //}
+
+            CurrentState.StateActivated();
 		}
 
 		protected void Update()
 		{
-			gameObject.GetComponent<EnemyUnit>().CurrentState.Update();
+			enemyScript.CurrentState.Update();
             if (_docAnimator!=null)
             {
                 _docAnimator.SetFloat("Speed", speed);
@@ -230,5 +259,37 @@ namespace Invector
 			// equals to stateType. If no object is found, returns null.
 			return _states.FirstOrDefault( state => state.State == stateType );
 		}
-	}
+
+        public void ShowExclamationMark()
+        {
+            for (int i = 0; i < exclamationMark.transform.childCount; i++)
+            {
+                exclamationMark.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        public void HideExclamationMark()
+        {
+            for (int i = 0; i < exclamationMark.transform.childCount; i++)
+            {
+                exclamationMark.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+
+        public void ShowQuestionMark()
+        {
+            for (int i = 0; i < questionMark.transform.childCount; i++)
+            {
+                questionMark.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        public void HideQuestionMark()
+        {
+            for (int i = 0; i < questionMark.transform.childCount; i++)
+            {
+                questionMark.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+    }
 }

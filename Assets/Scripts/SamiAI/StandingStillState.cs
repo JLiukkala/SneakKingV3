@@ -1,24 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using Invector.WaypointSystem;
 using UnityEngine;
-using System.Collections;
 
 namespace Invector.AI
 {
-	public class PatrolState : AIStateBase
-	{
-		private Path _path;
-		private Direction _direction;
-		private float _arriveDistance;
+    public class StandingStillState : AIStateBase
+    {
+        private Path _path;
+        private Direction _direction;
+        private float _arriveDistance;
 
         EnemyUnit enemy;
 
-		public Waypoint CurrentWaypoint { get; private set; }
+        public Waypoint CurrentWaypoint { get; private set; }
 
-		public PatrolState( GameObject owner, Path path,
-			Direction direction, float arriveDistance )
-			: base()
-		{
-			State = AIStateType.Patrol;
+        public StandingStillState(GameObject owner, Path path,
+            Direction direction, float arriveDistance)
+            : base()
+        {
+            State = AIStateType.StandingStill;
 
             if (Owner == null)
             {
@@ -27,31 +28,28 @@ namespace Invector.AI
 
             enemy = Owner.GetComponent<EnemyUnit>();
 
-            AddTransition( AIStateType.FollowTarget );
-            AddTransition( AIStateType.GoToLastKnownPosition );
-            AddTransition( AIStateType.GoToNoiseArea );
+            AddTransition(AIStateType.FollowTarget);
+            AddTransition(AIStateType.GoToLastKnownPosition);
+            AddTransition(AIStateType.GoToNoiseArea);
             _path = path;
-			_direction = direction;
-			_arriveDistance = arriveDistance;
-		}
+            _direction = direction;
+            _arriveDistance = arriveDistance;
+        }
 
-		public override void StateActivated()
-		{
-			base.StateActivated();
-            CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
-		}
+        public override void StateActivated()
+        {
+            base.StateActivated();
+            //CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
+        }
 
-		public override void Update()
-		{
-			// 1. Should we change the state?
-			//   1.1 If yes, change state and return.
+        public override void Update()
+        {
+            // 1. Should we change the state?
+            //   1.1 If yes, change state and return.
 
-			if ( !ChangeState() )
-			{
-                if (enemy.isStandingStill)
-                {
-                    enemy.time += Time.deltaTime;
-                }
+            if (!ChangeState())
+            {
+                enemy.time += Time.deltaTime;
 
                 // 2. Are we close enough the current waypoint?
                 //   2.1 If yes, get the next waypoint
@@ -62,44 +60,30 @@ namespace Invector.AI
                 {
                     enemy.hearDistance = 10;
                     enemy.viewDistance = 12;
-                } 
+                }
                 else
                 {
                     enemy.hearDistance = 8;
                     enemy.viewDistance = 10;
                 }
-
-                if (enemy.isStandingStill)
-                {
-                    enemy.speed = 0;
-                    enemy.agent.speed = 0;
-                }
-                else
-                {
-                    enemy.speed = 0.14f;
-                    enemy.agent.speed = 0.5f;
-                }
                 Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
-                // 3. Move and rotate towards the current waypoint
-                if (enemy.isStandingStill)
-                {
-                    enemy.transform.LookAt(currentWaypointWithoutY);
-                }
-                else
-                {
-                    enemy.agent.SetDestination(CurrentWaypoint.Position);
-                }
-            }
-		}
+                enemy.speed = 0f;
+                enemy.agent.speed = 0f;
+                enemy.transform.LookAt(currentWaypointWithoutY);
 
-		private Waypoint GetWaypoint()
-		{
-			Waypoint result = CurrentWaypoint;
-			Vector3 toWaypointVector = CurrentWaypoint.Position - Owner.transform.position;
-			float toWaypointSqr = toWaypointVector.sqrMagnitude;
-			float sqrArriveDistance = _arriveDistance * _arriveDistance;
-			if ( toWaypointSqr <= sqrArriveDistance )
-			{
+                // 3. Move and rotate towards the current waypoint
+                //enemy.agent.SetDestination(CurrentWaypoint.Position);
+            }
+        }
+
+        private Waypoint GetWaypoint()
+        {
+            Waypoint result = CurrentWaypoint;
+            Vector3 toWaypointVector = CurrentWaypoint.Position - Owner.transform.position;
+            float toWaypointSqr = toWaypointVector.sqrMagnitude;
+            float sqrArriveDistance = _arriveDistance * _arriveDistance;
+            if (toWaypointSqr <= sqrArriveDistance)
+            {
                 if (enemy.isStandingStill)
                 {
                     if (enemy.time >= enemy.waitTime)
@@ -115,14 +99,14 @@ namespace Invector.AI
                 {
                     result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
                 }
-			}
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		private bool ChangeState()
-		{
-            if(enemy.playerVisibleTimer >= 0.5f && 
+        private bool ChangeState()
+        {
+            if (enemy.playerVisibleTimer >= 0.5f &&
                 enemy.playerVisibleTimer <= 0.99f ||
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
                         Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
@@ -141,15 +125,8 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToNoiseArea);
             }
 
-            if (enemy.inCameraView)
-            {
-                enemy.time = 0;
-                Debug.Log("Seen by camera!");
-                return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
-            }
-
             return false;
-		}
+        }
 
         //IEnumerator TurnToFace(Vector3 lookTarget)
         //{

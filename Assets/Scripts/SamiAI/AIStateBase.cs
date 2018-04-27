@@ -11,7 +11,8 @@ namespace Invector.AI
 		FollowTarget = 2,
         GoToLastKnownPosition = 3,
         GoToNoiseArea = 4,
-        Stop = 5
+        Stop = 5,
+        StandingStill = 6    
 	}
 
 	public abstract class AIStateBase

@@ -73,7 +73,8 @@ GameObject:
   - component: {fileID: 108738030373897636}
   - component: {fileID: 114548350527961094}
   - component: {fileID: 136837111155976130}
-  m_Layer: 0
+  - component: {fileID: 114850549087146728}
+  m_Layer: 12
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,6 +495,17 @@ MonoBehaviour:
   viewMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &114850549087146728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755719074704246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f57d90aee0de7843b203d2e36d8d707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136837111155976130
 CapsuleCollider:
   m_ObjectHideFlags: 1
