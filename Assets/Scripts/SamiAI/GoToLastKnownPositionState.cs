@@ -30,7 +30,14 @@ namespace Invector.AI
 		{
 			if ( !ChangeState() )
 			{
-                enemy.speed = 0.14f;
+                if (enemy.inCameraView)
+                {
+                    enemy.speed = 0.15f;
+                }
+                else
+                {
+                    enemy.speed = 0.14f;
+                }
 
                 if (time < waitTime)
                 {
@@ -39,7 +46,7 @@ namespace Invector.AI
                 }
                 enemy.ShowQuestionMark();
 
-                enemy.inCameraView = false;
+                //enemy.inCameraView = false;
             }
 		}
 
@@ -51,6 +58,7 @@ namespace Invector.AI
             {
                 enemy.goToAlertMode = true;
                 time = 0;
+                enemy.inCameraView = false;
                 return enemy.PerformTransition(AIStateType.Stop);
             }
 
@@ -64,6 +72,7 @@ namespace Invector.AI
                 enemy.time = 0;
                 Debug.Log("Noticed player!");
                 enemy.HideQuestionMark();
+                enemy.inCameraView = false;
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
