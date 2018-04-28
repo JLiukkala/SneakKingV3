@@ -7,47 +7,34 @@ namespace Invector
 {
     public class GameUI : MonoBehaviour
     {
+        // This determines which scene is loaded after restarting.
         [SerializeField]
         private string loadLevel;
 
+        // A static boolean that sets the game to be over.
         public static bool _losingStatement = false;
-
-        // Reference to the UI object.
-        GameObject gameLoseUI;
 
         // A boolean for whether the game is over or not.
         bool gameIsOver;
 
-        GameObject movingEnemy;
-
-        GameObject notMovingEnemy;
-
         void Start()
         {
+            // Losing statement is set to false in the beginning.
             _losingStatement = false;
-            gameLoseUI = GameObject.Find("GameLose");
-
-            if (GameObject.Find("EnemyMoving"))
-            {
-                movingEnemy = GameObject.Find("EnemyMoving");
-            }
-            if (GameObject.Find("EnemyNotMoving"))
-            {
-                notMovingEnemy = GameObject.Find("EnemyNotMoving");
-            }
         }
 
         void Update()
         {
+            // If the losing statement is set to true, shows the game lose UI.
             if (_losingStatement)
             {
                 ShowGameLoseUI();
             }
 
-            // If the game is over, the player must press 
-            // Spacebar to start again. The boolean variable
-            // gameIsOver is set to false and timescale is brought
-            // back up to 1. All the game objects are destroyed.
+            // If the game is over, time scale is set to 0 and the
+            // player must press Spacebar to start the scene again.  
+            // The boolean variables are set to false and time 
+            // scale is brought back up to 1.
             if (gameIsOver)
             {
                 Time.timeScale = 0f;
@@ -64,6 +51,8 @@ namespace Invector
             }
         }
 
+        // Sets the children objects of the GameLose game object 
+        // to be active. Also sets gameIsOver to be true.
         void ShowGameLoseUI()
         {
             for (int i = 0; i < transform.childCount; i++)

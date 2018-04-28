@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 11957153}
   - component: {fileID: 11957154}
   - component: {fileID: 11957155}
-  - component: {fileID: 11957156}
   m_Layer: 12
   m_Name: Spotlight (3)
   m_TagString: Untagged
@@ -194,17 +193,6 @@ CapsuleCollider:
   m_Height: 7.24
   m_Direction: 2
   m_Center: {x: -0.0941391, y: -0.006254196, z: 6.7}
---- !u!114 &11957156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 11957152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &15092834 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013363225630, guid: 43a347f2cf3150b41a51c7e1f2e4296a,
@@ -372,7 +360,6 @@ GameObject:
   - component: {fileID: 32651473}
   - component: {fileID: 32651474}
   - component: {fileID: 32651475}
-  - component: {fileID: 32651476}
   m_Layer: 12
   m_Name: Spotlight (2)
   m_TagString: Untagged
@@ -442,17 +429,6 @@ CapsuleCollider:
   m_Height: 7.24
   m_Direction: 2
   m_Center: {x: -0.0941391, y: -0.006254196, z: 6.7}
---- !u!114 &32651476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 32651472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &41855548
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +624,6 @@ GameObject:
   - component: {fileID: 71257978}
   - component: {fileID: 71257981}
   - component: {fileID: 71257980}
-  - component: {fileID: 71257979}
   m_Layer: 12
   m_Name: Spotlight (6)
   m_TagString: Untagged
@@ -669,17 +644,6 @@ Transform:
   m_Father: {fileID: 995868908}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &71257979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 71257977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &71257980
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2349,7 +2313,6 @@ GameObject:
   - component: {fileID: 425001435}
   - component: {fileID: 425001438}
   - component: {fileID: 425001437}
-  - component: {fileID: 425001436}
   m_Layer: 12
   m_Name: Spotlight (5)
   m_TagString: Untagged
@@ -2370,17 +2333,6 @@ Transform:
   m_Father: {fileID: 995868908}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &425001436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 425001434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &425001437
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5575,7 +5527,6 @@ GameObject:
   - component: {fileID: 991526152}
   - component: {fileID: 991526153}
   - component: {fileID: 991526154}
-  - component: {fileID: 991526155}
   m_Layer: 12
   m_Name: Spotlight
   m_TagString: Untagged
@@ -5645,17 +5596,6 @@ CapsuleCollider:
   m_Height: 7.24
   m_Direction: 2
   m_Center: {x: -0.0941391, y: -0.006254196, z: 6.7}
---- !u!114 &991526155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991526151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &995868907
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,9 +5604,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 995868908}
-  - component: {fileID: 995868909}
   m_Layer: 0
-  m_Name: LightMechanic
+  m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5694,17 +5633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &995868909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 995868907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ebe52170e976446b0f259c93d05363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &998024680 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013363225630, guid: 43a347f2cf3150b41a51c7e1f2e4296a,
@@ -6282,6 +6210,7 @@ MonoBehaviour:
   yMouseSensitivity: 3
   yMinLimit: -40
   yMaxLimit: 80
+  isRoomOne: 0
   indexList: 0
   indexLookPoint: 0
   offSetPlayerPivot: 0
@@ -8050,7 +7979,6 @@ GameObject:
   - component: {fileID: 1434573175}
   - component: {fileID: 1434573176}
   - component: {fileID: 1434573177}
-  - component: {fileID: 1434573178}
   m_Layer: 12
   m_Name: Spotlight (1)
   m_TagString: Untagged
@@ -8120,17 +8048,6 @@ CapsuleCollider:
   m_Height: 7.24
   m_Direction: 2
   m_Center: {x: -0.0941391, y: -0.006254196, z: 6.7}
---- !u!114 &1434573178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434573174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1441227851
 Prefab:
   m_ObjectHideFlags: 0
@@ -8726,7 +8643,6 @@ GameObject:
   - component: {fileID: 1502562992}
   - component: {fileID: 1502562995}
   - component: {fileID: 1502562994}
-  - component: {fileID: 1502562993}
   m_Layer: 12
   m_Name: Spotlight (8)
   m_TagString: Untagged
@@ -8747,17 +8663,6 @@ Transform:
   m_Father: {fileID: 995868908}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1502562993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1502562991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &1502562994
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8817,7 +8722,6 @@ GameObject:
   - component: {fileID: 1511103493}
   - component: {fileID: 1511103496}
   - component: {fileID: 1511103495}
-  - component: {fileID: 1511103494}
   m_Layer: 12
   m_Name: Spotlight (7)
   m_TagString: Untagged
@@ -8838,17 +8742,6 @@ Transform:
   m_Father: {fileID: 995868908}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1511103494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1511103492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &1511103495
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9766,7 +9659,6 @@ GameObject:
   - component: {fileID: 1819053306}
   - component: {fileID: 1819053309}
   - component: {fileID: 1819053308}
-  - component: {fileID: 1819053307}
   m_Layer: 12
   m_Name: Spotlight (4)
   m_TagString: Untagged
@@ -9787,17 +9679,6 @@ Transform:
   m_Father: {fileID: 995868908}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1819053307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1819053305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380468987e4690b498a6586f672376ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &1819053308
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10316,6 +10197,30 @@ Prefab:
     - target: {fileID: 1157902779859868, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
       propertyPath: m_Name
       value: Enemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758944588918738, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943463175657476, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787018115600118, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896263963123494, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489467299950734, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277762318208498, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}

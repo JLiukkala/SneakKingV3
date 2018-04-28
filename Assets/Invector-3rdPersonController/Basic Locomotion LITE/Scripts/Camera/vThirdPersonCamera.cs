@@ -47,6 +47,12 @@ public class vThirdPersonCamera : MonoBehaviour
 
     // Reference to the point of interest camera script.
     PointOfInterestCamera pOICam;
+
+    GameObject ventCrouchObject;
+    VentCrouch ventCrouchScript;
+
+    [HideInInspector]
+    public bool isRoomOne = false;
     #endregion
 
     #region hide properties    
@@ -90,6 +96,12 @@ public class vThirdPersonCamera : MonoBehaviour
 
         // Setting the point of interest camera script.
         pOICam = GetComponent<PointOfInterestCamera>();
+
+        if (isRoomOne)
+        {
+            ventCrouchObject = GameObject.Find("CrouchCollider");
+            ventCrouchScript = ventCrouchObject.GetComponent<VentCrouch>();
+        }
     }
 
     public void Init()
@@ -192,6 +204,15 @@ public class vThirdPersonCamera : MonoBehaviour
             {
                 _camera.transform.LookAt(currentTarget.transform.position);
             }
+        }
+
+        if (isRoomOne && ventCrouchScript.enteringVent)
+        {
+            //mouseX = 0;
+            mouseY = 0;
+            defaultDistance = 1;
+            height = 1;
+            _camera.transform.LookAt(ventCrouchScript.cameraPosition.position);
         }
 
         movementSpeed.x = x;
