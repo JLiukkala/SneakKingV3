@@ -14,7 +14,7 @@ namespace Invector.AI
 
 		public Waypoint CurrentWaypoint { get; private set; }
 
-		public PatrolState( GameObject owner, Path path,
+        public PatrolState( GameObject owner, Path path,
 			Direction direction, float arriveDistance )
 			: base()
 		{
@@ -48,10 +48,10 @@ namespace Invector.AI
 
 			if ( !ChangeState() )
 			{
-                if (enemy.isStandingStill)
-                {
-                    enemy.time += Time.deltaTime;
-                }
+                //if (enemy.isStandingStill)
+                //{
+                //    enemy.time += Time.deltaTime;
+                //}
 
                 // 2. Are we close enough the current waypoint?
                 //   2.1 If yes, get the next waypoint
@@ -69,26 +69,27 @@ namespace Invector.AI
                     enemy.viewDistance = 10;
                 }
 
-                if (enemy.isStandingStill)
-                {
-                    enemy.speed = 0;
-                    enemy.agent.speed = 0;
-                }
-                else
-                {
-                    enemy.speed = 0.14f;
-                    enemy.agent.speed = 0.5f;
-                }
-                Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
+                //if (enemy.isStandingStill)
+                //{
+                //    enemy.speed = 0;
+                //    enemy.agent.speed = 0;
+                //}
+                //else
+                //{
+                enemy.speed = 0.14f;
+                enemy.agent.speed = 0.5f;
+                //}
+
+                //Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
                 // 3. Move and rotate towards the current waypoint
-                if (enemy.isStandingStill)
-                {
-                    enemy.transform.LookAt(currentWaypointWithoutY);
-                }
-                else
-                {
-                    enemy.agent.SetDestination(CurrentWaypoint.Position);
-                }
+                //if (enemy.isStandingStill)
+                //{
+                //    enemy.transform.LookAt(currentWaypointWithoutY);
+                //}
+                //else
+                //{
+                enemy.agent.SetDestination(CurrentWaypoint.Position);
+                //}
             }
 		}
 
@@ -100,21 +101,21 @@ namespace Invector.AI
 			float sqrArriveDistance = _arriveDistance * _arriveDistance;
 			if ( toWaypointSqr <= sqrArriveDistance )
 			{
-                if (enemy.isStandingStill)
-                {
-                    if (enemy.time >= enemy.waitTime)
-                    {
-                        //enemy.speed = 0;
-                        //enemy.agent.speed = 0;
-                        //enemy.agent.ResetPath();
-                        result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
-                        enemy.time = 0;
-                    }
-                }
-                else
-                {
-                    result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
-                }
+                //if (enemy.isStandingStill)
+                //{
+                //    if (enemy.time >= enemy.waitTime)
+                //    {
+                //        //enemy.speed = 0;
+                //        //enemy.agent.speed = 0;
+                //        //enemy.agent.ResetPath();
+                //        result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
+                //        enemy.time = 0;
+                //    }
+                //}
+                //else
+                //{
+                result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
+                //}
 			}
 
 			return result;
@@ -125,7 +126,8 @@ namespace Invector.AI
             if(enemy.playerVisibleTimer >= 0.5f && 
                 enemy.playerVisibleTimer <= 0.99f ||
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
+                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+                            || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
             {
                 enemy.SetOwnLastKnownPosition();
                 enemy.hasBeenNoticed = true;

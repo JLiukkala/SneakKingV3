@@ -11,6 +11,9 @@ namespace Invector.AI
 
         EnemyUnit enemy;
 
+        [HideInInspector]
+        public GameObject questionMark;
+
         public GoToNoiseArea(GameObject owner)
             : base() //owner, AIStateType.GoToNoiseArea)
         {
@@ -25,6 +28,8 @@ namespace Invector.AI
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
+
+            questionMark = GameObject.Find("QuestionMark");
         }
 
         public override void Update()
@@ -32,7 +37,8 @@ namespace Invector.AI
             if (!ChangeState())
             {
                 enemy.speed = 0.14f;
-                enemy.ShowQuestionMark();
+                enemy.agent.speed = 0.5f;
+                ShowQuestionMark();
 
                 if (time < waitTime)
                 {
@@ -58,14 +64,22 @@ namespace Invector.AI
             if (enemy.playerVisibleTimer >= 0.5f &&
                 enemy.playerVisibleTimer <= 0.99f ||
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
+                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+                            || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
             {
                 enemy.SetOwnLastKnownPosition();
                 enemy.hasBeenNoticed = true;
                 enemy.time = 0;
                 Debug.Log("Noticed player!");
-                enemy.HideQuestionMark();
+                HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.FollowTarget);
+            }
+
+            if (enemy.inCameraView)
+            {
+                enemy.time = 0;
+                Debug.Log("Seen by camera!");
+                return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
             // Otherwise return false.
@@ -87,5 +101,21 @@ namespace Invector.AI
         //        yield return null;
         //    }
         //}
+
+        public void ShowQuestionMark()
+        {
+            for (int i = 0; i < questionMark.transform.childCount; i++)
+            {
+                questionMark.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        public void HideQuestionMark()
+        {
+            for (int i = 0; i < questionMark.transform.childCount; i++)
+            {
+                questionMark.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
     }
 }

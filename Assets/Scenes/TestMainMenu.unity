@@ -250,9 +250,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.234}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.463}
+    m_NormalColor: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 0.49019608}
+    m_HighlightedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.803}
+    m_PressedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 505623493}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &660145682
@@ -698,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9954307c3f26838478c1469f7c7e3299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInEndMenu: 0
 --- !u!1 &1251559822
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,9 +755,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.234}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.463}
+    m_NormalColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.49019608}
+    m_HighlightedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0.803}
+    m_PressedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

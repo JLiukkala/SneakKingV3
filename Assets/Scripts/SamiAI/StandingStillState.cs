@@ -13,6 +13,8 @@ namespace Invector.AI
 
         EnemyUnit enemy;
 
+        private float roomTwoTime = 0.5f;
+
         public Waypoint CurrentWaypoint { get; private set; }
 
         public StandingStillState(GameObject owner, Path path,
@@ -39,7 +41,7 @@ namespace Invector.AI
         public override void StateActivated()
         {
             base.StateActivated();
-            //CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
+            CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
         }
 
         public override void Update()
@@ -49,7 +51,13 @@ namespace Invector.AI
 
             if (!ChangeState())
             {
-                enemy.time += Time.deltaTime;
+                if (enemy.isRoomTwo)
+                {
+                    enemy._docAnimator.SetBool("isSleeping", true);
+                    enemy.agent.baseOffset = -2f;
+                }
+
+                //enemy.time += Time.deltaTime;
 
                 // 2. Are we close enough the current waypoint?
                 //   2.1 If yes, get the next waypoint
@@ -106,23 +114,56 @@ namespace Invector.AI
 
         private bool ChangeState()
         {
-            if (enemy.playerVisibleTimer >= 0.5f &&
+            if (!enemy.isRoomTwo)
+            {
+                if (enemy.playerVisibleTimer >= 0.5f &&
                 enemy.playerVisibleTimer <= 0.99f ||
                     !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance)
+                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+                            || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
+                {
+                    enemy.SetOwnLastKnownPosition();
+                    enemy.hasBeenNoticed = true;
+                    enemy.time = 0;
+                    Debug.Log("Noticed player!");
+                    return enemy.PerformTransition(AIStateType.FollowTarget);
+                }
+            } 
+            else
             {
-                enemy.SetOwnLastKnownPosition();
-                enemy.hasBeenNoticed = true;
-                enemy.time = 0;
-                Debug.Log("Noticed player!");
-                return enemy.PerformTransition(AIStateType.FollowTarget);
+
             }
 
             if (enemy.heardNoise)
             {
-                enemy.time = 0;
+                //enemy.time = 0;
                 Debug.Log("Heard something!");
-                return enemy.PerformTransition(AIStateType.GoToNoiseArea);
+
+                if (enemy.isRoomTwo)
+                {
+                    enemy.time += Time.deltaTime;
+                    enemy.agent.baseOffset = 0;
+                    enemy._docAnimator.SetBool("isSleeping", false);
+
+                    if (enemy.isRoomTwo && enemy.time < roomTwoTime)
+                    {
+                        enemy.speed = 0;
+                        enemy.agent.speed = 0;
+                    }
+
+                    if (enemy.isRoomTwo && enemy.time >= roomTwoTime)
+                    {
+                        enemy.time = 0;
+                        return enemy.PerformTransition(AIStateType.GoToNoiseArea);
+                    }
+                }
+            }
+
+            if (enemy.inCameraView)
+            {
+                enemy.time = 0;
+                Debug.Log("Seen by camera!");
+                return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
             return false;

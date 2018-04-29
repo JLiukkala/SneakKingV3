@@ -3397,7 +3397,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 351656009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.07, y: 0, z: 36}
+  m_LocalPosition: {x: 21.72, y: 0, z: 34.33}
   m_LocalScale: {x: 0.7, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 690449770}
@@ -10772,7 +10772,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 83fce56a7cd51a34c8f05a17824995a1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5da182ecb2423e249b6880d3b3003d05, type: 2}
 --- !u!4 &1125062219
 Transform:
   m_ObjectHideFlags: 0
@@ -14579,6 +14579,7 @@ MonoBehaviour:
   yMouseSensitivity: 3
   yMinLimit: -40
   yMaxLimit: 80
+  isRoomOne: 0
   indexList: 0
   indexLookPoint: 0
   offSetPlayerPivot: 0
@@ -16524,6 +16525,26 @@ Transform:
   m_Father: {fileID: 1190786072}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1758954099 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1050698893049922, guid: 519e4f0c793e0a443bb17038cacfdff2,
+    type: 2}
+  m_PrefabInternal: {fileID: 901604336}
+--- !u!114 &1758954100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1758954099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d07ce676d7afda4dabb3b0f7dd5e654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1768875995
 Prefab:
   m_ObjectHideFlags: 0

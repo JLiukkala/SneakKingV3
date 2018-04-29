@@ -9,6 +9,9 @@ namespace Invector.AI
         private float time = 0;
         public float waitTime = 0.3f;
 
+        [HideInInspector]
+        public GameObject exclamationMark;
+
         EnemyUnit enemy;
 
 		public FollowTargetState( GameObject owner )
@@ -20,12 +23,16 @@ namespace Invector.AI
             AddTransition( AIStateType.GoToLastKnownPosition );
             AddTransition( AIStateType.GoToNoiseArea );
 
+
+
             if (Owner == null)
             {
                 Owner = owner;
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
+
+            exclamationMark = GameObject.Find("ExclamationMark");
         }
 
         public override void Update()
@@ -37,7 +44,7 @@ namespace Invector.AI
                     time += Time.deltaTime;
                 }
 
-                enemy.ShowExclamationMark();
+                //ShowExclamationMark();
 
                 if (time >= waitTime)
                 {
@@ -48,6 +55,8 @@ namespace Invector.AI
                     Vector3 playerPosWithoutY = new Vector3(enemy.Target.position.x, enemy.transform.position.y, enemy.Target.position.z);
 
                     enemy.agent.SetDestination(enemy.Target.position);
+
+                    ShowExclamationMark();
 
                     if (Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance)
                     {
@@ -75,7 +84,7 @@ namespace Invector.AI
             {
                 enemy.SetLastKnownPosition();
                 Debug.Log("Going to last known position!");
-                enemy.HideExclamationMark();
+                HideExclamationMark();
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
@@ -98,5 +107,21 @@ namespace Invector.AI
         //        yield return null;
         //    }
         //}
+
+        public void ShowExclamationMark()
+        {
+            for (int i = 0; i < exclamationMark.transform.childCount; i++)
+            {
+                exclamationMark.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+
+        public void HideExclamationMark()
+        {
+            for (int i = 0; i < exclamationMark.transform.childCount; i++)
+            {
+                exclamationMark.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
     }
 }
