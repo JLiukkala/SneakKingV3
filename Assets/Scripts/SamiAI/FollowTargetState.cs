@@ -67,8 +67,17 @@ namespace Invector.AI
                     }
                     else if (Vector3.Distance(Owner.transform.position, enemy.Target.position) > enemy.stopDistance)
                     {
-                        enemy.speed = 0.15f;
-                        enemy.agent.speed = 0.5f;
+                        if (enemy.isRoomEight)
+                        {
+                            enemy.speed = 0.15f;
+                            enemy.agent.speed = 2f;
+                        }
+                        else
+                        {
+                            enemy.speed = 0.15f;
+                            enemy.agent.speed = 0.5f;
+                        }
+
                         enemy.agent.SetDestination(enemy.Target.position);
                     }
                 }

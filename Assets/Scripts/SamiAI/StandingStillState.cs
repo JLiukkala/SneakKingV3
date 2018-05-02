@@ -13,7 +13,9 @@ namespace Invector.AI
 
         EnemyUnit enemy;
 
-        private float roomTwoTime = 0.5f;
+        private float roomTwoTime = 0.2f;
+
+        Invector.CharacterController.vThirdPersonController cc;
 
         public Waypoint CurrentWaypoint { get; private set; }
 
@@ -29,6 +31,8 @@ namespace Invector.AI
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
+
+            cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
 
             AddTransition(AIStateType.FollowTarget);
             AddTransition(AIStateType.GoToLastKnownPosition);
@@ -54,7 +58,7 @@ namespace Invector.AI
                 if (enemy.isRoomTwo)
                 {
                     enemy._docAnimator.SetBool("isSleeping", true);
-                    enemy.agent.baseOffset = -2f;
+                    enemy.agent.baseOffset = -2.7f;
                 }
 
                 //enemy.time += Time.deltaTime;
@@ -77,7 +81,14 @@ namespace Invector.AI
                 Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
                 enemy.speed = 0f;
                 enemy.agent.speed = 0f;
-                enemy.transform.LookAt(currentWaypointWithoutY);
+                if (enemy.isRoomTwo)
+                {
+                    enemy.transform.LookAt(CurrentWaypoint.Position);
+                }
+                else
+                {
+                    enemy.transform.LookAt(currentWaypointWithoutY);
+                }
 
                 // 3. Move and rotate towards the current waypoint
                 //enemy.agent.SetDestination(CurrentWaypoint.Position);
@@ -116,10 +127,8 @@ namespace Invector.AI
         {
             if (!enemy.isRoomTwo)
             {
-                if (enemy.playerVisibleTimer >= 0.5f &&
-                enemy.playerVisibleTimer <= 0.99f ||
-                    !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+                if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
+                    !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                 {
                     enemy.SetOwnLastKnownPosition();
@@ -137,7 +146,7 @@ namespace Invector.AI
             if (enemy.heardNoise)
             {
                 //enemy.time = 0;
-                Debug.Log("Heard something!");
+                //Debug.Log("Heard something!");
 
                 if (enemy.isRoomTwo)
                 {
@@ -147,15 +156,22 @@ namespace Invector.AI
 
                     if (enemy.isRoomTwo && enemy.time < roomTwoTime)
                     {
-                        enemy.speed = 0;
-                        enemy.agent.speed = 0;
+                        enemy.speed = 0.001f;
+                        enemy.agent.speed = 0.01f;
                     }
 
                     if (enemy.isRoomTwo && enemy.time >= roomTwoTime)
                     {
                         enemy.time = 0;
+                        Debug.Log("Heard something!");
                         return enemy.PerformTransition(AIStateType.GoToNoiseArea);
                     }
+                }
+                else
+                {
+                    enemy.time = 0;
+                    Debug.Log("Heard something!");
+                    return enemy.PerformTransition(AIStateType.GoToNoiseArea);
                 }
             }
 

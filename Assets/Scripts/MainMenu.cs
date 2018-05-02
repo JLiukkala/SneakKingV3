@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private string loadLevel;
+
     public bool isInEndMenu;
 
     void Start ()
@@ -20,6 +23,16 @@ public class MainMenu : MonoBehaviour
     public void PlayGame ()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ToCredits ()
+    {
+        SceneManager.LoadScene(loadLevel);
+    }
+
+    public void ToMainMenu ()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame ()

@@ -65,6 +65,8 @@ namespace Invector
 
         public bool isRoomTwo;
 
+        public bool isRoomEight;
+
         [HideInInspector]
         public Transform noiseArea;
         

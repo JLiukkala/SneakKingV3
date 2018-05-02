@@ -14,6 +14,8 @@ namespace Invector.AI
         [HideInInspector]
         public GameObject questionMark;
 
+        Invector.CharacterController.vThirdPersonController cc;
+
         public StopState(GameObject owner)
             : base() //owner, AIStateType.Stop)
         {
@@ -28,6 +30,8 @@ namespace Invector.AI
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
+
+            cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
 
             questionMark = GameObject.Find("QuestionMark");
         }
@@ -58,10 +62,8 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.Patrol);
             }
 
-            if (enemy.playerVisibleTimer >= 0.5f &&
-                enemy.playerVisibleTimer <= 0.99f ||
-                    !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+            if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
+                    !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
             {
                 //enemy.SetOwnLastKnownPosition();

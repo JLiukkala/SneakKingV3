@@ -12,6 +12,8 @@ namespace Invector.AI
 
         EnemyUnit enemy;
 
+        Invector.CharacterController.vThirdPersonController cc;
+
 		public Waypoint CurrentWaypoint { get; private set; }
 
         public PatrolState( GameObject owner, Path path,
@@ -26,6 +28,8 @@ namespace Invector.AI
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
+
+            cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
 
             AddTransition( AIStateType.FollowTarget );
             AddTransition( AIStateType.GoToLastKnownPosition );
@@ -123,10 +127,8 @@ namespace Invector.AI
 
 		private bool ChangeState()
 		{
-            if(enemy.playerVisibleTimer >= 0.5f && 
-                enemy.playerVisibleTimer <= 0.99f ||
-                    !enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>().isCrouching &&
-                        Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+            if(enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
+                    !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
             {
                 enemy.SetOwnLastKnownPosition();
