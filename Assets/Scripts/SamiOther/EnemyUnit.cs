@@ -78,6 +78,14 @@ namespace Invector
 
         public NavMeshAgent agent;
 
+        [HideInInspector]
+        public AudioSource snoring;
+
+        [HideInInspector]
+        public AudioSource huh;
+
+        private AudioSource[] audioSources;
+
         //[HideInInspector]
         //public GameObject exclamationMark;
         //[HideInInspector]
@@ -142,6 +150,14 @@ namespace Invector
             stopDistance = viewDistance / 3.2f;
 
             enemyScript = GetComponent<EnemyUnit>();
+
+            if (isRoomTwo)
+            {
+                audioSources = GetComponents<AudioSource>();
+
+                snoring = audioSources[0];
+                huh = audioSources[1];
+            }
 
             // Initializes the state system.
             InitStates();
