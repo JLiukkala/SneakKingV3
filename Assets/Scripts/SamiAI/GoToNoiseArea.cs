@@ -7,7 +7,7 @@ namespace Invector.AI
     public class GoToNoiseArea : AIStateBase
     {
         private float time = 0;
-        public float waitTime = 5f;
+        public float waitTime = 4f;
 
         EnemyUnit enemy;
 
@@ -43,6 +43,15 @@ namespace Invector.AI
                 enemy.speed = 0.14f;
                 enemy.agent.speed = 0.5f;
                 ShowQuestionMark();
+
+                //if (enemy.isRoomTwo)
+                //{
+                //    waitTime = 3f;
+                //}
+                //else
+                //{
+                //    waitTime = 5f;
+                //}
 
                 if (time < waitTime)
                 {

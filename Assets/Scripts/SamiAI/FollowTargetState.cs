@@ -72,6 +72,11 @@ namespace Invector.AI
                             enemy.speed = 0.15f;
                             enemy.agent.speed = 2f;
                         }
+                        else if (enemy.isRoomTwo)
+                        {
+                            enemy.speed = 0.15f;
+                            enemy.agent.speed = 1f;
+                        }
                         else
                         {
                             enemy.speed = 0.15f;

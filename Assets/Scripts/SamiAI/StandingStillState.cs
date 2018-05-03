@@ -58,7 +58,7 @@ namespace Invector.AI
                 if (enemy.isRoomTwo)
                 {
                     enemy._docAnimator.SetBool("isSleeping", true);
-                    enemy.agent.baseOffset = -2.7f;
+                    enemy.agent.baseOffset = -3f;
                 }
 
                 //enemy.time += Time.deltaTime;
@@ -153,6 +153,9 @@ namespace Invector.AI
                     enemy.time += Time.deltaTime;
                     enemy.agent.baseOffset = 0;
                     enemy._docAnimator.SetBool("isSleeping", false);
+                    vDestroyGameObject.Destroy(GameObject.Find("ZZZ"));
+                    enemy.snoring.Stop();
+                    enemy.huh.PlayDelayed(0.05f);
 
                     if (enemy.isRoomTwo && enemy.time < roomTwoTime)
                     {
