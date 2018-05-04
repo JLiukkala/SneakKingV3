@@ -146,6 +146,8 @@ namespace Invector.CharacterController
         [HideInInspector]
         public CapsuleCollider _capsuleCollider;                    // access CapsuleCollider information
 
+        
+        
         #endregion
 
         #region Hide Variables
@@ -196,6 +198,9 @@ namespace Invector.CharacterController
 
             // capsule collider info
             _capsuleCollider = GetComponent<CapsuleCollider>();
+
+            
+            
         }
 
         public virtual void UpdateMotor()
@@ -203,6 +208,17 @@ namespace Invector.CharacterController
             CheckGround();
             ControlJumpBehaviour();
             ControlLocomotion();
+
+
+            //For respawning
+            if (lockMovement)
+            {
+                speed = 0;
+                input.y = 0;
+                isSprinting = false;
+                isStrafing = false;
+            }
+            
         }
 
         #region Locomotion 
@@ -219,10 +235,10 @@ namespace Invector.CharacterController
         void ControlLocomotion()
         {
 
-
-
-            if (freeLocomotionConditions)
+            if (freeLocomotionConditions) { 
                 FreeMovement();     // free directional movement
+
+            }
             else if (isCrouching && isBehindCover)
             {
 
@@ -234,12 +250,6 @@ namespace Invector.CharacterController
                 CrouchMovement();
             }
 
-            // move forward, backwards, strafe left and right
-            else
-            {
-                StrafeMovement();
-
-            }
         }
 
         /// <summary>

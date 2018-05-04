@@ -54,7 +54,8 @@ namespace Invector.CharacterController
         {
             if (locomotionType == LocomotionType.OnlyStrafe) return;
             if (isCrouching && isCoverable) { 
-            isBehindCover = !isBehindCover;
+                isBehindCover = !isBehindCover;
+                isPeeking = false;
             }
         }
 

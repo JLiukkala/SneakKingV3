@@ -122,6 +122,9 @@ namespace Invector.CharacterController
                 HideInput();
                 PeekInput();
                 PickupInput();
+            } else
+            {
+                cc.input.x = 0;
             }
         }
 
@@ -203,7 +206,7 @@ namespace Invector.CharacterController
                 return;
 
             // Camera Lock if joystick input type ! Implement this better!! And buttons etc.
-            if (inputType.Equals(InputType.Joystick)) tpCamera.lockCamera = true;
+            //if (inputType.Equals(InputType.Joystick)) tpCamera.lockCamera = true;
 
             var Y = Input.GetAxis(rotateCameraYInput);
             var X = Input.GetAxis(rotateCameraXInput);
@@ -212,9 +215,12 @@ namespace Invector.CharacterController
 
             // tranform Character direction from camera if not KeepDirection
             if (!keepDirection)
+                
                 cc.UpdateTargetDirection(tpCamera != null ? tpCamera.transform : null);
             // rotate the character with the camera while strafing        
-            RotateWithCamera(tpCamera != null ? tpCamera.transform : null);            
+
+            
+            //RotateWithCamera(tpCamera != null ? tpCamera.transform : null);            
         }
 
         protected virtual void UpdateCameraStates()
@@ -237,7 +243,7 @@ namespace Invector.CharacterController
         {
             if (cc.isStrafing && !cc.lockMovement && !cc.lockMovement)
             {                
-                cc.RotateWithAnotherTransform(cameraTransform);                
+                //cc.RotateWithAnotherTransform(cameraTransform);                
             }
         }
 

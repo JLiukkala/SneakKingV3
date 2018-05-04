@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4393650805549210}
   - component: {fileID: 95211342152343078}
+  - component: {fileID: 65779786054553700}
   m_Layer: 8
   m_Name: Sofa
   m_TagString: Untagged
@@ -71,6 +72,7 @@ GameObject:
   - component: {fileID: 4650609391090242}
   - component: {fileID: 33203203257174276}
   - component: {fileID: 23506686050988456}
+  - component: {fileID: 65653534555131782}
   m_Layer: 8
   m_Name: Box009
   m_TagString: Untagged
@@ -156,7 +158,6 @@ GameObject:
   - component: {fileID: 4418228476392756}
   - component: {fileID: 33078051587026088}
   - component: {fileID: 23577044831023520}
-  - component: {fileID: 65381814935970722}
   m_Layer: 8
   m_Name: Box003
   m_TagString: Untagged
@@ -294,9 +295,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262894280459474}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7398686, y: 0.000002077562, z: 17.109291}
-  m_LocalScale: {x: 1.4, y: 1.3, z: 1.4}
+  m_LocalRotation: {x: -0, y: 0.99998844, z: -0, w: -0.0048150434}
+  m_LocalPosition: {x: 0.7, y: -0.48, z: 7.5}
+  m_LocalScale: {x: 1.8, y: 1.3, z: 1.9}
   m_Children:
   - {fileID: 4754762128757878}
   - {fileID: 4747478726317600}
@@ -313,7 +314,7 @@ Transform:
   - {fileID: 4372318484963748}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.55199, z: 0}
 --- !u!4 &4397396833269364
 Transform:
   m_ObjectHideFlags: 1
@@ -977,18 +978,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843278030018688}
   m_Mesh: {fileID: 4300018, guid: 18a025219137d06479482bf29af644a9, type: 3}
---- !u!65 &65381814935970722
+--- !u!65 &65653534555131782
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724091442641746}
+  m_GameObject: {fileID: 1461304158638442}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8148105, y: 1.494331, z: 2.0111983}
-  m_Center: {x: 0.0019165449, y: -0.0043474007, z: 0.94974154}
+  m_Size: {x: 3.779521, y: 0.4064002, z: 1.8288004}
+  m_Center: {x: 0.00000059604645, y: 0.0000009536743, z: 0.91439986}
+--- !u!65 &65779786054553700
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262894280459474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.78, y: 0.89, z: 1.5}
+  m_Center: {x: 0, y: 0.51, z: -0.12}
 --- !u!95 &95211342152343078
 Animator:
   serializedVersion: 3
