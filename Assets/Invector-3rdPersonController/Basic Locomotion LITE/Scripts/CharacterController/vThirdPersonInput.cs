@@ -169,16 +169,16 @@ namespace Invector.CharacterController
 
         protected virtual void SprintInput()
         {
-            if (Input.GetKeyDown(sprintInput) || Input.GetButtonDown("Jump"))
-                cc.Sprint(true);
-            else if(Input.GetKeyUp(sprintInput) || Input.GetButtonUp("Jump"))
-                cc.Sprint(false);
+            //if (Input.GetKeyDown(sprintInput) || Input.GetButtonDown("Jump"))
+            //    cc.Sprint(true);
+            //else if(Input.GetKeyUp(sprintInput) || Input.GetButtonUp("Jump"))
+            //    cc.Sprint(false);
         }
 
         protected virtual void JumpInput()
         {
-            if (Input.GetKeyDown(jumpInput) )
-                cc.Jump();
+            //if (Input.GetKeyDown(jumpInput) )
+            //    cc.Jump();
         }
 
         protected virtual void ExitGameInput()

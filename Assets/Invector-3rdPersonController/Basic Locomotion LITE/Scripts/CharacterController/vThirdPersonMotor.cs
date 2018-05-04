@@ -217,6 +217,9 @@ namespace Invector.CharacterController
                 input.y = 0;
                 isSprinting = false;
                 isStrafing = false;
+                isBehindCover = false;
+                isPeeking = false;
+                
             }
             
         }

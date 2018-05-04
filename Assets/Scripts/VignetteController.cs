@@ -12,7 +12,6 @@ public class VignetteController : MonoBehaviour {
 
     public static float _vignetteVolume;
 
-    public bool isDead;
 
     public Animator _fader;
     public Transform _spawnPoint;
