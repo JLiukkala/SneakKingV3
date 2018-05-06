@@ -122,6 +122,9 @@ namespace Invector.CharacterController
                 HideInput();
                 PeekInput();
                 PickupInput();
+            } else
+            {
+                cc.input.x = 0;
             }
         }
 
@@ -136,13 +139,13 @@ namespace Invector.CharacterController
 
         protected virtual void CrouchInput()
         {
-            if (Input.GetKeyDown(crouchInput) || Input.GetButtonDown("Fire1"))
+            if (/*Input.GetKeyDown(crouchInput) ||*/ Input.GetButtonDown("Fire1"))
                 cc.Crouch();
         }
 
         protected virtual void HideInput()
         {
-            if (Input.GetKeyDown(hideInput) || Input.GetButtonDown("Fire2"))
+            if (/*Input.GetKeyDown(hideInput) ||*/ Input.GetButtonDown("Fire2"))
                 cc.Hide(cs._coverPos);
         }
 
@@ -154,28 +157,28 @@ namespace Invector.CharacterController
 
         protected virtual void PickupInput()
         {
-            if (Input.GetKeyDown(pickupInput) || Input.GetButtonDown("Fire3"))
-                cc.PickUp();
+            //if (Input.GetKeyDown(pickupInput) || Input.GetButtonDown("Fire3"))
+            //    cc.PickUp();
         }
 
         protected virtual void StrafeInput()
         {
-            if (Input.GetKeyDown(strafeInput))
-                cc.Strafe();
+            //if (Input.GetKeyDown(strafeInput))
+            //    cc.Strafe();
         }
 
         protected virtual void SprintInput()
         {
-            if (Input.GetKeyDown(sprintInput) || Input.GetButtonDown("Jump"))
-                cc.Sprint(true);
-            else if(Input.GetKeyUp(sprintInput) || Input.GetButtonUp("Jump"))
-                cc.Sprint(false);
+            //if (Input.GetKeyDown(sprintInput) || Input.GetButtonDown("Jump"))
+            //    cc.Sprint(true);
+            //else if(Input.GetKeyUp(sprintInput) || Input.GetButtonUp("Jump"))
+            //    cc.Sprint(false);
         }
 
         protected virtual void JumpInput()
         {
-            if (Input.GetKeyDown(jumpInput) )
-                cc.Jump();
+            //if (Input.GetKeyDown(jumpInput) )
+            //    cc.Jump();
         }
 
         protected virtual void ExitGameInput()
@@ -203,7 +206,7 @@ namespace Invector.CharacterController
                 return;
 
             // Camera Lock if joystick input type ! Implement this better!! And buttons etc.
-            if (inputType.Equals(InputType.Joystick)) tpCamera.lockCamera = true;
+            //if (inputType.Equals(InputType.Joystick)) tpCamera.lockCamera = true;
 
             var Y = Input.GetAxis(rotateCameraYInput);
             var X = Input.GetAxis(rotateCameraXInput);
@@ -212,9 +215,12 @@ namespace Invector.CharacterController
 
             // tranform Character direction from camera if not KeepDirection
             if (!keepDirection)
+                
                 cc.UpdateTargetDirection(tpCamera != null ? tpCamera.transform : null);
             // rotate the character with the camera while strafing        
-            RotateWithCamera(tpCamera != null ? tpCamera.transform : null);            
+
+            
+            //RotateWithCamera(tpCamera != null ? tpCamera.transform : null);            
         }
 
         protected virtual void UpdateCameraStates()
@@ -237,7 +243,7 @@ namespace Invector.CharacterController
         {
             if (cc.isStrafing && !cc.lockMovement && !cc.lockMovement)
             {                
-                cc.RotateWithAnotherTransform(cameraTransform);                
+                //cc.RotateWithAnotherTransform(cameraTransform);                
             }
         }
 
