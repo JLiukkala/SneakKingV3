@@ -30,8 +30,8 @@ namespace Invector
             if (enemy.hasNoiseArea)
             {
                 enemy.heardNoise = true;
-                audio.Play();
-                audio.Play(44100);
+                //audio.Play();
+                //audio.Play(44100);
             }
         }
     }

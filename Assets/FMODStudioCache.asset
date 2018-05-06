@@ -39,9 +39,11 @@ MonoBehaviour:
   - {fileID: 114359692481387984}
   - {fileID: 114609020859329686}
   - {fileID: 114757903325333510}
+  - {fileID: 114612888980399134}
+  - {fileID: 114258570669187996}
   MasterBankRef: {fileID: 114581898615117268}
   StringsBankRef: {fileID: 114049505062887976}
-  stringsBankWriteTime: 636612362634976448
+  stringsBankWriteTime: 636612457813370341
   cacheVersion: 2
 --- !u!114 &114007152836086324
 MonoBehaviour:
@@ -136,11 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\fmod_project\Asylum\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636612362634976448
+  lastModified: 636612457813370341
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1752
+    Value: 1824
   Exists: 1
 --- !u!114 &114067830889785642
 MonoBehaviour:
@@ -348,6 +350,28 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 449
+--- !u!114 &114258570669187996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Interactions/Huh
+  guid: d19215bf5f686647a499a6999ec1863c
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 936
 --- !u!114 &114286798293341242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +602,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114499531729371682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114504134673536862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +673,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114411537479778778}
+  - {fileID: 114499531729371682}
   MinDistance: 0
   MaxDistance: 0
   Length: 244
@@ -673,11 +712,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:\Unity\Projects\SneakKingV3\Assets\fmod_project\Asylum\Build\Desktop\Master
     Bank.bank
-  lastModified: 636612362634956447
+  lastModified: 636612457813360341
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 20635264
+    Value: 21242112
   Exists: 1
 --- !u!114 &114609020859329686
 MonoBehaviour:
@@ -701,6 +740,28 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 200
+--- !u!114 &114612888980399134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Interactions/Snoring
+  guid: b434f3f8e1d0b84584ad84c00e6054e1
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52000
 --- !u!114 &114647859504798800
 MonoBehaviour:
   m_ObjectHideFlags: 0
