@@ -139,13 +139,13 @@ namespace Invector.CharacterController
 
         protected virtual void CrouchInput()
         {
-            if (Input.GetKeyDown(crouchInput) || Input.GetButtonDown("Fire1"))
+            if (/*Input.GetKeyDown(crouchInput) ||*/ Input.GetButtonDown("Fire1"))
                 cc.Crouch();
         }
 
         protected virtual void HideInput()
         {
-            if (Input.GetKeyDown(hideInput) || Input.GetButtonDown("Fire2"))
+            if (/*Input.GetKeyDown(hideInput) ||*/ Input.GetButtonDown("Fire2"))
                 cc.Hide(cs._coverPos);
         }
 
@@ -157,14 +157,14 @@ namespace Invector.CharacterController
 
         protected virtual void PickupInput()
         {
-            if (Input.GetKeyDown(pickupInput) || Input.GetButtonDown("Fire3"))
-                cc.PickUp();
+            //if (Input.GetKeyDown(pickupInput) || Input.GetButtonDown("Fire3"))
+            //    cc.PickUp();
         }
 
         protected virtual void StrafeInput()
         {
-            if (Input.GetKeyDown(strafeInput))
-                cc.Strafe();
+            //if (Input.GetKeyDown(strafeInput))
+            //    cc.Strafe();
         }
 
         protected virtual void SprintInput()
