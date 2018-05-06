@@ -31,6 +31,11 @@ namespace Invector.AI
 
             enemy = Owner.GetComponent<EnemyUnit>();
 
+            //if (enemy.isRoomTwo)
+            //{
+            //    waitTime = 0.01f;
+            //}
+
             cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
 
             questionMark = GameObject.Find("QuestionMark");
@@ -52,6 +57,18 @@ namespace Invector.AI
                 //{
                 //    waitTime = 5f;
                 //}
+
+                if (enemy.isRoomTwo)
+                {
+                    if (!enemy.gotUp)
+                    {
+                        waitTime = 0.01f;
+                    }
+                    else if (enemy.gotUp)
+                    {
+                        waitTime = 3f;
+                    }
+                }
 
                 if (time < waitTime)
                 {

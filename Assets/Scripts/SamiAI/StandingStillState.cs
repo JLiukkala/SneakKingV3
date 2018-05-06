@@ -13,7 +13,7 @@ namespace Invector.AI
 
         EnemyUnit enemy;
 
-        private float roomTwoTime = 0.2f;
+        private float roomTwoTime = 0f;
 
         Invector.CharacterController.vThirdPersonController cc;
 
@@ -58,7 +58,7 @@ namespace Invector.AI
                 if (enemy.isRoomTwo)
                 {
                     enemy._docAnimator.SetBool("isSleeping", true);
-                    enemy.agent.baseOffset = -3f;
+                    enemy.agent.baseOffset = -5f;
                 }
 
                 //enemy.time += Time.deltaTime;
@@ -153,7 +153,7 @@ namespace Invector.AI
                     enemy.time += Time.deltaTime;
                     enemy.agent.baseOffset = 0;
                     enemy._docAnimator.SetBool("isSleeping", false);
-                    vDestroyGameObject.Destroy(GameObject.Find("ZZZ"));
+                    //vDestroyGameObject.Destroy(GameObject.Find("ZZZ"));
                     enemy.snoring.Stop();
                     enemy.huh.PlayDelayed(0.05f);
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Invector
 {
@@ -9,6 +10,12 @@ namespace Invector
         public GameObject Owner { get; protected set; }
         EnemyUnit enemy;
         AudioSource audio;
+
+        GameObject sofa;
+        NavMeshModifier nmm;
+
+        GameObject navMeshGenerator;
+        NavMeshGenerator nmg;
 
         void Start()
         {
@@ -23,16 +30,42 @@ namespace Invector
             {
                 audio = GetComponent<AudioSource>();
             }
+
+            if (enemy.isRoomTwo)
+            {
+                sofa = GameObject.Find("Sofa");
+                navMeshGenerator = GameObject.Find("NavMeshGenerator");
+
+                nmm = sofa.GetComponent<NavMeshModifier>();
+                nmg = navMeshGenerator.GetComponent<NavMeshGenerator>();
+            }
         }
 
         void OnTriggerEnter(Collider other)
         {
             if (enemy.hasNoiseArea)
             {
+                if (enemy.isRoomTwo)
+                {
+                    nmm.ignoreFromBuild = true;
+                    nmg.BuildNavMesh();
+                }
+
                 enemy.heardNoise = true;
                 audio.Play();
                 audio.Play(44100);
             }
         }
+
+        //void OnTriggerExit(Collider other)
+        //{
+        //    if (enemy.hasNoiseArea)
+        //    {
+        //        if (enemy.isRoomTwo)
+        //        {
+        //            Destroy(gameObject);
+        //        }
+        //    }
+        //}
     }
 }

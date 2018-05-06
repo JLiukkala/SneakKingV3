@@ -55,6 +55,11 @@ namespace Invector.AI
                 }
                 ShowQuestionMark();
 
+                if (enemy.isRoomTwo)
+                {
+                    waitTime = 1;
+                }
+
                 //enemy.inCameraView = false;
             }
 		}

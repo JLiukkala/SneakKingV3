@@ -86,6 +86,12 @@ namespace Invector
 
         private AudioSource[] audioSources;
 
+        [HideInInspector]
+        public bool turningDone = false;
+
+        [HideInInspector]
+        public bool gotUp = false;
+
         //[HideInInspector]
         //public GameObject exclamationMark;
         //[HideInInspector]
