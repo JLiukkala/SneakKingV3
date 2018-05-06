@@ -5539,6 +5539,10 @@ PlayableDirector:
     value: {fileID: 190201110}
   - key: {fileID: 114673343447236556, guid: 92f11fa8d70ff6941a9f1733a12d0a86, type: 2}
     value: {fileID: 1954729810}
+  - key: {fileID: 114187784274143576, guid: 92f11fa8d70ff6941a9f1733a12d0a86, type: 2}
+    value: {fileID: 1828125442}
+  - key: {fileID: 114063908474052788, guid: 92f11fa8d70ff6941a9f1733a12d0a86, type: 2}
+    value: {fileID: 1828125442}
   m_ExposedReferences:
     m_References:
     - b0a1b6757f4f8fa4aa970dd0f2a0a059: {fileID: 1101445905}
@@ -9774,6 +9778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1828125444}
   - component: {fileID: 1828125443}
+  - component: {fileID: 1828125445}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -9830,6 +9835,23 @@ Transform:
   m_Father: {fileID: 1568216962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!95 &1828125445
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1828125442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1831184672 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010000698968, guid: e52890ebb21e7704b8a5193fa0865463,
