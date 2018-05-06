@@ -37,9 +37,11 @@ MonoBehaviour:
   - {fileID: 114134580408911110}
   - {fileID: 114846232944771040}
   - {fileID: 114359692481387984}
+  - {fileID: 114609020859329686}
+  - {fileID: 114757903325333510}
   MasterBankRef: {fileID: 114581898615117268}
   StringsBankRef: {fileID: 114049505062887976}
-  stringsBankWriteTime: 636612342982202374
+  stringsBankWriteTime: 636612362634976448
   cacheVersion: 2
 --- !u!114 &114007152836086324
 MonoBehaviour:
@@ -134,11 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\fmod_project\Asylum\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636612342982202374
+  lastModified: 636612362634976448
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1672
+    Value: 1752
   Exists: 1
 --- !u!114 &114067830889785642
 MonoBehaviour:
@@ -516,6 +518,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 16133
+--- !u!114 &114411537479778778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wood
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114418879745556030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,7 +634,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114759152287263174}
+  - {fileID: 114411537479778778}
   MinDistance: 0
   MaxDistance: 0
   Length: 244
@@ -656,12 +673,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:\Unity\Projects\SneakKingV3\Assets\fmod_project\Asylum\Build\Desktop\Master
     Bank.bank
-  lastModified: 636612342982192373
+  lastModified: 636612362634956447
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 20563456
+    Value: 20635264
   Exists: 1
+--- !u!114 &114609020859329686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Interactions/Cue 1
+  guid: b9f32a7df849524c9e3b5e4f7bfbbf46
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 200
 --- !u!114 &114647859504798800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +716,28 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114757903325333510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Interactions/Cue 2
+  guid: fcb22563574a0048ac568b4df9c81768
+  Banks:
+  - {fileID: 114581898615117268}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120
 --- !u!114 &114759152287263174
 MonoBehaviour:
   m_ObjectHideFlags: 0
