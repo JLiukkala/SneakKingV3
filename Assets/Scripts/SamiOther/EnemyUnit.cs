@@ -74,7 +74,7 @@ namespace Invector
         public float time = 0;
 
         [HideInInspector]
-        public float waitTime = 3;
+        public float waitTime = 2f;
 
         public NavMeshAgent agent;
 
@@ -85,6 +85,12 @@ namespace Invector
         public AudioSource huh;
 
         private AudioSource[] audioSources;
+
+        [HideInInspector]
+        public bool turningDone = false;
+
+        [HideInInspector]
+        public bool gotUp = false;
 
         //[HideInInspector]
         //public GameObject exclamationMark;

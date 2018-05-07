@@ -55,6 +55,11 @@ namespace Invector.AI
                 }
                 ShowQuestionMark();
 
+                if (enemy.isRoomTwo)
+                {
+                    waitTime = 1;
+                }
+
                 //enemy.inCameraView = false;
             }
 		}
@@ -71,17 +76,38 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.Stop);
             }
 
-            if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
+            if (enemy.isRoomTwo)
+            {
+                if (enemy.gotUp)
+                {
+                    if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
+                    {
+                        //enemy.SetOwnLastKnownPosition();
+                        enemy.hasBeenNoticed = true;
+                        enemy.time = 0;
+                        Debug.Log("Noticed player!");
+                        HideQuestionMark();
+                        enemy.inCameraView = false;
+                        return enemy.PerformTransition(AIStateType.FollowTarget);
+                    }
+                }
+            } 
+            else if (!enemy.isRoomTwo)
             {
-                //enemy.SetOwnLastKnownPosition();
-                enemy.hasBeenNoticed = true;
-                enemy.time = 0;
-                Debug.Log("Noticed player!");
-                HideQuestionMark();
-                enemy.inCameraView = false;
-                return enemy.PerformTransition(AIStateType.FollowTarget);
+                if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
+                    !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
+                            || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
+                {
+                    //enemy.SetOwnLastKnownPosition();
+                    enemy.hasBeenNoticed = true;
+                    enemy.time = 0;
+                    Debug.Log("Noticed player!");
+                    HideQuestionMark();
+                    enemy.inCameraView = false;
+                    return enemy.PerformTransition(AIStateType.FollowTarget);
+                }
             }
 
             // Otherwise return false.

@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b497c7078b257e4a8fb09fc2c6323df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: LightDarkTest
+  loadLevel: TestEndMenu
   fadeScreen: {fileID: 797375073}
   anim: {fileID: 797375072}
   keyCollider: {fileID: 0}
@@ -6287,7 +6287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneProfile: {fileID: 11400000, guid: 82535f3f2bbdda64cb58211ffadefa7a, type: 2}
-  isDead: 0
   _fader: {fileID: 797375072}
   _spawnPoint: {fileID: 2109772090}
   HeartBeatEvent: 
@@ -7275,6 +7274,21 @@ Prefab:
         type: 2}
       propertyPath: timeToSpotPlayer
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484563462246050, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: isRoomTwo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82388111528033930, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82512083656123896, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}

@@ -4607,7 +4607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b497c7078b257e4a8fb09fc2c6323df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: TestEndMenu
+  loadLevel: TestSceneHenkka7
   fadeScreen: {fileID: 471458694}
   anim: {fileID: 471458693}
   keyCollider: {fileID: 24493237}
@@ -13389,6 +13389,21 @@ Prefab:
       propertyPath: _path
       value: 
       objectReference: {fileID: 690449769}
+    - target: {fileID: 114484563462246050, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: isRoomTwo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484563462246050, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: isStandingStill
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484563462246050, guid: fe2b07b954fdcdd4c92a4d08856ce2fd,
+        type: 2}
+      propertyPath: hasNoiseArea
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe2b07b954fdcdd4c92a4d08856ce2fd, type: 2}
   m_IsPrefabParent: 0

@@ -12,24 +12,25 @@ public class PageInteraction : MonoBehaviour
     // for reading the page pops up.
     void OnTriggerEnter(Collider other)
     {
-        pagePickUpText.SetActive(true);
+        //pagePickUpText.SetActive(true);
+        pageInteraction.SetActive(true);
     }
 
     // If the player stays in the trigger and presses E,
     // the pick-up text goes away and the page shows itself. 
-    void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire3"))
-        { 
-            pagePickUpText.SetActive(false);
-            pageInteraction.SetActive(true);
-        }
-    }
+    //void OnTriggerStay(Collider other)
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire3"))
+    //    { 
+    //        pagePickUpText.SetActive(false);
+    //        pageInteraction.SetActive(true);
+    //    }
+    //}
 
     // When the player exits the trigger, both texts are set inactive.
     void OnTriggerExit(Collider other)
     {
         pageInteraction.SetActive(false);
-        pagePickUpText.SetActive(false);
+        //pagePickUpText.SetActive(false);
     }
 }

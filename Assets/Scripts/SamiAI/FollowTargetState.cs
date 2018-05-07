@@ -75,7 +75,9 @@ namespace Invector.AI
                         else if (enemy.isRoomTwo)
                         {
                             enemy.speed = 0.15f;
-                            enemy.agent.speed = 1f;
+                            enemy.agent.speed = 0.5f;
+                            enemy.viewDistance = 14;
+                            enemy.hearDistance = 10;
                         }
                         else
                         {

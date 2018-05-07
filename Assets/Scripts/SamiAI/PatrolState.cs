@@ -42,6 +42,7 @@ namespace Invector.AI
 		public override void StateActivated()
 		{
 			base.StateActivated();
+            enemy.hearDistance = 1;
             CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
 		}
 
@@ -57,16 +58,36 @@ namespace Invector.AI
                 //    enemy.time += Time.deltaTime;
                 //}
 
-                // 2. Are we close enough the current waypoint?
-                //   2.1 If yes, get the next waypoint
+                if (enemy.isRoomTwo)
+                {
+                    //enemy.waitTime = 8;
+                    enemy.time += Time.deltaTime;
+                }
+                //else
+                //{
+                //    enemy.waitTime = 3;
+                //}
 
-                CurrentWaypoint = GetWaypoint();
+                if (enemy.isRoomTwo && enemy.time >= enemy.waitTime)
+                {
+                    enemy.hearDistance = 8;
+                }
+
+                    // 2. Are we close enough the current waypoint?
+                    //   2.1 If yes, get the next waypoint
+
+                    CurrentWaypoint = GetWaypoint();
 
                 if (enemy.goToAlertMode)
                 {
                     enemy.hearDistance = 10;
                     enemy.viewDistance = 12;
-                } 
+                }
+                else if (enemy.isRoomTwo)
+                {
+                    //enemy.hearDistance = 1;
+                    enemy.viewDistance = 10;
+                }
                 else
                 {
                     enemy.hearDistance = 8;

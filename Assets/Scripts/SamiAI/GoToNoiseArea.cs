@@ -31,6 +31,11 @@ namespace Invector.AI
 
             enemy = Owner.GetComponent<EnemyUnit>();
 
+            //if (enemy.isRoomTwo)
+            //{
+            //    waitTime = 0.01f;
+            //}
+
             cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
 
             questionMark = GameObject.Find("QuestionMark");
@@ -53,6 +58,18 @@ namespace Invector.AI
                 //    waitTime = 5f;
                 //}
 
+                if (enemy.isRoomTwo)
+                {
+                    if (!enemy.gotUp)
+                    {
+                        waitTime = 0.01f;
+                    }
+                    else if (enemy.gotUp)
+                    {
+                        waitTime = 3f;
+                    }
+                }
+
                 if (time < waitTime)
                 {
                     enemy.heardNoise = false;
@@ -68,7 +85,10 @@ namespace Invector.AI
             // If yes, go to stop state.
             if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.noiseArea.position) < enemy.stopDistance)
             {
-                enemy.goToAlertMode = true;
+                if (!enemy.isRoomTwo)
+                {
+                    enemy.goToAlertMode = true;
+                }
                 time = 0;
                 //Debug.Log("Do we stay here?");
                 return enemy.PerformTransition(AIStateType.Stop);
