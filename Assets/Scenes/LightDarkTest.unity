@@ -10002,6 +10002,23 @@ Prefab:
       propertyPath: jumpInput
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114205875712030202, guid: 207f9c1ff9540b040a5baae8431c68a9,
+        type: 2}
+      propertyPath: freeRunningSpeed
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994868866603746, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994868866603746, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994868866603746, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.165
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114166609472718960, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}
     - {fileID: 114540560787243550, guid: 207f9c1ff9540b040a5baae8431c68a9, type: 2}

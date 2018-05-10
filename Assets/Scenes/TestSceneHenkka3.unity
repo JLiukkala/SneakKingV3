@@ -1260,7 +1260,7 @@ Transform:
   m_LocalScale: {x: 2.24, y: 1.62, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 30}
 --- !u!1001 &263982971
 Prefab:
@@ -1539,7 +1539,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4393650805549210, guid: 38ef5b6d8e33dd042903d7d001126a57, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4393650805549210, guid: 38ef5b6d8e33dd042903d7d001126a57, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1818,60 +1818,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!1 &410590728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 410590730}
-  - component: {fileID: 410590729}
-  - component: {fileID: 410590731}
-  m_Layer: 12
-  m_Name: SprintCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &410590729
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410590728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 23.500616, y: 1, z: 1.4758606}
-  m_Center: {x: -4.2809534, y: 0, z: -0.2379303}
---- !u!4 &410590730
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410590728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.92, y: 0.49, z: -4.97}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &410590731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410590728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6bc706e884365b489dedcfd4909aa33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprintTutorial: {fileID: 2049033730}
 --- !u!1001 &425266908
 Prefab:
   m_ObjectHideFlags: 0
@@ -2809,7 +2755,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 893606800}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -22.99, y: 0.023, z: -1.24}
+  m_LocalPosition: {x: -22.99, y: 0, z: -1.24}
   m_LocalScale: {x: 0.165, y: 0.165, z: 0.165}
   m_Children:
   - {fileID: 2094364162}
@@ -3395,11 +3341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointOfInterestPosition: {fileID: 0}
-  minimumX: -23
+  minimumX: -22.8
   maximumX: -21
   minimumY: 1.5
   maximumY: 2.2
-  minimumZ: 1.2
+  minimumZ: 0.9
   maximumZ: -7
   duration: 3
   t: 0
@@ -3444,7 +3390,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 705799613}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &705799618
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3509,9 +3455,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 705799613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a84d183f1b03cc4281308e7dd8145f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &708156046
 GameObject:
   m_ObjectHideFlags: 0
@@ -3896,6 +3843,7 @@ GameObject:
   - component: {fileID: 741163623}
   - component: {fileID: 741163622}
   - component: {fileID: 741163626}
+  - component: {fileID: 741163627}
   m_Layer: 12
   m_Name: NoiseArea
   m_TagString: Untagged
@@ -4038,6 +3986,28 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &741163627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741163621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Interactions/BalloonPop
+  PlayEvent: 3
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &746817494
 Prefab:
   m_ObjectHideFlags: 0
@@ -5291,9 +5261,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 893606800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e2ab7633c1e5fa446be5c1c5040503c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FootstepEvent: event:/Player/Footsteps3D
+  m_Wood: 0
+  m_Grass: 0
 --- !u!114 &893606802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5303,9 +5276,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 893606800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Event: event:/Player/Footsteps3D
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &893606803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,7 +5404,7 @@ MonoBehaviour:
   jumpHeight: 4
   useRootMotion: 0
   freeWalkSpeed: 2
-  freeRunningSpeed: 3.4
+  freeRunningSpeed: 4.1
   freeSprintSpeed: 4.1
   strafeWalkSpeed: 2
   strafeRunningSpeed: 2.5
@@ -10282,7 +10266,7 @@ Transform:
   - {fileID: 1906409979}
   - {fileID: 1898895076}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1912268546
 GameObject:

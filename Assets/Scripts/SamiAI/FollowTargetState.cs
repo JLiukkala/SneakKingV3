@@ -15,15 +15,13 @@ namespace Invector.AI
         EnemyUnit enemy;
 
 		public FollowTargetState( GameObject owner )
-			: base() //owner, AIStateType.FollowTarget )
+			: base()
 		{
             State = AIStateType.FollowTarget;
 
             AddTransition( AIStateType.Patrol );
             AddTransition( AIStateType.GoToLastKnownPosition );
             AddTransition( AIStateType.GoToNoiseArea );
-
-
 
             if (Owner == null)
             {
@@ -44,8 +42,6 @@ namespace Invector.AI
                     time += Time.deltaTime;
                 }
 
-                //ShowExclamationMark();
-
                 if (time >= waitTime)
                 {
                     time = 0;
@@ -60,7 +56,6 @@ namespace Invector.AI
 
                     if (Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance)
                     {
-                        //enemy.agent.ResetPath();
                         enemy.transform.LookAt(playerPosWithoutY);
                         enemy.speed = 0.01f;
                         enemy.agent.speed = 0.001f;
@@ -70,19 +65,19 @@ namespace Invector.AI
                         if (enemy.isRoomEight)
                         {
                             enemy.speed = 0.15f;
-                            enemy.agent.speed = 2f;
+                            enemy.agent.speed = 1f;
                         }
                         else if (enemy.isRoomTwo)
                         {
                             enemy.speed = 0.15f;
-                            enemy.agent.speed = 0.5f;
+                            enemy.agent.speed = 0.3f;
                             enemy.viewDistance = 14;
                             enemy.hearDistance = 10;
                         }
                         else
                         {
                             enemy.speed = 0.15f;
-                            enemy.agent.speed = 0.5f;
+                            enemy.agent.speed = 0.3f;
                         }
 
                         enemy.agent.SetDestination(enemy.Target.position);
@@ -107,22 +102,6 @@ namespace Invector.AI
             // Otherwise return false.
             return false;
 		}
-
-        //IEnumerator TurnToFace(Vector3 lookTarget)
-        //{
-        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-        //        directionToLookTarget.x) * Mathf.Rad2Deg;
-
-        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-        //    {
-        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-        //            enemy.turnSpeed * Time.deltaTime);
-
-        //        enemy.transform.eulerAngles = Vector3.up * angle;
-        //        yield return null;
-        //    }
-        //}
 
         public void ShowExclamationMark()
         {

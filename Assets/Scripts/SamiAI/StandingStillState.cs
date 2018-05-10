@@ -169,7 +169,7 @@ namespace Invector.AI
 
                     if (enemy.isRoomTwo && enemy.time >= roomTwoTime)
                     {
-                        enemy.time = 0;
+                        //enemy.time = 0;
                         Debug.Log("Heard something!");
                         return enemy.PerformTransition(AIStateType.GoToNoiseArea);
                     }

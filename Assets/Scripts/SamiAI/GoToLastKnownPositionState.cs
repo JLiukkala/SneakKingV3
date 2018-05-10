@@ -16,7 +16,7 @@ namespace Invector.AI
         Invector.CharacterController.vThirdPersonController cc;
 
         public GoToLastKnownPositionState( GameObject owner )
-			: base() //owner, AIStateType.GoToLastKnownPosition )
+			: base()
 		{
             State = AIStateType.GoToLastKnownPosition;
 
@@ -59,8 +59,6 @@ namespace Invector.AI
                 {
                     waitTime = 1;
                 }
-
-                //enemy.inCameraView = false;
             }
 		}
 
@@ -84,9 +82,8 @@ namespace Invector.AI
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                     {
-                        //enemy.SetOwnLastKnownPosition();
                         enemy.hasBeenNoticed = true;
-                        enemy.time = 0;
+                        //enemy.time = 0;
                         Debug.Log("Noticed player!");
                         HideQuestionMark();
                         enemy.inCameraView = false;
@@ -100,7 +97,6 @@ namespace Invector.AI
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                 {
-                    //enemy.SetOwnLastKnownPosition();
                     enemy.hasBeenNoticed = true;
                     enemy.time = 0;
                     Debug.Log("Noticed player!");
@@ -113,22 +109,6 @@ namespace Invector.AI
             // Otherwise return false.
             return false;
 		}
-
-        //IEnumerator TurnToFace(Vector3 lookTarget)
-        //{
-        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-        //        directionToLookTarget.x) * Mathf.Rad2Deg;
-
-        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-        //    {
-        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-        //            enemy.turnSpeed * Time.deltaTime);
-
-        //        enemy.transform.eulerAngles = Vector3.up * angle;
-        //        yield return null;
-        //    }
-        //}
 
         public void ShowQuestionMark()
         {

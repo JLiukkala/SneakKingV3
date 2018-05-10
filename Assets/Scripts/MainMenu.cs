@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame ()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void ToCredits ()
@@ -33,6 +33,16 @@ public class MainMenu : MonoBehaviour
     public void ToMainMenu ()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ToOptionsMenu ()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ToControlsMenu ()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void ExitGame ()

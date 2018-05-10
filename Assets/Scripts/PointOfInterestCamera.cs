@@ -66,7 +66,7 @@ public class PointOfInterestCamera : MonoBehaviour
         {
             MoveCamera();
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
             {
                 hasReachedEnd = true;
                 Destroy(this);

@@ -34,6 +34,7 @@ namespace Invector.AI
             AddTransition( AIStateType.FollowTarget );
             AddTransition( AIStateType.GoToLastKnownPosition );
             AddTransition( AIStateType.GoToNoiseArea );
+
             _path = path;
 			_direction = direction;
 			_arriveDistance = arriveDistance;
@@ -42,41 +43,36 @@ namespace Invector.AI
 		public override void StateActivated()
 		{
 			base.StateActivated();
-            enemy.hearDistance = 1;
+
+            //if (enemy.isRoomTwo)
+            //{
+            //    enemy.hearDistance = 1;
+            //}
+
             CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
 		}
 
 		public override void Update()
 		{
-			// 1. Should we change the state?
-			//   1.1 If yes, change state and return.
-
+			// If ChangeState returns true, the state changes.
 			if ( !ChangeState() )
 			{
-                //if (enemy.isStandingStill)
-                //{
-                //    enemy.time += Time.deltaTime;
-                //}
-
                 if (enemy.isRoomTwo)
                 {
-                    //enemy.waitTime = 8;
                     enemy.time += Time.deltaTime;
                 }
-                //else
-                //{
-                //    enemy.waitTime = 3;
-                //}
 
-                if (enemy.isRoomTwo && enemy.time >= enemy.waitTime)
+                if (enemy.isRoomTwo && enemy.time >= enemy.waitTime / 2)
                 {
                     enemy.hearDistance = 8;
                 }
+                else
+                {
+                    enemy.hearDistance = 1;
+                }
 
-                    // 2. Are we close enough the current waypoint?
-                    //   2.1 If yes, get the next waypoint
-
-                    CurrentWaypoint = GetWaypoint();
+                // If close enough to the current waypoint, get the next waypoint.
+                CurrentWaypoint = GetWaypoint();
 
                 if (enemy.goToAlertMode)
                 {
@@ -85,7 +81,6 @@ namespace Invector.AI
                 }
                 else if (enemy.isRoomTwo)
                 {
-                    //enemy.hearDistance = 1;
                     enemy.viewDistance = 10;
                 }
                 else
@@ -94,27 +89,11 @@ namespace Invector.AI
                     enemy.viewDistance = 10;
                 }
 
-                //if (enemy.isStandingStill)
-                //{
-                //    enemy.speed = 0;
-                //    enemy.agent.speed = 0;
-                //}
-                //else
-                //{
                 enemy.speed = 0.14f;
-                enemy.agent.speed = 0.5f;
-                //}
+                enemy.agent.speed = 0.4f;
 
-                //Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
-                // 3. Move and rotate towards the current waypoint
-                //if (enemy.isStandingStill)
-                //{
-                //    enemy.transform.LookAt(currentWaypointWithoutY);
-                //}
-                //else
-                //{
+                // Move and rotate towards the current waypoint.
                 enemy.agent.SetDestination(CurrentWaypoint.Position);
-                //}
             }
 		}
 
@@ -124,23 +103,10 @@ namespace Invector.AI
 			Vector3 toWaypointVector = CurrentWaypoint.Position - Owner.transform.position;
 			float toWaypointSqr = toWaypointVector.sqrMagnitude;
 			float sqrArriveDistance = _arriveDistance * _arriveDistance;
-			if ( toWaypointSqr <= sqrArriveDistance )
+
+            if ( toWaypointSqr <= sqrArriveDistance )
 			{
-                //if (enemy.isStandingStill)
-                //{
-                //    if (enemy.time >= enemy.waitTime)
-                //    {
-                //        //enemy.speed = 0;
-                //        //enemy.agent.speed = 0;
-                //        //enemy.agent.ResetPath();
-                //        result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
-                //        enemy.time = 0;
-                //    }
-                //}
-                //else
-                //{
                 result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
-                //}
 			}
 
 			return result;
@@ -175,21 +141,5 @@ namespace Invector.AI
 
             return false;
 		}
-
-        //IEnumerator TurnToFace(Vector3 lookTarget)
-        //{
-        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-        //        directionToLookTarget.x) * Mathf.Rad2Deg;
-
-        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-        //    {
-        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-        //            enemy.turnSpeed * Time.deltaTime);
-
-        //        enemy.transform.eulerAngles = Vector3.up * angle;
-        //        yield return null;
-        //    }
-        //}
     }
 }

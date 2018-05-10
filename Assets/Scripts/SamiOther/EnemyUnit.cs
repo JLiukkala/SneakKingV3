@@ -65,6 +65,8 @@ namespace Invector
 
         public bool isRoomTwo;
 
+        public bool isRoomThree;
+
         public bool isRoomEight;
 
         [HideInInspector]

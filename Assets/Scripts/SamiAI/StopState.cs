@@ -18,13 +18,10 @@ namespace Invector.AI
         Transform position1;
         //Transform position2;
 
-        //GameObject sofa;
-        //NavMeshModifier nmm;
-
         Invector.CharacterController.vThirdPersonController cc;
 
         public StopState(GameObject owner)
-            : base() //owner, AIStateType.Stop)
+            : base()
         {
             State = AIStateType.Stop;
 
@@ -36,11 +33,6 @@ namespace Invector.AI
                 Owner = owner;
             }
 
-            //if (enemy.isRoomTwo)
-            //{
-            //    waitTime = 1f;
-            //}
-
             enemy = Owner.GetComponent<EnemyUnit>();
 
             cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
@@ -51,9 +43,6 @@ namespace Invector.AI
             {
                 position1 = GameObject.Find("Position1").transform;
                 //position2 = GameObject.Find("Position2").transform;
-
-                //sofa = GameObject.Find("Sofa");
-                //nmm = sofa.GetComponent<NavMeshModifier>();
             }
         }
 
@@ -68,19 +57,15 @@ namespace Invector.AI
 
                 if (enemy.isRoomTwo)
                 {
-                    //enemy.speed = 0.14f;
-                    //enemy.agent.speed = 0.5f;
                     enemy.speed = 0.001f;
                     enemy.agent.speed = 0.01f;
-                    //waitTime = 2f;
-                    enemy.hearDistance = 1;
+                    //enemy.hearDistance = 1;
                 }
 
                 if (enemy.isRoomTwo && !enemy.turningDone)
                 {
                     //enemy.StartCoroutine(TurnToFace(position1.position));
                     waitTime = 1.5f;
-                    //nmm.ignoreFromBuild = false;
                     enemy.transform.LookAt(position1);
                     //LookInPlace(position1.position);
                 }
@@ -134,9 +119,8 @@ namespace Invector.AI
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                     {
-                        //enemy.SetOwnLastKnownPosition();
                         enemy.hasBeenNoticed = true;
-                        enemy.time = 0;
+                        //enemy.time = 0;
                         Debug.Log("Noticed player!");
                         HideQuestionMark();
                         enemy.inCameraView = false;
@@ -150,7 +134,6 @@ namespace Invector.AI
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                 {
-                    //enemy.SetOwnLastKnownPosition();
                     enemy.hasBeenNoticed = true;
                     enemy.time = 0;
                     Debug.Log("Noticed player!");
@@ -164,21 +147,21 @@ namespace Invector.AI
             return false;
         }
 
-        IEnumerator TurnToFace(Vector3 lookTarget)
-        {
-            Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-            float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-                directionToLookTarget.x) * Mathf.Rad2Deg;
+        //IEnumerator TurnToFace(Vector3 lookTarget)
+        //{
+        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
+        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
+        //        directionToLookTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-            {
-                float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-                    enemy.turnSpeed * Time.deltaTime);
+        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
+        //    {
+        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
+        //            enemy.turnSpeed * Time.deltaTime);
 
-                enemy.transform.eulerAngles = Vector3.up * angle;
-                yield return null;
-            }
-        }
+        //        enemy.transform.eulerAngles = Vector3.up * angle;
+        //        yield return null;
+        //    }
+        //}
 
         //public void LookInPlace(Vector3 position)
         //{
