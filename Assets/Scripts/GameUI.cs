@@ -39,7 +39,7 @@ namespace Invector
             {
                 Time.timeScale = 0f;
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
                 {
                     _losingStatement = false;
                     SceneManager.LoadScene(loadLevel);

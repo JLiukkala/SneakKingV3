@@ -17,6 +17,9 @@ namespace Invector.AI
 
         Invector.CharacterController.vThirdPersonController cc;
 
+        GameObject uISceneCanvas;
+        PauseGame pauseGameScript;
+
         public Waypoint CurrentWaypoint { get; private set; }
 
         public StandingStillState(GameObject owner, Path path,
@@ -33,6 +36,11 @@ namespace Invector.AI
             enemy = Owner.GetComponent<EnemyUnit>();
 
             cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
+
+
+            uISceneCanvas = GameObject.Find("UISceneCanvas");
+            pauseGameScript = uISceneCanvas.GetComponent<PauseGame>();
+
 
             AddTransition(AIStateType.FollowTarget);
             AddTransition(AIStateType.GoToLastKnownPosition);
@@ -55,6 +63,11 @@ namespace Invector.AI
 
             if (!ChangeState())
             {
+                if (pauseGameScript.isPaused)
+                {
+                    return;
+                }
+
                 if (enemy.isRoomTwo)
                 {
                     enemy._docAnimator.SetBool("isSleeping", true);
@@ -142,10 +155,6 @@ namespace Invector.AI
                     return enemy.PerformTransition(AIStateType.FollowTarget);
                 }
             } 
-            else
-            {
-
-            }
 
             if (enemy.heardNoise)
             {
@@ -157,7 +166,6 @@ namespace Invector.AI
                     enemy.time += Time.deltaTime;
                     enemy.agent.baseOffset = 0;
                     enemy._docAnimator.SetBool("isSleeping", false);
-                    //vDestroyGameObject.Destroy(GameObject.Find("ZZZ"));
                     enemy.snoring.Stop();
                     enemy.huh.PlayDelayed(0.05f);
 

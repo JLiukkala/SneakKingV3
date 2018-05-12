@@ -23,6 +23,8 @@ namespace Invector
 
         KeyInteraction keyInteraction;
 
+        public GameObject openDoorCollider;
+
         // The text that appears when the player 
         // steps in front of a locked door. 
         public GameObject doorLockedText;
@@ -79,6 +81,7 @@ namespace Invector
                 if (keyInteraction.numberOfKeys == 1)
                 {
                     isInTransition = true;
+                    openDoorCollider.SetActive(true);
                     StartCoroutine(Fading());
                     keyInteraction.numberOfKeys = 0;
                     doorLockedText.SetActive(false);
@@ -93,7 +96,7 @@ namespace Invector
             doorLockedText.SetActive(false);
         }
 
-        // This is the method that does the fadein and loads the next scene.
+        // This is the method that performs the fade-out and loads the next scene.
         IEnumerator Fading()
         {
             anim.SetBool("Fade", true);

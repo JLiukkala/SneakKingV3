@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class PointOfInterestCamera : MonoBehaviour
@@ -13,6 +14,9 @@ public class PointOfInterestCamera : MonoBehaviour
     // while the SmoothStep takes place. 
     [HideInInspector]
     public Transform _pointOfInterestPosition;
+
+    [HideInInspector]
+    public GameObject skipCamera;
 
     // The minimum values indicate the starting position
     // of the camera. The maximum values are where the 
@@ -43,9 +47,6 @@ public class PointOfInterestCamera : MonoBehaviour
     [HideInInspector]
     public bool hasReachedEnd;
 
-    //[HideInInspector]
-    //public bool hasReachedCameraSwitchPoint;
-
     // Setting variables and references in the Start function.
 	void Start ()
     {
@@ -55,6 +56,8 @@ public class PointOfInterestCamera : MonoBehaviour
         if (hasPointOfInterest)
         {
             _pointOfInterestPosition = GameObject.Find("PointOfInterestPosition").transform;
+
+            skipCamera = GameObject.Find("SkipCamera");
         }
 	}
 	
@@ -69,6 +72,7 @@ public class PointOfInterestCamera : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
             {
                 hasReachedEnd = true;
+                Destroy(skipCamera.gameObject);
                 Destroy(this);
             }
         }
@@ -79,19 +83,13 @@ public class PointOfInterestCamera : MonoBehaviour
         t = (Time.time - startTime) / duration;
         _camera.transform.position = new Vector3(Mathf.SmoothStep(minimumX, maximumX, t), Mathf.SmoothStep(minimumY, maximumY, t), Mathf.SmoothStep(minimumZ, maximumZ, t));
 
-        //if (t > 0.5f)
-        //{
-        //    hasReachedCameraSwitchPoint = true;
-        //}
-
         // If t is greater than this value, the end 
         // position has been reached and this script 
         // is destroyed from the camera in the scene.
         if (t > 0.75f)
         {
             hasReachedEnd = true;
-            //t = (Time.time - startTime) / duration;
-            //_camera.transform.position = new Vector3(Mathf.SmoothStep(maximumX, minimumX, t), Mathf.SmoothStep(maximumY, minimumY, t), Mathf.SmoothStep(maximumZ, minimumZ, t));
+            Destroy(skipCamera.gameObject);
             Destroy(this);
         }
     }

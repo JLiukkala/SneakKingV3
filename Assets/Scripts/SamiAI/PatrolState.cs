@@ -62,7 +62,7 @@ namespace Invector.AI
                     enemy.time += Time.deltaTime;
                 }
 
-                if (enemy.isRoomTwo && enemy.time >= enemy.waitTime / 2)
+                if (enemy.isRoomTwo && enemy.time >= enemy.waitTime / 4)
                 {
                     enemy.hearDistance = 8;
                 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class MainMenu : MonoBehaviour
     private string loadLevel;
 
     public bool isInEndMenu;
+    public bool notInMainMenu;
+
+    public GameObject confirmButton;
+    public GameObject pauseMenu;
+    public GameObject yesButton;
+
+    EventSystem es;
 
     void Start ()
     {
@@ -18,6 +26,8 @@ public class MainMenu : MonoBehaviour
                 Cursor.visible = true;
 #endif
         }
+
+        es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
     }
 
     public void PlayGame ()
@@ -33,6 +43,7 @@ public class MainMenu : MonoBehaviour
     public void ToMainMenu ()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void ToOptionsMenu ()
@@ -49,5 +60,27 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Quit Game!");
         Application.Quit();
+    }
+
+    public void ShowConfirmMessage ()
+    {
+        if (notInMainMenu)
+        {
+            pauseMenu.SetActive(false);
+            confirmButton.SetActive(true);
+            es.SetSelectedGameObject(null);
+            es.SetSelectedGameObject(yesButton);
+        }
+    }
+
+    public void ChooseNo ()
+    {
+        if (notInMainMenu)
+        {
+            pauseMenu.SetActive(true);
+            confirmButton.SetActive(false);
+            es.SetSelectedGameObject(null);
+            es.SetSelectedGameObject(es.firstSelectedGameObject);
+        }
     }
 }

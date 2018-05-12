@@ -9,7 +9,7 @@ namespace Invector
     {
         public GameObject Owner { get; protected set; }
         EnemyUnit enemy;
-        AudioSource audio;
+        //AudioSource audio;
 
         GameObject sofa;
         NavMeshModifier nmm;
@@ -26,10 +26,10 @@ namespace Invector
 
             enemy = Owner.GetComponent<EnemyUnit>();
 
-            if (enemy.hasNoiseArea)
-            {
-                audio = GetComponent<AudioSource>();
-            }
+            //if (enemy.hasNoiseArea)
+            //{
+            //    audio = GetComponent<AudioSource>();
+            //}
 
             if (enemy.isRoomTwo)
             {

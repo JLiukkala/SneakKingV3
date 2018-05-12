@@ -12,19 +12,18 @@ namespace Invector
         [HideInInspector]
         public GameObject keyObject;
 
-        public GameObject keyPickUpText;
+        GameObject player;
+
+        Invector.CharacterController.vThirdPersonController cc;
 
         // The number of keys that the player has.
         // The player should only have one at a time.
         [HideInInspector]
         public int numberOfKeys = 0;
 
-        GameObject player;
-
-        Invector.CharacterController.vThirdPersonController cc;
-
         void Start()
         {
+            // Setting the references.
             keyObject = GameObject.Find("Key");
 
             player = GameObject.FindGameObjectWithTag("Player");
@@ -33,7 +32,9 @@ namespace Invector
 
         void OnTriggerEnter(Collider other)
         {
-            //keyPickUpText.SetActive(true);
+            // If the player goes inside the collider, the key is picked up, appearing
+            // in the top-left corner of the screen. The number of keys is then set
+            // to one and the key object and trigger collider are destroyed.
             keyInteraction.SetActive(true);
             numberOfKeys++;
 
@@ -42,32 +43,5 @@ namespace Invector
             Destroy(keyObject);
             Destroy(gameObject.GetComponent<BoxCollider>());
         }
-
-        // While staying inside the trigger collider,
-        // the pick-up text for the key is active.
-        //void OnTriggerStay(Collider other)
-        //{
-        //    // If the player presses E while inside,
-        //    // the pick-up text disappears and the key
-        //    // appears in the top-left corner of the screen.
-        //    // The number of keys is then set to one plus the 
-        //    // key object and trigger collider are destroyed.
-        //    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire3"))
-        //    {
-        //        keyInteraction.SetActive(true);
-        //        keyPickUpText.SetActive(false);
-
-        //        numberOfKeys++;
-
-        //        Destroy(keyObject);
-        //        Destroy(gameObject.GetComponent<BoxCollider>());
-        //    }
-        //}
-
-        // If the player exits the trigger, the text is set inactive.
-        //void OnTriggerExit(Collider other)
-        //{
-        //    keyPickUpText.SetActive(false);
-        //}
     }
 }
