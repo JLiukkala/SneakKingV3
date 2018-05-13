@@ -23,6 +23,7 @@ namespace Invector.AI
 		public IList<AIStateType> TargetStates { get; protected set; }
 		// The owner Unit of this state (Unit is the state controller class)
 		public GameObject Owner { get; protected set; }
+        public Transform NoiseArea { get; protected set; }
 
 		protected AIStateBase()
 		{
@@ -38,13 +39,14 @@ namespace Invector.AI
             {
                 Owner = GameObject.FindGameObjectWithTag("Enemy");
             }
+
+            if (NoiseArea == null)
+            {
+                NoiseArea = GameObject.Find("NoiseArea").transform;
+            }
+
             State = state;
 		}
-
-        //void Start ()
-        //{
-        //    Owner = GameObject.Find("Enemy");
-        //}
 
 		/// <summary>
 		/// Add a valid state to which we can go from this state.

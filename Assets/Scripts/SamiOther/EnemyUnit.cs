@@ -132,7 +132,7 @@ namespace Invector
 			}
 		}
 
-		public void Start()
+        public void Start()
 		{
             if ( _docAnimator == null)
             {
@@ -215,7 +215,7 @@ namespace Invector
             GoToLastKnownPositionState goToLastKnownPosition = new GoToLastKnownPositionState(this.gameObject);
             _states.Add(goToLastKnownPosition);
 
-            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(this.gameObject);
+            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(this.gameObject, this.noiseArea);
             _states.Add(goToNoiseArea);
 
             StopState stopState = new StopState(this.gameObject);

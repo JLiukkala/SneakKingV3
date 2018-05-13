@@ -56,16 +56,5 @@ namespace Invector
                 //audio.Play(44100);
             }
         }
-
-        //void OnTriggerExit(Collider other)
-        //{
-        //    if (enemy.hasNoiseArea)
-        //    {
-        //        if (enemy.isRoomTwo)
-        //        {
-        //            Destroy(gameObject);
-        //        }
-        //    }
-        //}
     }
 }
