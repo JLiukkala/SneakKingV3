@@ -9,6 +9,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private string loadLevel;
 
+    [SerializeField]
+    private string currentRoom;
+
     public bool isInEndMenu;
     public bool notInMainMenu;
 
@@ -54,6 +57,12 @@ public class MainMenu : MonoBehaviour
     public void ToControlsMenu ()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void RestartCurrentRoom ()
+    {
+        SceneManager.LoadScene(currentRoom);
+        Time.timeScale = 1;
     }
 
     public void ExitGame ()

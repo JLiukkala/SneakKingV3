@@ -2319,7 +2319,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2833234727298554fb2accd6944ca273, type: 3}
-    m_FontSize: 40
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2330,9 +2330,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\n\nMovement  - Left Analog Stick\nCamera - Right Analog Stick\nCrouch
-    - Cross/A \nHide Behind Cover - Circle/B\n\nMovement  - WASD\nCamera - Mouse\nCrouch
-    - Mouse1, Ctrl \nHide Behind Cover - Mouse2, Alt"
+  m_Text: "\n\nMovement  - Left Analog Stick\nCamera - Right Analog Stick, L2 And
+    R2\nCrouch - Cross/A \nHide Behind Cover/ Skip Camera - Circle/B\nOpen Pause Menu
+    - Start\n\nMovement  - WASD\nCamera - Mouse\nCrouch - Mouse1, Ctrl \nHide Behind
+    Cover/ Skip Camera - Mouse2, Alt\nOpen Pause Menu - Tab"
 --- !u!222 &802518415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5457,7 +5458,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadLevel: TestEndMenu
+  currentRoom: 
   isInEndMenu: 0
+  notInMainMenu: 0
+  confirmButton: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  yesButton: {fileID: 0}
 --- !u!114 &1862707033
 MonoBehaviour:
   m_ObjectHideFlags: 0
