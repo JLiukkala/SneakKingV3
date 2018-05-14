@@ -9,6 +9,10 @@ namespace Invector
     {
         public GameObject Owner { get; protected set; }
         EnemyUnit enemy;
+
+        [HideInInspector]
+        public static bool heardNoise = false;
+
         //AudioSource audio;
 
         GameObject sofa;
@@ -43,7 +47,7 @@ namespace Invector
 
         void OnTriggerEnter(Collider other)
         {
-            if (enemy.hasNoiseArea)
+            if (enemy.roomHasNoiseArea)
             {
                 if (enemy.isRoomTwo)
                 {
@@ -51,7 +55,7 @@ namespace Invector
                     nmg.BuildNavMesh();
                 }
 
-                enemy.heardNoise = true;
+                heardNoise = true;
                 //audio.Play();
                 //audio.Play(44100);
             }

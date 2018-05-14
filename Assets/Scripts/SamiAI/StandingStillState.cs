@@ -156,7 +156,7 @@ namespace Invector.AI
                 }
             } 
 
-            if (enemy.heardNoise)
+            if (NoiseArea.heardNoise)
             {
                 //enemy.time = 0;
                 //Debug.Log("Heard something!");

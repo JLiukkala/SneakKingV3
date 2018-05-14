@@ -125,7 +125,7 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
-            if (enemy.heardNoise)
+            if (NoiseArea.heardNoise)
             {
                 enemy.time = 0;
                 Debug.Log("Heard something!");

@@ -8,7 +8,7 @@ namespace Invector.AI
     public class StopState : AIStateBase
     {
         private float time = 0;
-        public float waitTime = 2f;
+        public float waitTime = 1.5f;
 
         EnemyUnit enemy;
 
@@ -59,7 +59,6 @@ namespace Invector.AI
                 {
                     enemy.speed = 0.001f;
                     enemy.agent.speed = 0.01f;
-                    //enemy.hearDistance = 1;
                 }
 
                 if (enemy.isRoomTwo && !enemy.turningDone)
@@ -71,8 +70,11 @@ namespace Invector.AI
                 }
                 else
                 {
-                    waitTime = 2f;
+                    waitTime = 1.5f;
                 }
+
+                enemy.speed = 0.001f;
+                enemy.agent.speed = 0.01f;
 
                 //if (enemy.isRoomTwo && !enemy.turningDone && time >= 1.5f)
                 //{

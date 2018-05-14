@@ -53,12 +53,12 @@ namespace Invector
         [HideInInspector]
         public bool goToAlertMode = false;
 
-        [HideInInspector]
-        public bool heardNoise = false;
+        //[HideInInspector]
+        //public bool heardNoise = false;
 
         public bool isStandingStill;
 
-        public bool hasNoiseArea;
+        public bool roomHasNoiseArea;
 
         [HideInInspector]
         public bool inCameraView;
@@ -109,7 +109,8 @@ namespace Invector
         //[HideInInspector]
         //public bool questionSpawnedAlready = false;
 
-        private EnemyUnit enemyScript;
+        [HideInInspector]
+        public EnemyUnit enemyScript;
 
         private IList<AIStateBase> _states = new List< AIStateBase >();
 
@@ -150,7 +151,7 @@ namespace Invector
             //exclamationMarkPosition = GameObject.Find("ExclamationMarkPosition").transform;
             //questionMarkPosition = GameObject.Find("QuestionMarkPosition").transform;
 
-            if (hasNoiseArea)
+            if (roomHasNoiseArea)
             {
                 noiseArea = GameObject.Find("NoiseArea").transform;
             }
@@ -215,7 +216,7 @@ namespace Invector
             GoToLastKnownPositionState goToLastKnownPosition = new GoToLastKnownPositionState(this.gameObject);
             _states.Add(goToLastKnownPosition);
 
-            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(this.gameObject, this.noiseArea);
+            GoToNoiseArea goToNoiseArea = new GoToNoiseArea(this.gameObject);
             _states.Add(goToNoiseArea);
 
             StopState stopState = new StopState(this.gameObject);

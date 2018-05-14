@@ -19,7 +19,7 @@ namespace Invector.AI
 
         Invector.CharacterController.vThirdPersonController cc;
 
-        public GoToNoiseArea(GameObject owner, Transform noiseArea)
+        public GoToNoiseArea(GameObject owner) //, Transform noiseArea)
             : base()
         {
             State = AIStateType.GoToNoiseArea;
@@ -32,10 +32,10 @@ namespace Invector.AI
                 Owner = owner;
             }
 
-            if (NoiseArea == null)
-            {
-                NoiseArea = noiseArea;
-            }
+            //if (NoiseArea == null)
+            //{
+            //    NoiseArea = noiseArea;
+            //}
 
             enemy = Owner.GetComponent<EnemyUnit>();
 
@@ -68,9 +68,9 @@ namespace Invector.AI
 
                 if (time < waitTime)
                 {
-                    enemy.heardNoise = false;
+                    NoiseArea.heardNoise = false;
                     time += Time.deltaTime;
-                    enemy.agent.SetDestination(NoiseArea.position);
+                    enemy.agent.SetDestination(enemy.noiseArea.position);
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace Invector.AI
         {
             // 2. Did the player get away?
             // If yes, go to stop state.
-            if (time >= waitTime || Vector3.Distance(Owner.transform.position, NoiseArea.position) < enemy.stopDistance)
+            if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.noiseArea.position) < enemy.stopDistance)
             {
                 if (!enemy.isRoomTwo)
                 {
