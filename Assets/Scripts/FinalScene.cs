@@ -9,6 +9,7 @@ namespace Invector
 {
     public class FinalScene : MonoBehaviour
     {
+        #region Variables
         public GameObject pageInteraction;
         public RawImage background;
         public Animator anim;
@@ -37,6 +38,7 @@ namespace Invector
         private float time;
         private float waitTimeOne = 7;
         private float waitTimeTwo = 10;
+        #endregion
 
         void Start()
         {

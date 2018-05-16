@@ -7,6 +7,7 @@ namespace Invector.AI
 {
     public class StandingStillState : AIStateBase
     {
+        #region Variables
         private Path _path;
         private Direction _direction;
         private float _arriveDistance;
@@ -20,7 +21,11 @@ namespace Invector.AI
         GameObject uISceneCanvas;
         PauseGame pauseGameScript;
 
+        GameObject snoringSound;
+        GameObject huhSound;
+
         public Waypoint CurrentWaypoint { get; private set; }
+        #endregion
 
         public StandingStillState(GameObject owner, Path path,
             Direction direction, float arriveDistance)
@@ -41,6 +46,8 @@ namespace Invector.AI
             uISceneCanvas = GameObject.Find("UISceneCanvas");
             pauseGameScript = uISceneCanvas.GetComponent<PauseGame>();
 
+            snoringSound = GameObject.Find("SnoringSound");
+            huhSound = GameObject.Find("HuhSound");
 
             AddTransition(AIStateType.FollowTarget);
             AddTransition(AIStateType.GoToLastKnownPosition);
@@ -58,9 +65,6 @@ namespace Invector.AI
 
         public override void Update()
         {
-            // 1. Should we change the state?
-            //   1.1 If yes, change state and return.
-
             if (!ChangeState())
             {
                 if (pauseGameScript.isPaused)
@@ -73,11 +77,6 @@ namespace Invector.AI
                     enemy._docAnimator.SetBool("isSleeping", true);
                     enemy.agent.baseOffset = -5f;
                 }
-
-                //enemy.time += Time.deltaTime;
-
-                // 2. Are we close enough the current waypoint?
-                //   2.1 If yes, get the next waypoint
 
                 CurrentWaypoint = GetWaypoint();
 
@@ -106,9 +105,6 @@ namespace Invector.AI
                 {
                     enemy.transform.LookAt(currentWaypointWithoutY);
                 }
-
-                // 3. Move and rotate towards the current waypoint
-                //enemy.agent.SetDestination(CurrentWaypoint.Position);
             }
         }
 
@@ -124,9 +120,6 @@ namespace Invector.AI
                 {
                     if (enemy.time >= enemy.waitTime)
                     {
-                        //enemy.speed = 0;
-                        //enemy.agent.speed = 0;
-                        //enemy.agent.ResetPath();
                         result = _path.GetNextWaypoint(CurrentWaypoint, ref _direction);
                         enemy.time = 0;
                     }
@@ -158,16 +151,13 @@ namespace Invector.AI
 
             if (NoiseArea.heardNoise)
             {
-                //enemy.time = 0;
-                //Debug.Log("Heard something!");
-
                 if (enemy.isRoomTwo)
                 {
                     enemy.time += Time.deltaTime;
                     enemy.agent.baseOffset = 0;
                     enemy._docAnimator.SetBool("isSleeping", false);
-                    enemy.snoring.Stop();
-                    enemy.huh.PlayDelayed(0.05f);
+                    snoringSound.SetActive(false);
+                    huhSound.SetActive(false);
 
                     if (enemy.isRoomTwo && enemy.time < roomTwoTime)
                     {
@@ -177,7 +167,6 @@ namespace Invector.AI
 
                     if (enemy.isRoomTwo && enemy.time >= roomTwoTime)
                     {
-                        //enemy.time = 0;
                         Debug.Log("Heard something!");
                         return enemy.PerformTransition(AIStateType.GoToNoiseArea);
                     }
@@ -199,21 +188,5 @@ namespace Invector.AI
 
             return false;
         }
-
-        //IEnumerator TurnToFace(Vector3 lookTarget)
-        //{
-        //    Vector3 directionToLookTarget = (lookTarget - enemy.transform.position).normalized;
-        //    float targetAngle = 90 - Mathf.Atan2(directionToLookTarget.z,
-        //        directionToLookTarget.x) * Mathf.Rad2Deg;
-
-        //    while (Mathf.Abs(Mathf.DeltaAngle(enemy.transform.eulerAngles.y, targetAngle)) > 0.09f)
-        //    {
-        //        float angle = Mathf.MoveTowardsAngle(enemy.transform.eulerAngles.y, targetAngle,
-        //            enemy.turnSpeed * Time.deltaTime);
-
-        //        enemy.transform.eulerAngles = Vector3.up * angle;
-        //        yield return null;
-        //    }
-        //}
     }
 }

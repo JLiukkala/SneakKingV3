@@ -7,19 +7,19 @@ namespace Invector
 {
     public class NoiseArea : MonoBehaviour
     {
+        #region Variables
         public GameObject Owner { get; protected set; }
         EnemyUnit enemy;
 
         [HideInInspector]
         public static bool heardNoise = false;
 
-        //AudioSource audio;
-
         GameObject sofa;
         NavMeshModifier nmm;
 
         GameObject navMeshGenerator;
         NavMeshGenerator nmg;
+        #endregion
 
         void Start()
         {
@@ -29,11 +29,6 @@ namespace Invector
             }
 
             enemy = Owner.GetComponent<EnemyUnit>();
-
-            //if (enemy.hasNoiseArea)
-            //{
-            //    audio = GetComponent<AudioSource>();
-            //}
 
             if (enemy.isRoomTwo)
             {
@@ -56,8 +51,6 @@ namespace Invector
                 }
 
                 heardNoise = true;
-                //audio.Play();
-                //audio.Play(44100);
             }
         }
     }

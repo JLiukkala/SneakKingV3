@@ -8,6 +8,7 @@ namespace Invector
 {
     public class Transition : MonoBehaviour
     {
+        #region Variables
         // The scene that is transitioned into.
         [SerializeField]
         private string loadLevel;
@@ -34,6 +35,7 @@ namespace Invector
         public bool isLocked = false;
 
         bool isInTransition = false;
+        #endregion
 
         void Start()
         {

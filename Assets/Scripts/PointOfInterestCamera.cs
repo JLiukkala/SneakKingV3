@@ -6,6 +6,7 @@ using System;
 
 public class PointOfInterestCamera : MonoBehaviour
 {
+    #region Variables
     // Reference to the camera.
     vThirdPersonCamera _camera;
 
@@ -39,6 +40,8 @@ public class PointOfInterestCamera : MonoBehaviour
 
     private float startTime;
 
+    private float timeWhenDestroyed = 0.75f;
+
     // If this is unchecked (false), the SmoothStep will not occur.
     public bool hasPointOfInterest;
 
@@ -46,9 +49,10 @@ public class PointOfInterestCamera : MonoBehaviour
     // has reached the desired end position.
     [HideInInspector]
     public bool hasReachedEnd;
+    #endregion
 
     // Setting variables and references in the Start function.
-	void Start ()
+    void Start ()
     {
         startTime = Time.time;
 
@@ -86,7 +90,7 @@ public class PointOfInterestCamera : MonoBehaviour
         // If t is greater than this value, the end 
         // position has been reached and this script 
         // is destroyed from the camera in the scene.
-        if (t > 0.75f)
+        if (t > timeWhenDestroyed)
         {
             hasReachedEnd = true;
             Destroy(skipCamera.gameObject);

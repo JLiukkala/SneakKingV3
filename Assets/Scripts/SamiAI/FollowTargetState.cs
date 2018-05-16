@@ -6,6 +6,7 @@ namespace Invector.AI
 {
 	public class FollowTargetState : AIStateBase
 	{
+        #region Variables
         private float time = 0;
         public float waitTime = 0.3f;
 
@@ -13,8 +14,9 @@ namespace Invector.AI
         public GameObject exclamationMark;
 
         EnemyUnit enemy;
+        #endregion
 
-		public FollowTargetState( GameObject owner )
+        public FollowTargetState( GameObject owner )
 			: base()
 		{
             State = AIStateType.FollowTarget;
@@ -88,8 +90,6 @@ namespace Invector.AI
 
         private bool ChangeState()
 		{
-			// 2. Did the player get away?
-			// If yes, go to last known position state.
             if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
                         > enemy.viewDistance)
             {
@@ -99,7 +99,6 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
-            // Otherwise return false.
             return false;
 		}
 

@@ -6,7 +6,8 @@ namespace Invector.AI
 {
 	public class PatrolState : AIStateBase
 	{
-		private Path _path;
+        #region Variables
+        private Path _path;
 		private Direction _direction;
 		private float _arriveDistance;
 
@@ -15,6 +16,7 @@ namespace Invector.AI
         Invector.CharacterController.vThirdPersonController cc;
 
 		public Waypoint CurrentWaypoint { get; private set; }
+        #endregion
 
         public PatrolState( GameObject owner, Path path,
 			Direction direction, float arriveDistance )
@@ -43,12 +45,6 @@ namespace Invector.AI
 		public override void StateActivated()
 		{
 			base.StateActivated();
-
-            //if (enemy.isRoomTwo)
-            //{
-            //    enemy.hearDistance = 1;
-            //}
-
             CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
 		}
 

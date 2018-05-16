@@ -14,18 +14,12 @@ namespace Invector
 
         public GameObject confirmButton;
 
-        //GameObject player;
-        //Invector.CharacterController.vThirdPersonController cc;
-
         [HideInInspector]
         public bool isPaused = false;
 
         void Start()
         {
             es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-
-            //player = GameObject.FindGameObjectWithTag("Player");
-            //cc = player.GetComponent<Invector.CharacterController.vThirdPersonController>();
         }
 
         void Update()
@@ -44,7 +38,6 @@ namespace Invector
                     isPaused = true;
                     es.SetSelectedGameObject(null);
                     es.SetSelectedGameObject(es.firstSelectedGameObject);
-                    //cc.lockMovement = true;
                 }
                 else
                 {
@@ -52,9 +45,6 @@ namespace Invector
                     pauseBackground.gameObject.SetActive(false);
                     Time.timeScale = 1;
                     isPaused = false;
-
-                    //Cursor.visible = false;
-                    //Cursor.lockState = CursorLockMode.Locked;
                 }
             }
         }

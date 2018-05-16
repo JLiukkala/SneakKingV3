@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    #region Variables
     [SerializeField]
     private string loadLevel;
 
@@ -20,6 +21,7 @@ public class MainMenu : MonoBehaviour
     public GameObject yesButton;
 
     EventSystem es;
+    #endregion
 
     void Start ()
     {

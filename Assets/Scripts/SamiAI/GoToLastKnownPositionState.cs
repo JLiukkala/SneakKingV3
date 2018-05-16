@@ -5,6 +5,7 @@ namespace Invector.AI
 {
 	public class GoToLastKnownPositionState : AIStateBase
 	{
+        #region Variables
         private float time = 0;
         public float waitTime = 5f;
 
@@ -14,6 +15,7 @@ namespace Invector.AI
         public GameObject questionMark;
 
         Invector.CharacterController.vThirdPersonController cc;
+        #endregion
 
         public GoToLastKnownPositionState( GameObject owner )
 			: base()
@@ -64,8 +66,6 @@ namespace Invector.AI
 
         private bool ChangeState()
 		{
-            // 2. Did the player get away?
-            // If yes, go to stop state.
             if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.lastPositionOfPlayer) < enemy.stopDistance)
             {
                 enemy.goToAlertMode = true;
@@ -83,7 +83,6 @@ namespace Invector.AI
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
                     {
                         enemy.hasBeenNoticed = true;
-                        //enemy.time = 0;
                         Debug.Log("Noticed player!");
                         HideQuestionMark();
                         enemy.inCameraView = false;
@@ -106,7 +105,6 @@ namespace Invector.AI
                 }
             }
 
-            // Otherwise return false.
             return false;
 		}
 

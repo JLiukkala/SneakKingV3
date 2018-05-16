@@ -11,7 +11,8 @@ namespace Invector
 {
 	public class EnemyUnit : MonoBehaviour
 	{
-		[SerializeField]
+        #region Variables
+        [SerializeField]
 		private Path _path;
 
 		[SerializeField]
@@ -81,33 +82,10 @@ namespace Invector
         public NavMeshAgent agent;
 
         [HideInInspector]
-        public AudioSource snoring;
-
-        [HideInInspector]
-        public AudioSource huh;
-
-        private AudioSource[] audioSources;
-
-        [HideInInspector]
         public bool turningDone = false;
 
         [HideInInspector]
         public bool gotUp = false;
-
-        //[HideInInspector]
-        //public GameObject exclamationMark;
-        //[HideInInspector]
-        //public GameObject questionMark;
-
-        //[HideInInspector]
-        //public Transform exclamationMarkPosition;
-        //[HideInInspector]
-        //public Transform questionMarkPosition;
-
-        //[HideInInspector]
-        //public bool exclamationSpawnedAlready = false;
-        //[HideInInspector]
-        //public bool questionSpawnedAlready = false;
 
         [HideInInspector]
         public EnemyUnit enemyScript;
@@ -132,6 +110,7 @@ namespace Invector
 				return null;
 			}
 		}
+        #endregion
 
         public void Start()
 		{
@@ -145,12 +124,6 @@ namespace Invector
             viewAngle = visionCone.spotAngle;
             originalVisionConeColor = visionCone.color;
 
-            //exclamationMark = GameObject.Find("ExclamationMark");
-            //questionMark = GameObject.Find("QuestionMark");
-
-            //exclamationMarkPosition = GameObject.Find("ExclamationMarkPosition").transform;
-            //questionMarkPosition = GameObject.Find("QuestionMarkPosition").transform;
-
             if (roomHasNoiseArea)
             {
                 noiseArea = GameObject.Find("NoiseArea").transform;
@@ -159,14 +132,6 @@ namespace Invector
             stopDistance = viewDistance / 3.2f;
 
             enemyScript = GetComponent<EnemyUnit>();
-
-            if (isRoomTwo)
-            {
-                audioSources = GetComponents<AudioSource>();
-
-                snoring = audioSources[0];
-                huh = audioSources[1];
-            }
 
             // Initializes the state system.
             InitStates();
@@ -301,69 +266,5 @@ namespace Invector
 			// equals to stateType. If no object is found, returns null.
 			return _states.FirstOrDefault( state => state.State == stateType );
 		}
-
-        //public void ShowExclamationMark()
-        //{
-        //    for (int i = 0; i < exclamationMark.transform.childCount; i++)
-        //    {
-        //        exclamationMark.transform.GetChild(i).gameObject.SetActive(true);
-        //    }
-        //}
-
-        //public void HideExclamationMark()
-        //{
-        //    for (int i = 0; i < exclamationMark.transform.childCount; i++)
-        //    {
-        //        exclamationMark.transform.GetChild(i).gameObject.SetActive(false);
-        //    }
-        //}
-
-        //public void ShowQuestionMark()
-        //{
-        //    for (int i = 0; i < questionMark.transform.childCount; i++)
-        //    {
-        //        questionMark.transform.GetChild(i).gameObject.SetActive(true);
-        //    }
-        //}
-
-        //public void HideQuestionMark()
-        //{
-        //    for (int i = 0; i < questionMark.transform.childCount; i++)
-        //    {
-        //        questionMark.transform.GetChild(i).gameObject.SetActive(false);
-        //    }
-        //}
-
-        //public void SpawnExclamationMark()
-        //{
-        //    if (exclamationSpawnedAlready == false)
-        //    {
-        //        Instantiate(exclamationMark, exclamationMarkPosition);
-        //        exclamationSpawnedAlready = true;
-        //    }
-
-        //}
-
-        //public void DestroyExclamationMark()
-        //{
-        //    Destroy(GameObject.Find(exclamationMark.name + "(Clone)"));
-        //    exclamationSpawnedAlready = false;
-        //}
-
-        //public void SpawnQuestionMark()
-        //{
-        //    if (questionSpawnedAlready == false)
-        //    {
-        //        Instantiate(questionMark, questionMarkPosition);
-        //        questionSpawnedAlready = true;
-        //    }
-
-        //}
-
-        //public void DestroyQuestionMark()
-        //{
-        //    Destroy(GameObject.Find(questionMark.name + "(Clone)"));
-        //    questionSpawnedAlready = false;
-        //}
     }
 }

@@ -6,6 +6,7 @@ namespace Invector.AI
 {
     public class GoToNoiseArea : AIStateBase
     {
+        #region Variables
         private float time = 0;
         public float waitTime = 4f;
 
@@ -15,11 +16,10 @@ namespace Invector.AI
         [HideInInspector]
         public GameObject questionMark;
 
-        //Transform noiseArea;
-
         Invector.CharacterController.vThirdPersonController cc;
+        #endregion
 
-        public GoToNoiseArea(GameObject owner) //, Transform noiseArea)
+        public GoToNoiseArea(GameObject owner)
             : base()
         {
             State = AIStateType.GoToNoiseArea;
@@ -32,16 +32,9 @@ namespace Invector.AI
                 Owner = owner;
             }
 
-            //if (NoiseArea == null)
-            //{
-            //    NoiseArea = noiseArea;
-            //}
-
             enemy = Owner.GetComponent<EnemyUnit>();
 
             cc = enemy.Target.GetComponent<Invector.CharacterController.vThirdPersonController>();
-
-            //this.noiseArea = GameObject.Find("NoiseArea").transform;
 
             questionMark = GameObject.Find("QuestionMark");
         }
@@ -77,8 +70,6 @@ namespace Invector.AI
 
         private bool ChangeState()
         {
-            // 2. Did the player get away?
-            // If yes, go to stop state.
             if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.noiseArea.position) < enemy.stopDistance)
             {
                 if (!enemy.isRoomTwo)
@@ -108,7 +99,6 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
-            // Otherwise return false.
             return false;
         }
 
