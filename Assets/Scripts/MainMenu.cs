@@ -73,6 +73,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Shows the confirmation window for exiting to the main menu.
+    /// Highlights the 'Yes' button.
+    /// </summary>
     public void ShowConfirmMessage ()
     {
         if (notInMainMenu)
@@ -84,6 +88,10 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns to the pause menu window after pressing 'No'
+    /// on the confirm window. Highlights the first button. 
+    /// </summary>
     public void ChooseNo ()
     {
         if (notInMainMenu)

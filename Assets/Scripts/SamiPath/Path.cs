@@ -6,8 +6,8 @@ namespace Invector.WaypointSystem
 {
 	public enum PathType
 	{
-		Loop, // After reaching the last waypoint, user moves to the first
-		PingPong // User changes direction after reaching the last waypoint
+		Loop,
+		PingPong
 	}
 
 	public enum Direction
@@ -16,13 +16,13 @@ namespace Invector.WaypointSystem
 		Backward
 	}
 
-	public class Path : MonoBehaviour
+    // The waypoint system of the game utilises Sami's systems from the game created during the Game Programming 2 course.
+    public class Path : MonoBehaviour
 	{
 		[SerializeField] private PathType _pathType;
 
 		private List<Waypoint> _waypoints;
 
-		// Dictionary which defines a color for each path type.
 		private readonly Dictionary<PathType, Color> _pathColors =
 			new Dictionary<PathType, Color> ()
 			{
@@ -34,7 +34,6 @@ namespace Invector.WaypointSystem
 		{
 			get
 			{
-				// Populates the waypoints if not done that yet and in editor every time
 				if ( _waypoints == null ||
 					_waypoints.Count == 0 ||
 					!Application.isPlaying )
@@ -145,9 +144,6 @@ namespace Invector.WaypointSystem
 			}
 		}
 
-		/// <summary>
-		/// Draws lines between waypoints
-		/// </summary>
 		protected void OnDrawGizmos ()
 		{
 			Gizmos.color = _pathColors[_pathType];
@@ -155,14 +151,13 @@ namespace Invector.WaypointSystem
 			{
 				for ( int i = 1; i < Waypoints.Count; i++ )
 				{
-					// Draw line from previous waypoint to current.
+					// Draw a line from the previous waypoint to the current one.
 					Gizmos.DrawLine ( Waypoints[i - 1].Position, Waypoints[i].Position );
 				}
 				if ( _pathType == PathType.Loop )
 				{
-					// From last waypoint to first 
-					Gizmos.DrawLine ( Waypoints[Waypoints.Count - 1].Position,
-						Waypoints[0].Position );
+                    // Draw a line from the last waypoint to the first one.
+					Gizmos.DrawLine ( Waypoints[Waypoints.Count - 1].Position, Waypoints[0].Position );
 				}
 			}
 		}

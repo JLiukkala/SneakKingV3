@@ -68,6 +68,8 @@ namespace Invector
             if (time >= waitTimeTwo)
             {
                 time = 0;
+                // A button appears at the bottom of the page and it is set as the 
+                // selected game object on the Event System (the button becomes highlighted).
                 theEndButton.SetActive(true);
                 es.SetSelectedGameObject(yesButton);
             }
@@ -75,6 +77,12 @@ namespace Invector
 
         void OnTriggerEnter(Collider other)
         {
+            // Upon entering the page collider, the page UI object is set
+            // to active while the rest of the screen fades to black. 
+            // Movement for the player and the camera locks. 
+            // Objects related to pausing the game are removed from the scene.
+            isInsideCollider = true;
+
             pageInteraction.SetActive(true);
             anim.SetBool("Fade", true);
             cc.lockMovement = true;
@@ -83,8 +91,6 @@ namespace Invector
             Destroy(pauseMenu.gameObject);
             Destroy(confirmMenu.gameObject);
             Destroy(pauseGameScript);
-
-            isInsideCollider = true;
         }
     }
 }

@@ -26,8 +26,6 @@ namespace Invector
 
         public GameObject openDoorCollider;
 
-        // The text that appears when the player 
-        // steps in front of a locked door. 
         public GameObject doorLockedText;
 
         // If this boolean is set to true, 
@@ -48,8 +46,6 @@ namespace Invector
 
         void OnTriggerEnter(Collider other)
         {
-            // If the door is locked and needs a key to open it, 
-            // a message is displayed to the player about that. 
             if (isLocked)
             {
                 if (keyInteraction.numberOfKeys == 1)
@@ -93,8 +89,6 @@ namespace Invector
 
         void OnTriggerExit(Collider other)
         {
-            // When the player leaves the collider, the text 
-            // related to the door being locked is set as inactive.
             doorLockedText.SetActive(false);
         }
 

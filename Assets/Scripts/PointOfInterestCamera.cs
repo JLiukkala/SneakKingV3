@@ -7,7 +7,6 @@ using System;
 public class PointOfInterestCamera : MonoBehaviour
 {
     #region Variables
-    // Reference to the camera.
     vThirdPersonCamera _camera;
 
     // Reference to the transform of the point of interest
@@ -31,7 +30,6 @@ public class PointOfInterestCamera : MonoBehaviour
     public float minimumZ = 0;
     public float maximumZ = 0;
 
-    // The duration of the camera lerp (SmoothStep).
     public float duration = 0;
 
     // When t reaches 1, the SmoothStep is at the end point (maximum values).
@@ -45,18 +43,16 @@ public class PointOfInterestCamera : MonoBehaviour
     // If this is unchecked (false), the SmoothStep will not occur.
     public bool hasPointOfInterest;
 
-    // A boolean variable for whether the camera 
-    // has reached the desired end position.
     [HideInInspector]
     public bool hasReachedEnd;
     #endregion
 
-    // Setting variables and references in the Start function.
     void Start ()
     {
         startTime = Time.time;
 
         _camera = GetComponent<vThirdPersonCamera>();
+
         if (hasPointOfInterest)
         {
             _pointOfInterestPosition = GameObject.Find("PointOfInterestPosition").transform;
@@ -67,12 +63,12 @@ public class PointOfInterestCamera : MonoBehaviour
 	
 	void Update ()
     {
-        // As long as the scene is set to have a point of interest,
-        // the SmoothStep will happen.
         if (hasPointOfInterest)
         {
             MoveCamera();
 
+            // If Space or Fire2 (B button on the Xbox controller) is 
+            // pressed during MoveCamera(), the camera movement is skipped.
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
             {
                 hasReachedEnd = true;
@@ -82,14 +78,16 @@ public class PointOfInterestCamera : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the camera from one place to another with the help of SmoothStep.
+    /// </summary>
     public void MoveCamera ()
     {
         t = (Time.time - startTime) / duration;
         _camera.transform.position = new Vector3(Mathf.SmoothStep(minimumX, maximumX, t), Mathf.SmoothStep(minimumY, maximumY, t), Mathf.SmoothStep(minimumZ, maximumZ, t));
 
-        // If t is greater than this value, the end 
-        // position has been reached and this script 
-        // is destroyed from the camera in the scene.
+        // If t is greater than timeWhenDestroyed, the end position has been reached
+        // and this script + the skip camera object are destroyed from the scene.
         if (t > timeWhenDestroyed)
         {
             hasReachedEnd = true;

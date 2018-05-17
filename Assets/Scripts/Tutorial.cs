@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene4Tutorial : MonoBehaviour
+public class Tutorial : MonoBehaviour
 {
-    public GameObject sprintTutorial;
+    public GameObject tutorialMessage;
 
     void OnTriggerEnter(Collider other)
     {
-        sprintTutorial.SetActive(true);
+        tutorialMessage.SetActive(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        sprintTutorial.SetActive(false);
+        tutorialMessage.SetActive(false);
     }
 }

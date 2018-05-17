@@ -44,12 +44,15 @@ namespace Invector
         {
             if (enemy.roomHasNoiseArea)
             {
+                // Sets the sofa in the middle of the second room to not be
+                // a part of the NavMesh area. The NavMesh is then built again.
                 if (enemy.isRoomTwo)
                 {
                     nmm.ignoreFromBuild = true;
                     nmg.BuildNavMesh();
                 }
 
+                // Upon entering a noise area, the enemy "hears noise".
                 heardNoise = true;
             }
         }

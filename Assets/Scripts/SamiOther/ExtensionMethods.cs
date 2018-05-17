@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace Invector
 {
-	public static class ExtensionMethods
+    // The game utilises Sami's systems for extension methods from the game created during the Game Programming 2 course.
+    public static class ExtensionMethods
 	{
 		public static TComponent GetOrAddComponent< TComponent >( this GameObject gameObject )
 			where TComponent : Component

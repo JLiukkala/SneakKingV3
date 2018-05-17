@@ -6,7 +6,7 @@ namespace Invector
 {
     public class KeyInteraction : MonoBehaviour
     {
-        // References that are needed.
+        #region Variables
         public GameObject keyInteraction;
 
         [HideInInspector]
@@ -20,10 +20,10 @@ namespace Invector
         // The player should only have one at a time.
         [HideInInspector]
         public int numberOfKeys = 0;
+        #endregion
 
         void Start()
         {
-            // Setting the references.
             keyObject = GameObject.Find("Key");
 
             player = GameObject.FindGameObjectWithTag("Player");
@@ -38,6 +38,7 @@ namespace Invector
             keyInteraction.SetActive(true);
             numberOfKeys++;
 
+            // Plays the animation for picking up (an object).
             cc.animator.SetTrigger("Pickup");
 
             Destroy(keyObject);

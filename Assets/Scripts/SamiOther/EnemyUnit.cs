@@ -170,6 +170,10 @@ namespace Invector
             lastPositionOfEnemy = transform.position;
         }
 
+        /// <summary>
+		/// Initiates all of the states and also sets the current state.
+        /// A part of Sami's AI system for Game Programming 2.
+		/// </summary>
         private void InitStates()
 		{
             PatrolState patrol = new PatrolState(this.gameObject, _path, _direction, _waypointArriveDistance);
@@ -239,6 +243,12 @@ namespace Invector
             }
         }
 
+        /// <summary>
+		/// Performs the transition from the current state to the target state.
+        /// A part of Sami's AI system for Game Programming 2.
+		/// </summary>
+		/// <param name="targetState">The target state to go to.</param>
+		/// <returns>True, if the transition is completed, false otherwise.</returns>
 		public bool PerformTransition( AIStateType targetState )
 		{
 			if ( !CurrentState.CheckTransition( targetState ) )
@@ -260,6 +270,12 @@ namespace Invector
 			return result;
 		}
 
+        /// <summary>
+		/// Gets the correct state needed to perform the transition.
+        /// A part of Sami's AI system for Game Programming 2.
+		/// </summary>
+		/// <param name="targetState">The target state to match the State property with.</param>
+		/// <returns>Returns the state type.</returns>
 		private AIStateBase GetStateByType( AIStateType stateType )
 		{
 			// Returns the first object from the list _states which State property's value

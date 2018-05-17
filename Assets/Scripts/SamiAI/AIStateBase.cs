@@ -9,13 +9,16 @@ namespace Invector.AI
 		Error = 0,
 		Patrol = 1,
 		FollowTarget = 2,
+
+        // These are the states added for the game.
         GoToLastKnownPosition = 3,
         GoToNoiseArea = 4,
         Stop = 5,
         StandingStill = 6    
 	}
 
-	public abstract class AIStateBase
+    // The AI system of the game utilises Sami's systems from the game created during the Game Programming 2 course.
+    public abstract class AIStateBase
 	{
 		// The state related to this object.
 		public AIStateType State { get; protected set; }

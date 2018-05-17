@@ -5,6 +5,7 @@ using Invector;
 
 public class VentCrouch : MonoBehaviour
 {
+    #region Variables
     public GameObject cameraObject;
     private vThirdPersonCamera cameraScript;
 
@@ -13,6 +14,7 @@ public class VentCrouch : MonoBehaviour
 
     [HideInInspector]
     public bool enteringVent = false;
+    #endregion
 
     void Start()
     {

@@ -4,7 +4,8 @@ using UE = UnityEditor;
 
 namespace Invector.Editor
 {
-	[UE.CustomEditor( typeof( Path ) )]
+    // The waypoint system of the game utilises Sami's systems from the game created during the Game Programming 2 course.
+    [UE.CustomEditor( typeof( Path ) )]
 	public class PathInspector : UE.Editor
 	{
 		private Path _target;
