@@ -60,7 +60,7 @@ public class VignetteController : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space)) { _vignetteVolume = 1.4f; }
+        //if(Input.GetKey(KeyCode.Space)) { _vignetteVolume = 1.4f; }
         var vignette = _sceneProfile.vignette.settings;
         _vignetteVolume += 0.025f*Time.deltaTime;
         vignette.intensity = _vignetteVolume;

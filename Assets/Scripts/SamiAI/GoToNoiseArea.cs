@@ -47,6 +47,8 @@ namespace Invector.AI
                 enemy.agent.speed = 0.5f;
                 ShowQuestionMark();
 
+                // If the enemy hasn't started on its route in the second room yet,
+                // the transition from this state to the next is very quick.
                 if (enemy.isRoomTwo)
                 {
                     if (!enemy.gotUp)
@@ -59,6 +61,8 @@ namespace Invector.AI
                     }
                 }
 
+                // Walks to the area where the noise was heard for as 
+                // long as the waitTime value has not been reached.
                 if (time < waitTime)
                 {
                     NoiseArea.heardNoise = false;
@@ -70,16 +74,20 @@ namespace Invector.AI
 
         private bool ChangeState()
         {
+            // If enough time has passed or the enemy is close enough 
+            // to the noise area position, the enemy changes its state.
             if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.noiseArea.position) < enemy.stopDistance)
             {
                 if (!enemy.isRoomTwo)
                 {
                     enemy.goToAlertMode = true;
                 }
+
                 time = 0;
                 return enemy.PerformTransition(AIStateType.Stop);
             }
 
+            // If the enemy notices the player, it will begin chasing them.
             if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
@@ -92,6 +100,7 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
+            // If seen by a camera, the state of the enemy will change.
             if (enemy.inCameraView)
             {
                 enemy.time = 0;

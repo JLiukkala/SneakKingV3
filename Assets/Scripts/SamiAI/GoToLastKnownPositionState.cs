@@ -41,20 +41,27 @@ namespace Invector.AI
 		{
 			if ( !ChangeState() )
 			{
+                // If the player is seen by a camera, the enemy 
+                // runs to the last known position of the player.
                 if (enemy.inCameraView)
                 {
+                    // At 0.15f the enemy starts running.
                     enemy.speed = 0.15f;
                 }
                 else
                 {
+                    // At 0.14f the enemy walks.
                     enemy.speed = 0.14f;
                 }
 
+                // The enemy walks or runs towards the last known position 
+                // of the player until the waitTime value is reached.
                 if (time < waitTime)
                 {
                     time += Time.deltaTime;
                     enemy.agent.SetDestination(enemy.lastPositionOfPlayer);
                 }
+
                 ShowQuestionMark();
 
                 if (enemy.isRoomTwo)
@@ -66,6 +73,8 @@ namespace Invector.AI
 
         private bool ChangeState()
 		{
+            // If enough time has passed or the enemy is close enough to
+            // the last known position of the player, the state is changed.
             if (time >= waitTime || Vector3.Distance(Owner.transform.position, enemy.lastPositionOfPlayer) < enemy.stopDistance)
             {
                 enemy.goToAlertMode = true;
@@ -74,6 +83,8 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.Stop);
             }
 
+            // If the enemy has gotten up in the second room, they are 
+            // able to notice the player and begin following them.
             if (enemy.isRoomTwo)
             {
                 if (enemy.gotUp)

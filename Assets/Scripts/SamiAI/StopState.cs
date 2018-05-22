@@ -55,22 +55,14 @@ namespace Invector.AI
                     time += Time.deltaTime;
                 }
 
-                if (enemy.isRoomTwo)
-                {
-                    enemy.speed = 0.001f;
-                    enemy.agent.speed = 0.01f;
-                }
-
+                // The enemy looks at this position in the
+                // second room before beginning to patrol.
                 if (enemy.isRoomTwo && !enemy.turningDone)
                 {
-                    waitTime = 1.5f;
                     enemy.transform.LookAt(position1);
                 }
-                else
-                {
-                    waitTime = 1.5f;
-                }
 
+                // The enemy appears to not be moving during this state.
                 enemy.speed = 0.001f;
                 enemy.agent.speed = 0.01f;
             }
@@ -83,16 +75,20 @@ namespace Invector.AI
                 time = 0;
                 enemy.agent.speed = 0;
                 enemy.speed = 0;
+
                 if (enemy.isRoomTwo)
                 {
                     enemy.turningDone = true;
                     enemy.gotUp = true;
                 }
 
+                // The rotation is not reset for the enemy during the second room because that would
+                // make it glance at the player awkwardly while getting up from the sofa, when it shouldn't.
                 if (!enemy.isRoomTwo)
                 {
                     enemy.transform.rotation = Quaternion.identity;
                 }
+
                 Debug.Log("Going back to patrolling!");
                 HideQuestionMark();
                 return enemy.PerformTransition(AIStateType.Patrol);
@@ -100,6 +96,8 @@ namespace Invector.AI
 
             if (enemy.isRoomTwo)
             {
+                // If the enemy has gotten up in the second room, 
+                // they are able to begin chasing the player.
                 if (enemy.gotUp)
                 {
                     if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||

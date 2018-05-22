@@ -137,6 +137,10 @@ namespace Invector
             InitStates();
 		}
 
+        /// <summary>
+		/// Determines whether the enemy is able to see the player or not.
+		/// </summary>
+		/// <returns>True, if the player is visible to the enemy, false otherwise.</returns>
         bool CanSeePlayer()
         {
             // If the distance between the enemy and the player is less than
@@ -213,6 +217,7 @@ namespace Invector
             {
                 _docAnimator.SetFloat("Speed", speed);
             }
+
             // If the enemy sees the player while the player
             // visible timer is less than the time to spot the player,
             // playerVisibleTimer is increased by Time.deltaTime.
@@ -236,7 +241,7 @@ namespace Invector
                 playerVisibleTimer / timeToSpotPlayer);
 
             // If the playerVisibleTimer reaches the value of the timeToSpotPlayer
-            // variable, the event OnEnemyHasSpottedPlayer is called.
+            // variable, the losing statement is set to true.
             if (playerVisibleTimer >= timeToSpotPlayer)
             {
                 GameUI._losingStatement = true;

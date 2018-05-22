@@ -56,6 +56,7 @@ namespace Invector.AI
 
                     ShowExclamationMark();
 
+                    // If the enemy is close enough to the player, the enemy stops to look at the player.
                     if (Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance)
                     {
                         enemy.transform.LookAt(playerPosWithoutY);
@@ -64,6 +65,7 @@ namespace Invector.AI
                     }
                     else if (Vector3.Distance(Owner.transform.position, enemy.Target.position) > enemy.stopDistance)
                     {
+                        // Adjusting values for the enemy depending on which room the player is in.
                         if (enemy.isRoomEight)
                         {
                             enemy.speed = 0.15f;
@@ -90,6 +92,8 @@ namespace Invector.AI
 
         private bool ChangeState()
 		{
+            // If the player is out of the enemy's view distance, 
+            // the state is changed to the GoToLastKnownPosition state.
             if (Vector3.Distance(Owner.transform.position, enemy.Target.position)
                         > enemy.viewDistance)
             {

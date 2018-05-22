@@ -60,6 +60,7 @@ namespace Invector.AI
         public override void StateActivated()
         {
             base.StateActivated();
+            // Gets the closest waypoint.
             CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
         }
 
@@ -67,11 +68,15 @@ namespace Invector.AI
         {
             if (!ChangeState())
             {
+                // If the game is paused, the enemy doesn't do anything in this state.
+                // Not having this here caused the enemy to start sliding on the sofa 
+                // in the second room while the game was paused.
                 if (pauseGameScript.isPaused)
                 {
                     return;
                 }
 
+                // Transitions the enemy to the sleeping animation.
                 if (enemy.isRoomTwo)
                 {
                     enemy._docAnimator.SetBool("isSleeping", true);
@@ -94,9 +99,13 @@ namespace Invector.AI
                     enemy.hearDistance = 8;
                     enemy.viewDistance = 10;
                 }
-                Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
+
+                // The enemy has no movement in this state.
                 enemy.speed = 0f;
                 enemy.agent.speed = 0f;
+
+                Vector3 currentWaypointWithoutY = new Vector3(CurrentWaypoint.Position.x, enemy.transform.position.y, CurrentWaypoint.Position.z);
+
                 if (enemy.isRoomTwo)
                 {
                     enemy.transform.LookAt(CurrentWaypoint.Position);
@@ -135,6 +144,7 @@ namespace Invector.AI
 
         private bool ChangeState()
         {
+            // If the player is not in the second room, noticing the player is normal for the enemy.
             if (!enemy.isRoomTwo)
             {
                 if (enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
@@ -149,6 +159,9 @@ namespace Invector.AI
                 }
             } 
 
+            // Stepping into the noise area in the second room causes the 
+            // enemy to wake up and begin patrolling the room. Otherwise,
+            // the enemy transitions normally to the GoToNoiseArea state.
             if (NoiseArea.heardNoise)
             {
                 if (enemy.isRoomTwo)
@@ -179,6 +192,7 @@ namespace Invector.AI
                 }
             }
 
+            // If a camera has alerted the enemy to the presence of the player, the state changes.
             if (enemy.inCameraView)
             {
                 enemy.time = 0;
@@ -186,6 +200,7 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
+            // Otherwise, returns false.
             return false;
         }
     }

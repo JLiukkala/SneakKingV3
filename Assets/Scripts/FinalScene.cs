@@ -30,6 +30,8 @@ namespace Invector
         public GameObject yesButton;
 
         public GameObject doorOpenSound;
+        public GameObject cueSound;
+        public GameObject musicBoxSound;
 
         EventSystem es;
 
@@ -37,7 +39,9 @@ namespace Invector
 
         private float time;
         private float waitTimeOne = 7;
-        private float waitTimeTwo = 10;
+        private float waitTimeTwo = 8.5f;
+        private float waitTimeThree = 10.5f;
+        private float waitTimeFour = 12;
         #endregion
 
         void Start()
@@ -66,6 +70,16 @@ namespace Invector
             }
 
             if (time >= waitTimeTwo)
+            {
+                cueSound.SetActive(true);
+            }
+
+            if (time >= waitTimeThree)
+            {
+                musicBoxSound.SetActive(true);
+            }
+
+            if (time >= waitTimeFour)
             {
                 time = 0;
                 // A button appears at the bottom of the page and it is set as the 

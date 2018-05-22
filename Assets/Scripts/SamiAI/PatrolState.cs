@@ -45,6 +45,7 @@ namespace Invector.AI
 		public override void StateActivated()
 		{
 			base.StateActivated();
+            // Sets the closest waypoint for the enemy to be the current waypoint.
             CurrentWaypoint = _path.GetClosestWaypoint(Owner.transform.position);
 		}
 
@@ -53,6 +54,8 @@ namespace Invector.AI
 			// If ChangeState returns true, the state changes.
 			if ( !ChangeState() )
 			{
+                // These are related to the second room in the game. If the waitTime reaches 
+                // a certain value, the hear distance for the enemy is brought back up.
                 if (enemy.isRoomTwo)
                 {
                     enemy.time += Time.deltaTime;
@@ -70,6 +73,8 @@ namespace Invector.AI
                 // If close enough to the current waypoint, get the next waypoint.
                 CurrentWaypoint = GetWaypoint();
 
+                // After going back to the patrol state, the enemy is 
+                // more easily alerted to the movement of the player.
                 if (enemy.goToAlertMode)
                 {
                     enemy.hearDistance = 10;
@@ -93,6 +98,11 @@ namespace Invector.AI
             }
 		}
 
+        /// <summary>
+		/// Gets the next waypoint on the enemy's path.
+        /// A part of Sami's waypoint system for Game Programming 2.
+		/// </summary>
+        /// <returns>A waypoint position.</returns>
 		private Waypoint GetWaypoint()
 		{
 			Waypoint result = CurrentWaypoint;
@@ -110,6 +120,9 @@ namespace Invector.AI
 
 		private bool ChangeState()
 		{
+            // If the player is seen by the enemy for enough time, or the player is not crouching
+            // while being within the distance of the enemy's hear distance, or the player is too 
+            // close to the enemy's position, the state is changed to FollowTarget.
             if(enemy.playerVisibleTimer >= 0.5f && enemy.playerVisibleTimer <= 0.99f ||
                     !cc.isCrouching && Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.hearDistance
                             || Vector3.Distance(Owner.transform.position, enemy.Target.position) < enemy.stopDistance / 1.5f)
@@ -121,6 +134,8 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.FollowTarget);
             }
 
+            // If the enemy hears noise provided by a noise area in the scene,
+            // the state is changed to the GoToNoiseArea state.
             if (NoiseArea.heardNoise)
             {
                 enemy.time = 0;
@@ -128,6 +143,8 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToNoiseArea);
             }
 
+            // If the player is seen by a camera, the enemy goes to the 
+            // last known position of the player (GoToLastKnownPosition state).
             if (enemy.inCameraView)
             {
                 enemy.time = 0;
@@ -135,6 +152,7 @@ namespace Invector.AI
                 return enemy.PerformTransition(AIStateType.GoToLastKnownPosition);
             }
 
+            // Otherwise returns false.
             return false;
 		}
     }
