@@ -2343,10 +2343,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\n\nMovement  - Left Analog Stick\nCamera - Right Analog Stick, L2 And
-    R2\nCrouch - Cross/A \nHide Behind Cover/ Skip Camera - Circle/B\nOpen Pause Menu
-    - Start\n\nMovement  - WASD\nCamera - Mouse\nCrouch - Mouse1, Ctrl \nHide Behind
-    Cover/ Skip Camera - Mouse2, Alt\nOpen Pause Menu - Tab"
+  m_Text: "\n\nMovement  - Left Analog Stick\nCamera - Right Analog Stick, LT And
+    RT\nCrouch/ Confirm (in menus) - A \nHide Behind Cover/ Skip Camera - B\nOpen
+    Pause Menu - Start\n\nMovement  - WASD\nCamera - Mouse\nCrouch - Mouse1, Ctrl
+    \nHide Behind Cover/ Skip Camera - Mouse2, Alt\nOpen Pause Menu - Tab"
 --- !u!222 &802518415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5798,7 +5798,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1862707032}
-        m_MethodName: ToOptionsMenu
+        m_MethodName: ToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

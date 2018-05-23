@@ -16,9 +16,19 @@ namespace Invector
 
         bool gameIsOver;
 
+        public GameObject Owner { get; protected set; }
+        EnemyUnit enemy;
+
         void Start()
         {
             _losingStatement = false;
+
+            if (Owner == null)
+            {
+                Owner = GameObject.FindGameObjectWithTag("Enemy");
+            }
+
+            enemy = Owner.GetComponent<EnemyUnit>();
         }
 
         void Update()
@@ -41,6 +51,11 @@ namespace Invector
                 {
                     _losingStatement = false;
                     SceneManager.LoadScene(loadLevel);
+
+                    if (enemy.isRoomTwo || enemy.isRoomEight)
+                    {
+                        NoiseArea.heardNoise = false;
+                    }
                     
                     gameIsOver = false;
 
